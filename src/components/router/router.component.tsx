@@ -5,13 +5,14 @@ import { RouteNames } from './router.types';
 import { NotFound } from '../pages/not-found';
 import { Login } from '../pages/login';
 import { Signup } from '../pages/signup';
+import { Navbar } from '../templates/navbar';
 
 export const Router: FC = () => {
   const user = false;
   return (
     <BrowserRouter>
       <Routes>
-        <Route>
+        <Route element={<Navbar />}>
           {user ? (
             <>
               {/*<Route element={<Navbar />}>*/}
