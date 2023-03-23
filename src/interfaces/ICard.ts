@@ -4,5 +4,4 @@ export interface ICard {
   number: string;
   validityDate: string;
   owner: string;
-  cvv: string; // must be encoded
 }

@@ -3,14 +3,15 @@ import { Link } from '../../../ui';
 
 export const StoreDropdown = styled.div<{ isOpen: boolean }>`
   width: 100%;
-  padding: 75px;
+  padding: 75px 0 50px;
   background-color: #1d1d1f;
-  position: absolute;
+  position: fixed;
   top: 0;
   transform: ${({ isOpen }) => `translateY(${isOpen ? 0 : '-100%'})`};
   transition: 0.5s ease-in-out all;
   justify-content: center;
   display: flex;
+  z-index: 1;
 `;
 
 export const SectionColumn = styled.div`
@@ -35,5 +36,5 @@ export const ListColumn = styled.div`
 
 export const StyledLink = styled(Link)`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
 `;
