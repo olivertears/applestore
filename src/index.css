@@ -5,11 +5,15 @@ body {
 }
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Mulish', sans-serif;
   box-sizing: border-box;
   border: none;
+  font-size: 14px;
 }
 
-button {
-  cursor: pointer;
-}
+/*COLORS*/
+/*#1d1d1f darkgrey*/
+/*#434344 grey*/
+/*#dadada lightgrey*/
+/*#fff white*/
+/*#0071e3 blue*/
