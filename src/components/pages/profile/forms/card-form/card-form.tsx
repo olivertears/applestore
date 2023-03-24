@@ -4,6 +4,7 @@ import { Button, Form, Input, Row, Title } from '../../../../ui';
 import { cardToCardFormValuesAdapter } from '../../adapters';
 import { CardFormProps, CardFormValues } from './card-form.types';
 import { CardItem } from '../../components/card-item';
+import { DeleteIcon } from '../../../../ui/icons';
 
 export const CardForm: FC<CardFormProps> = ({ card }) => {
   const {
@@ -58,7 +59,10 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
           })}
         />
       </Row>
-      <Button type="submit">{card ? 'СОХРАНИТЬ' : 'ДОБАВИТЬ'}</Button>
+      <Row>
+        <Button type="submit">{card ? 'СОХРАНИТЬ' : 'ДОБАВИТЬ'}</Button>
+        {card?.id && <DeleteIcon />}
+      </Row>
     </Form>
   );
 };

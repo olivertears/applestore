@@ -2,7 +2,7 @@ import { action, makeObservable, observable } from 'mobx';
 import { ITokenService } from './token.types';
 
 class TokenService implements ITokenService {
-  token$ = JSON.parse(localStorage.getItem('token') || '');
+  token$ = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token') || '') : '';
 
   constructor() {
     makeObservable(this, {

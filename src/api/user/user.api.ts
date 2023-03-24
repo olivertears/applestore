@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { IUser } from '../../interfaces';
 import { api } from '../api';
-import { IUserApi, UpdateUserData } from './user.types';
+import { ChangePasswordData, IUserApi, UpdateUserData } from './user.types';
 
 class UserApi implements IUserApi {
   endpoint = 'users' as const;
@@ -16,6 +16,10 @@ class UserApi implements IUserApi {
 
   updateUser(user: UpdateUserData): Promise<AxiosResponse<IUser>> {
     return api.put(this.endpoint, user);
+  }
+
+  changePassword(changePasswordData: ChangePasswordData): Promise<AxiosResponse> {
+    return api.post(this.endpoint, changePasswordData);
   }
 }
 
