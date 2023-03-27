@@ -6,8 +6,8 @@ import { IAddressApi } from './address.types';
 class AddressApi implements IAddressApi {
   endpoint = 'addresses' as const;
 
-  addAddress(address: IAddress): Promise<AxiosResponse<IAddress>> {
-    return api.post(this.endpoint, address);
+  addAddress(addAddressData: IAddress): Promise<AxiosResponse<IAddress>> {
+    return api.post(this.endpoint, addAddressData);
   }
 
   deleteAddress(id: string): Promise<AxiosResponse> {
@@ -18,9 +18,9 @@ class AddressApi implements IAddressApi {
     return api.get(this.endpoint);
   }
 
-  updateAddress(address: IAddress): Promise<AxiosResponse<IAddress>> {
-    return api.post(this.endpoint, address);
+  updateAddress(updateAddressData: IAddress): Promise<AxiosResponse<IAddress>> {
+    return api.post(this.endpoint, updateAddressData);
   }
 }
 
-export const userApi = new AddressApi();
+export const addressApi = new AddressApi();

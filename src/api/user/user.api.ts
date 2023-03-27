@@ -10,12 +10,8 @@ class UserApi implements IUserApi {
     return api.get(this.endpoint);
   }
 
-  getUsers(): Promise<AxiosResponse<IUser[]>> {
-    return api.get(this.endpoint);
-  }
-
-  updateUser(user: UpdateUserData): Promise<AxiosResponse<IUser>> {
-    return api.put(this.endpoint, user);
+  updateUser(updateUserData: UpdateUserData): Promise<AxiosResponse<IUser>> {
+    return api.put(this.endpoint, updateUserData);
   }
 
   changePassword(changePasswordData: ChangePasswordData): Promise<AxiosResponse> {

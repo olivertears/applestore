@@ -6,8 +6,8 @@ import { ICardApi } from './card.types';
 class CardApi implements ICardApi {
   endpoint = 'cards' as const;
 
-  addCard(card: ICard): Promise<AxiosResponse<ICard>> {
-    return api.post(this.endpoint, card);
+  addCard(addCardData: ICard): Promise<AxiosResponse<ICard>> {
+    return api.post(this.endpoint, addCardData);
   }
 
   deleteCard(id: string): Promise<AxiosResponse> {
@@ -18,9 +18,9 @@ class CardApi implements ICardApi {
     return api.get(this.endpoint);
   }
 
-  updateCard(card: ICard): Promise<AxiosResponse<ICard>> {
-    return api.post(this.endpoint, card);
+  updateCard(updateCardData: ICard): Promise<AxiosResponse<ICard>> {
+    return api.post(this.endpoint, updateCardData);
   }
 }
 
-export const userApi = new CardApi();
+export const cardApi = new CardApi();
