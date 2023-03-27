@@ -3,8 +3,8 @@ import { ICard } from '../../interfaces';
 
 export interface ICardApi {
   endpoint: 'cards';
-  addCard: (address: ICard) => Promise<AxiosResponse<ICard>>;
+  addCard: (addCardData: ICard) => Promise<AxiosResponse<ICard>>;
   deleteCard: (id: string) => Promise<AxiosResponse>;
   getCards: () => Promise<AxiosResponse<ICard[]>>;
-  updateCard: (address: ICard) => Promise<AxiosResponse<ICard>>;
+  updateCard: (updateCardData: ICard) => Promise<AxiosResponse<ICard>>;
 }

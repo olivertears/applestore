@@ -1,2 +1,2 @@
-export { Router } from './router.component';
+export { Router } from './router';
 export { RouteNames } from './router.types';

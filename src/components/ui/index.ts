@@ -1,4 +1,5 @@
 export { Input } from './input';
+export { Loader } from './loader';
 export { Select } from './select';
 export { Button } from './button';
 export { Column } from './column';

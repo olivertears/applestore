@@ -1,1 +1,1 @@
-export { userApi } from './card.api';
+export { cardApi } from './card.api';

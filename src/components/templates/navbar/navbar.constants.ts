@@ -1,5 +1,5 @@
 import { Link } from './navbar.types';
-import { RouteNames } from '../router';
+import { RouteNames } from '../router/router.types';
 
 export const NAVBAR_USER_LINKS: Link[] = [
   { name: 'Профиль', link: RouteNames.PROFILE },
