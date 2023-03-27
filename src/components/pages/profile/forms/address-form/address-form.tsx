@@ -4,6 +4,7 @@ import { Button, Form, Input, Row, Title } from '../../../../ui';
 import { IAddress } from '../../../../../interfaces';
 import { AddressFormProps } from './address-form.types';
 import { AddressItem } from '../../components/address-item';
+import { letterValidator, pasteValidator } from '../../../../../utils/validators';
 
 export const AddressForm: FC<AddressFormProps> = ({ address }) => {
   const {
@@ -35,32 +36,40 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
         label="Страна"
         value={watch('country')}
         error={errors.country?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('country', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
         label="Область"
         value={watch('state')}
         error={errors.state?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('state', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
         label="Город"
         value={watch('city')}
         error={errors.city?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('city', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
         label="Улица"
         value={watch('street')}
         error={errors.street?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('street', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Row>
@@ -69,7 +78,7 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
           value={watch('house')}
           error={errors.house?.message}
           {...register('house', {
-            required: true
+            required: 'Это поле обязательно'
           })}
         />
         <Input

@@ -6,10 +6,7 @@ import { ErrorItemProps } from './error-item.types';
 
 export const ErrorItem: FC<PropsWithChildren<ErrorItemProps>> = ({ children, id }) => {
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      errorService.removeError(id);
-    }, 5000);
-
+    const timeout = setTimeout(() => errorService.removeError(id), 5000);
     return () => clearTimeout(timeout);
   }, [id]);
 

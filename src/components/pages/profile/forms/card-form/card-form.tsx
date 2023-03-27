@@ -5,6 +5,11 @@ import { cardToCardFormValuesAdapter } from '../../adapters';
 import { CardFormProps, CardFormValues } from './card-form.types';
 import { CardItem } from '../../components/card-item';
 import { DeleteIcon } from '../../../../ui/icons';
+import {
+  englishLetterValidator,
+  numberValidator,
+  pasteValidator
+} from '../../../../../utils/validators';
 
 export const CardForm: FC<CardFormProps> = ({ card }) => {
   const {
@@ -29,16 +34,22 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
         label="Номер"
         value={watch('number')}
         error={errors.number?.message}
+        onPaste={pasteValidator}
+        onKeyDown={numberValidator}
+        maxLength={16}
         {...register('number', {
-          required: true
+          required: 'Это поле обязательно',
+          minLength: { value: 16, message: 'Номер должен содержать 16 цифр' }
         })}
       />
       <Input
         label="Владелец"
         value={watch('owner')}
         error={errors.owner?.message}
+        onPaste={pasteValidator}
+        onKeyDown={englishLetterValidator}
         {...register('owner', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Row>
@@ -46,16 +57,20 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
           label="Месяц"
           value={watch('month')}
           error={errors.month?.message}
+          onPaste={pasteValidator}
+          onKeyDown={numberValidator}
           {...register('month', {
-            required: true
+            required: 'Это поле обязательно'
           })}
         />
         <Input
           label="Год"
           value={watch('year')}
           error={errors.year?.message}
+          onPaste={pasteValidator}
+          onKeyDown={numberValidator}
           {...register('year', {
-            required: true
+            required: 'Это поле обязательно'
           })}
         />
       </Row>

@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Button, Form, Input, Title } from '../../../../ui';
 import { useForm } from 'react-hook-form';
 import { RegisterData } from '../../../../../api/auth';
+import { emailRegex, letterValidator, pasteValidator } from '../../../../../utils/validators';
 
 export const SignUpForm: FC = () => {
   const {
@@ -24,16 +25,20 @@ export const SignUpForm: FC = () => {
         label="Имя"
         value={watch('firstname')}
         error={errors.firstname?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('firstname', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
         label="Фамилия"
         value={watch('lastname')}
         error={errors.lastname?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('lastname', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
@@ -42,7 +47,8 @@ export const SignUpForm: FC = () => {
         value={watch('email')}
         error={errors.email?.message}
         {...register('email', {
-          required: true
+          required: 'Это поле обязательно',
+          pattern: { value: emailRegex, message: 'Указанный адрес электронной почты не существует' }
         })}
       />
       <Input
@@ -51,8 +57,8 @@ export const SignUpForm: FC = () => {
         value={watch('password')}
         error={errors.password?.message}
         {...register('password', {
-          required: true,
-          minLength: { value: 6, message: 'The password is too short' }
+          required: 'Это поле обязательно',
+          minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
         })}
       />
       <Button type="submit">ЗАРЕГИСТРИРОВАТЬСЯ</Button>

@@ -31,4 +31,4 @@ class AuthService implements IAuthService {
   }
 }
 
-export const tokenService = new AuthService();
+export const authService = new AuthService();
