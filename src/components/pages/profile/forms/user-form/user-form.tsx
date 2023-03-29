@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Title } from '../../../../ui';
+import { Button, Form, Input } from '../../../../ui';
 import { UpdateUserData } from '../../../../../api/user';
 import {
   emailRegex,
@@ -25,7 +25,6 @@ export const UserForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Личная информация</Title>
       <Input
         label="Имя"
         value={watch('firstname')}
