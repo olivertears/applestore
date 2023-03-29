@@ -7,6 +7,7 @@ import { userService } from '../../../../../services/user';
 import { RouteNames } from '../../../../templates/router';
 import { IUser } from '../../../../../interfaces';
 import { AuthenticateData } from '../../../../../api/auth';
+import { emailRegex } from '../../../../../utils/validators';
 
 export const SignInForm: FC = () => {
   const navigate = useNavigate();
@@ -31,7 +32,10 @@ export const SignInForm: FC = () => {
         label="Логин"
         value={watch('email')}
         error={errors.email?.message}
-        {...register('email', { required: true })}
+        {...register('email', {
+          required: 'Это поле обязательно',
+          pattern: { value: emailRegex, message: 'Указанный адрес электронной почты не существует' }
+        })}
       />
       <Input
         type="password"
@@ -39,8 +43,8 @@ export const SignInForm: FC = () => {
         value={watch('password')}
         error={errors.password?.message}
         {...register('password', {
-          required: true,
-          minLength: { value: 6, message: 'The password is too short' }
+          required: 'Это поле обязательно',
+          minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
         })}
       />
       <Button type="submit">ВОЙТИ</Button>

@@ -1,7 +1,13 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Title } from '../../../../ui';
+import { Button, Form, Input } from '../../../../ui';
 import { UpdateUserData } from '../../../../../api/user';
+import {
+  emailRegex,
+  letterValidator,
+  numberValidator,
+  pasteValidator
+} from '../../../../../utils/validators';
 
 export const UserForm: FC = () => {
   const {
@@ -19,21 +25,24 @@ export const UserForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Личная информация</Title>
       <Input
         label="Имя"
         value={watch('firstname')}
         error={errors.firstname?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('firstname', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
         label="Фамилия"
         value={watch('lastname')}
         error={errors.lastname?.message}
+        onPaste={pasteValidator}
+        onKeyDown={letterValidator}
         {...register('lastname', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Input
@@ -42,15 +51,18 @@ export const UserForm: FC = () => {
         value={watch('email')}
         error={errors.email?.message}
         {...register('email', {
-          required: true
+          required: 'Это поле обязательно',
+          pattern: { value: emailRegex, message: 'Указанный адрес электронной почты не существует' }
         })}
       />
       <Input
         label="Телефон"
         value={watch('phone')}
         error={errors.phone?.message}
+        onPaste={pasteValidator}
+        onKeyDown={numberValidator}
         {...register('phone', {
-          required: true
+          required: 'Это поле обязательно'
         })}
       />
       <Button type="submit">СОХРАНИТЬ</Button>

@@ -6,11 +6,11 @@ class AuthApi implements IAuthApi {
   endpoint = 'auth' as const;
 
   authenticate(authenticateData: AuthenticateData): Promise<AxiosResponse<string>> {
-    return api.post(this.endpoint + 'authenticate', authenticateData);
+    return api.post(this.endpoint + '/authenticate', authenticateData);
   }
 
   register(registerData: RegisterData): Promise<AxiosResponse<string>> {
-    return api.post(this.endpoint + 'register', registerData);
+    return api.post(this.endpoint + '/register', registerData);
   }
 }
 

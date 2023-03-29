@@ -24,7 +24,10 @@ export const ChangePasswordForm: FC = () => {
         label="Старый пароль"
         value={watch('oldPassword')}
         error={errors.oldPassword?.message}
-        {...register('oldPassword', { required: true })}
+        {...register('oldPassword', {
+          required: 'Это поле обязательно',
+          minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
+        })}
       />
       <Input
         type="password"
@@ -32,8 +35,8 @@ export const ChangePasswordForm: FC = () => {
         value={watch('newPassword')}
         error={errors.newPassword?.message}
         {...register('newPassword', {
-          required: true,
-          minLength: { value: 6, message: 'The password is too short' }
+          required: 'Это поле обязательно',
+          minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
         })}
       />
       <Button type="submit">ВОЙТИ</Button>
