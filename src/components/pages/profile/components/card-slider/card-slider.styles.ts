@@ -6,6 +6,8 @@ export const SliderView = styled.div`
   align-items: center;
   overflow: hidden;
   width: 640px;
+  margin: 0 60px;
+  position: relative;
 `;
 
 export const SliderContent = styled.div<{ left?: number }>`
@@ -15,8 +17,4 @@ export const SliderContent = styled.div<{ left?: number }>`
   align-items: center;
   height: 190px;
   transition: 0.5s ease-in-out all;
-`;
-
-export const ArrowRight = styled.svg`
-  rotate: 180deg;
 `;

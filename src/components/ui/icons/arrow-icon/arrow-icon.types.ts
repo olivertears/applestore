@@ -1,6 +1,8 @@
-import { SVGProps, ReactElement } from 'react';
-
 export interface ArrowIconProps {
-  Svg?: (props: SVGProps<SVGElement>) => ReactElement;
+  top?: number;
+  left?: number;
+  right?: number;
+  rotate?: number;
+  visible?: boolean;
   onClick?: () => void;
 }

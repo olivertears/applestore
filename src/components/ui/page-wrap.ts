@@ -5,4 +5,5 @@ export const PageWrap = styled.div`
   flex-direction: column;
   padding: 30px 50px 50px;
   align-items: center;
+  overflow-x: hidden;
 `;
