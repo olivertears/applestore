@@ -5,4 +5,5 @@ export const Row = styled.div`
   gap: 15px;
   align-items: center;
   max-width: 100%;
+  position: relative;
 `;

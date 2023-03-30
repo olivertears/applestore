@@ -3,6 +3,7 @@ import * as S from './avatar.styles';
 import axios from 'axios';
 import { userService } from '../../../../../services/user';
 import { IUser } from '../../../../../interfaces';
+import { Skeleton } from '../../../../ui';
 
 export const Avatar: FC = () => {
   const submit: ChangeEventHandler<HTMLInputElement> = async (event) => {
@@ -21,9 +22,11 @@ export const Avatar: FC = () => {
   };
 
   return (
-    <S.Wrap avatar={userService.user$?.avatar || 'img.jfif'}>
-      <S.Label htmlFor="avatar" />
-      <S.Input type="file" id="avatar" onChange={submit} />
-    </S.Wrap>
+    <Skeleton>
+      <S.Wrap avatar={userService.user$?.avatar || ''}>
+        <S.Label htmlFor="avatar" />
+        <S.Input type="file" id="avatar" onChange={submit} />
+      </S.Wrap>
+    </Skeleton>
   );
 };

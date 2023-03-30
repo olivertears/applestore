@@ -35,7 +35,7 @@ export const CardSlider: FC = () => {
             ))}
           </S.SliderContent>
         </S.SliderView>
-        <ArrowIcon Svg={S.ArrowRight} onClick={moveToNext} />
+        <ArrowIcon right={0} rotate={180} onClick={moveToNext} />
       </Row>
       <AddIcon onClick={showModal} />
       <Modal isModalOpen={isModalOpen} hideModal={hideModal}>
