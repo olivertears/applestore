@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Row, Title } from '../../../../ui';
+import { Button, Form, Input, Row, Text } from '../../../../ui';
 import { IAddress } from '../../../../../interfaces';
 import { AddressFormProps } from './address-form.types';
 import { AddressItem } from '../../components/address-item';
@@ -30,7 +30,7 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Адрес</Title>
+      <Text type="header">Адрес</Text>
       <AddressItem address={getValues()} />
       <Input
         label="Страна"

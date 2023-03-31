@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button, Form, Input, Title } from '../../../../ui';
+import { Button, Form, Input, Text } from '../../../../ui';
 import { useForm } from 'react-hook-form';
 import { RegisterData } from '../../../../../api/auth';
 import { emailRegex, letterValidator, pasteValidator } from '../../../../../utils/validators';
@@ -20,7 +20,7 @@ export const SignUpForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Регистрация</Title>
+      <Text type="header">Регистрация</Text>
       <Input
         label="Имя"
         value={watch('firstname')}

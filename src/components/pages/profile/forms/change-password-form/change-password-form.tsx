@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button, Form, Input, Title } from '../../../../ui';
+import { Button, Form, Input, Text } from '../../../../ui';
 import { ChangePasswordData } from '../../../../../api/user';
 
 export const ChangePasswordForm: FC = () => {
@@ -18,7 +18,7 @@ export const ChangePasswordForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Изменить пароль</Title>
+      <Text type="header">Изменить пароль</Text>
       <Input
         type="password"
         label="Старый пароль"
