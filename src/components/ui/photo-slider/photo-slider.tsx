@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
+import { ArrowIcon } from '../icons';
 import * as S from './photo-slider.styles';
 import { PhotoSliderProps } from './photo-slider.types';
-import { ArrowIcon } from '../icons';
 
 export const PhotoSlider: FC<PhotoSliderProps> = ({ images }) => {
   const [index, setIndex] = useState(0);

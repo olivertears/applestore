@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { addressService } from '../../../../../services/address';
-import { Column, Row, Title } from '../../../../ui';
+import { Column, Row, Text } from '../../../../ui';
 import { AddIcon, DeleteIcon } from '../../../../ui/icons';
 import { useModal } from '../../../../../hooks';
 import { Modal } from '../../../../templates/modal';
@@ -12,7 +12,7 @@ export const AddressList: FC = () => {
 
   return (
     <Column>
-      <Title>Адреса</Title>
+      <Text type="header">Адреса</Text>
       {addressService.addresses$.map((address) => (
         <Row key={address.id}>
           <AddressItem address={address} onClick={() => showModal(address.id)} />

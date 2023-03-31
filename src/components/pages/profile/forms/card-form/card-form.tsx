@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Row, Title } from '../../../../ui';
+import { Button, Form, Input, Row, Text } from '../../../../ui';
 import { cardToCardFormValuesAdapter } from '../../adapters';
 import { CardFormProps, CardFormValues } from './card-form.types';
 import { CardItem } from '../../components/card-item';
@@ -28,7 +28,7 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Карта</Title>
+      <Text type="header">Карта</Text>
       <CardItem card={getValues()} isActive />
       <Input
         label="Номер"

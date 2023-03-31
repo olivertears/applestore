@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { cardService } from '../../../../../services/card';
-import { Column, Row, Title } from '../../../../ui';
+import { Column, Row, Text } from '../../../../ui';
 import { AddIcon, ArrowIcon } from '../../../../ui/icons';
 import { useModal } from '../../../../../hooks';
 import { Modal } from '../../../../templates/modal';
@@ -20,7 +20,7 @@ export const CardSlider: FC = () => {
 
   return (
     <Column>
-      <Title>Карты</Title>
+      <Text type="header">Карты</Text>
       <Row>
         <ArrowIcon onClick={moveToPrev} />
         <S.SliderView>

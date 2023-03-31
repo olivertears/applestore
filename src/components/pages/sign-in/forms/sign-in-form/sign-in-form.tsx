@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { Button, Form, Input, Title } from '../../../../ui';
+import { Button, Form, Input, Text } from '../../../../ui';
 import { userService } from '../../../../../services/user';
 import { RouteNames } from '../../../../templates/router';
 import { IUser } from '../../../../../interfaces';
@@ -26,7 +26,7 @@ export const SignInForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Title>Авторизация</Title>
+      <Text type="header">Авторизация</Text>
       <Input
         type="email"
         label="Логин"

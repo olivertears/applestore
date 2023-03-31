@@ -3,6 +3,7 @@ import { Link } from '../../ui';
 
 export const Wrap = styled.div`
   width: 100%;
+  min-width: 800px;
 `;
 
 export const Navbar = styled.div`
