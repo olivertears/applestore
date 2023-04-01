@@ -1,6 +1,11 @@
 export { AddIcon } from './add-icon';
 export { AppleIcon } from './apple-icon';
+export { AppleStoreIcon } from './apple-store-icon';
 export { ArrowIcon } from './arrow-icon';
+export { CarIcon } from './car-icon';
 export { CardChipIcon } from './card-chip-icon';
+export { CardIcon } from './card-icon';
 export { CloseIcon } from './close-icon';
 export { DeleteIcon } from './delete-icon';
+export { SmileIcon } from './smile-icon';
+export { TradeIcon } from './trade-icon';

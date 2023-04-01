@@ -18,7 +18,9 @@ export const ChangePasswordForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Text type="header">Изменить пароль</Text>
+      <Text type="header" textAlign="center">
+        Изменить пароль
+      </Text>
       <Input
         type="password"
         label="Старый пароль"

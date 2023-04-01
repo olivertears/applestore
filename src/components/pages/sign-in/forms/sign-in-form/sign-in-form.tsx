@@ -26,7 +26,9 @@ export const SignInForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Text type="header">Авторизация</Text>
+      <Text type="header" textAlign="center">
+        Авторизация
+      </Text>
       <Input
         type="email"
         label="Логин"
