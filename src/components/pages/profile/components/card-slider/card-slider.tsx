@@ -20,7 +20,9 @@ export const CardSlider: FC = () => {
 
   return (
     <Column>
-      <Text type="header">Карты</Text>
+      <Text type="header" textAlign="center">
+        Карты
+      </Text>
       <Row>
         <ArrowIcon onClick={moveToPrev} />
         <S.SliderView>

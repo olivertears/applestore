@@ -20,7 +20,9 @@ export const SignUpForm: FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Text type="header">Регистрация</Text>
+      <Text type="header" textAlign="center">
+        Регистрация
+      </Text>
       <Input
         label="Имя"
         value={watch('firstname')}

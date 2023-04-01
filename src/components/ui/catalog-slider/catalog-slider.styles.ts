@@ -6,6 +6,7 @@ export const Slider = styled.div`
   gap: 20px;
   padding: 10px 30px 10px 10px;
   overflow-x: scroll;
+  margin-bottom: 50px;
 
   ::-webkit-scrollbar {
     display: none;

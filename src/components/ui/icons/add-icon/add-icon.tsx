@@ -16,6 +16,7 @@ export const AddIcon: FC<AddIconProps> = ({ Svg = EmptySvg, onClick }) => {
       height="20px"
       width="20px"
       onClick={onClick}
+      style={{ margin: 'auto' }}
     >
       <path d="M17 2V32M2 17H32" />
     </Svg>

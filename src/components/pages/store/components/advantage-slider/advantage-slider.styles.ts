@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const Column = styled.div`
+export const Advantage = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  width: 260px;
 `;

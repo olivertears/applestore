@@ -10,6 +10,7 @@ export const AddressItem = styled.div<{ onClick?: () => void }>`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  text-align: left;
 
   :hover {
     cursor: ${({ onClick }) => !!onClick && 'pointer'};

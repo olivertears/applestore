@@ -1,25 +1,46 @@
 import { FC, PropsWithChildren } from 'react';
 import * as S from './text.styles';
 import { TextProps } from './text.types';
-import { textHeaderAdapter } from './text-header.adapter';
 
-export const Text: FC<PropsWithChildren<TextProps>> = ({ type, children }) => {
+export const Text: FC<PropsWithChildren<TextProps>> = ({
+  type,
+  margin,
+  padding,
+  textAlign,
+  children
+}) => {
   const renderText = () => {
     switch (type) {
       case 'title':
-        return <S.Title>{children}</S.Title>;
+        return (
+          <S.Title margin={margin} padding={padding} textAlign={textAlign}>
+            {children}
+          </S.Title>
+        );
       case 'header':
         return (
-          <S.Header dangerouslySetInnerHTML={{ __html: textHeaderAdapter(children as string) }} />
+          <S.Header margin={margin} padding={padding} textAlign={textAlign}>
+            {children}
+          </S.Header>
         );
       case 'param':
-        return <S.Param>{children}</S.Param>;
+        return (
+          <S.Param margin={margin} padding={padding} textAlign={textAlign}>
+            {children}
+          </S.Param>
+        );
       case 'info':
-        return <S.Info>{children}</S.Info>;
-      case 'text':
-        return <S.Text>{children}</S.Text>;
+        return (
+          <S.Info margin={margin} padding={padding} textAlign={textAlign}>
+            {children}
+          </S.Info>
+        );
       default:
-        return <S.Text>{children}</S.Text>;
+        return (
+          <S.Text margin={margin} padding={padding} textAlign={textAlign}>
+            {children}
+          </S.Text>
+        );
     }
   };
   return renderText();

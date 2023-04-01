@@ -12,7 +12,9 @@ export const AddressList: FC = () => {
 
   return (
     <Column>
-      <Text type="header">Адреса</Text>
+      <Text type="header" textAlign="center">
+        Адреса
+      </Text>
       {addressService.addresses$.map((address) => (
         <Row key={address.id}>
           <AddressItem address={address} onClick={() => showModal(address.id)} />

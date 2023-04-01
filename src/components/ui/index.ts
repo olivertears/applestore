@@ -10,6 +10,7 @@ export { Text } from './text';
 
 export { Button } from './button';
 export { Card } from './card';
+export { Color } from './color';
 export { Column } from './column';
 export { Divider } from './divider';
 export { EmptySvg } from './empty-svg';

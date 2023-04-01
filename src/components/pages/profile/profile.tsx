@@ -9,7 +9,9 @@ import { Avatar } from './components/avatar';
 export const Profile: FC = () => {
   return (
     <PageWrap>
-      <Text type="header">Личная информация</Text>
+      <Text type="header" textAlign="center" margin="0 0 15px">
+        Личная информация
+      </Text>
       <Row>
         <Avatar />
         <UserForm />
