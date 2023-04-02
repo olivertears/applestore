@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Link } from '../../../ui';
+import { Link } from '../../../../ui';
 import * as S from './store-dropdown.styles';
 import { StoreDropdownProps } from './store-dropdown.types';
 import { STORE_DROPDOWN_LINKS } from './store-dropdown.constants';

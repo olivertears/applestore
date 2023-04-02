@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Link } from '../navbar.types';
+import { Link } from '../../navbar.types';
 
 export interface StoreDropdownProps {
   isStoreDropdownOpen: boolean;

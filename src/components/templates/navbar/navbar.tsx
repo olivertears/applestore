@@ -1,16 +1,22 @@
-import { FC, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { FC, useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import { userService } from '../../../services/user';
 import { NAVBAR_USER_LINKS, NAVBAR_COMMON_LINKS } from './navbar.constants';
 import { RouteNames } from '../router';
 import { AppleIcon } from '../../ui/icons';
 import * as S from './navbar.styles';
-import { StoreDropdown } from './store-dropdown';
+import { StoreDropdown } from './components/store-dropdown';
+import { Footer } from './components/footer';
 
 export const Navbar: FC = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [isStoreDropdownOpen, setIsStoreDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const logout = () => {
     userService.setUser(null);
@@ -25,7 +31,7 @@ export const Navbar: FC = () => {
           onMouseOver={() => setIsStoreDropdownOpen(true)}
           onMouseLeave={() => setIsStoreDropdownOpen(false)}
         >
-          Каталог
+          Магазин
         </S.StyledLink>
         {(!!userService.user$ ? NAVBAR_USER_LINKS : NAVBAR_COMMON_LINKS).map(({ name, link }) => (
           <S.StyledLink key={name} to={link}>
@@ -43,6 +49,7 @@ export const Navbar: FC = () => {
         setIsStoreDropdownOpen={setIsStoreDropdownOpen}
       />
       <Outlet />
+      <Footer />
     </S.Wrap>
   );
 };
