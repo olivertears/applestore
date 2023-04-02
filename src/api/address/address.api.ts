@@ -1,7 +1,9 @@
 import { AxiosResponse } from 'axios';
+import { createApi } from '../../utils/createApi';
 import { IAddress } from '../../interfaces';
-import { api } from '../api';
 import { IAddressApi } from './address.types';
+
+const api = createApi(true);
 
 class AddressApi implements IAddressApi {
   endpoint = 'addresses' as const;

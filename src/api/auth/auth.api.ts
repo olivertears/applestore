@@ -1,6 +1,8 @@
 import { AxiosResponse } from 'axios';
+import { createApi } from '../../utils/createApi';
 import { IAuthApi, AuthenticateData, RegisterData } from './auth.types';
-import { api } from '../api';
+
+const api = createApi();
 
 class AuthApi implements IAuthApi {
   endpoint = 'auth' as const;

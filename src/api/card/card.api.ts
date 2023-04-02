@@ -1,7 +1,9 @@
 import { AxiosResponse } from 'axios';
+import { createApi } from '../../utils/createApi';
 import { ICard } from '../../interfaces';
-import { api } from '../api';
 import { ICardApi } from './card.types';
+
+const api = createApi(true);
 
 class CardApi implements ICardApi {
   endpoint = 'cards' as const;
