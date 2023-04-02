@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from '../../../ui';
+import { Link } from '../../../../ui';
 
 export const StoreDropdown = styled.div<{ isOpen: boolean }>`
   width: 100%;

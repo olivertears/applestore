@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Divider = styled.div`
-  width: 100%;
-  max-width: 500px;
-  height: 2px;
+export const Divider = styled.div<{ margin?: string; vertical?: boolean }>`
+  max-width: 1000px;
+  width: ${({ vertical }) => (vertical ? '1px' : '100%')};
+  height: ${({ vertical }) => (vertical ? 'auto' : '0.5px')};
   border-radius: 5px;
-  background-color: #1d1d1f;
-  margin: 50px;
+  background-color: #dadada;
+  margin: ${({ margin }) => (margin ? margin : '50px')};
 `;
