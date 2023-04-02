@@ -1,23 +1,15 @@
 import { ChangeEventHandler, FC } from 'react';
 import * as S from './avatar.styles';
-import axios from 'axios';
 import { userService } from '../../../../../services/user';
-import { IUser } from '../../../../../interfaces';
 import { Skeleton } from '../../../../ui';
+import { avatarService } from '../../../../../services/avatar';
 
 export const Avatar: FC = () => {
   const submit: ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
-      const fn = await axios.post(
-        'http://localhost:8081/aws',
-        { file: event.target.files[0] },
-        {
-          headers: {
-            'content-type': 'multipart/form-data'
-          }
-        }
-      );
-      userService.setUser({ ...userService.user$, avatar: fn.data } as IUser);
+      userService.user$?.avatar
+        ? avatarService.updateAvatar(event.target.files[0])
+        : avatarService.addAvatar(event.target.files[0]);
     }
   };
 

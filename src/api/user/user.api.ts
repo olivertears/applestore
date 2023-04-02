@@ -1,7 +1,9 @@
 import { AxiosResponse } from 'axios';
+import { createApi } from '../../utils/createApi';
 import { IUser } from '../../interfaces';
-import { api } from '../api';
 import { ChangePasswordData, IUserApi, UpdateUserData } from './user.types';
+
+const api = createApi(true);
 
 class UserApi implements IUserApi {
   endpoint = 'users' as const;
