@@ -10,5 +10,6 @@ export const NAVBAR_USER_LINKS: Link[] = [
 
 export const NAVBAR_COMMON_LINKS: Link[] = [
   { name: 'Вход', link: RouteNames.SIGN_IN },
-  { name: 'Регистрация', link: RouteNames.SIGN_UP }
+  { name: 'Регистрация', link: RouteNames.SIGN_UP },
+  { name: 'Каталог', link: RouteNames.CATALOG }
 ];

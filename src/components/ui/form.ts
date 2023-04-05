@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
+export const Form = styled.form<{ minWidth?: string; maxWidth?: string }>`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 300px;
-  max-width: 100%;
-  min-width: 200px;
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '100%')};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : '200px')};
   align-items: center;
 `;

@@ -15,6 +15,7 @@ import { Favorites } from '../../pages/favorites';
 import { Cart } from '../../pages/cart';
 import { Orders } from '../../pages/orders';
 import { UnitType } from '../../pages/unit-type';
+import { Catalog } from '../../pages/catalog';
 
 export const Router: FC = observer(() => {
   return (
@@ -41,6 +42,9 @@ export const Router: FC = observer(() => {
             </Route>
           </Route>
           <Route path={RouteNames.NOT_FOUND} element={<NotFound />} />
+
+          <Route path={RouteNames.CATALOG} element={<Catalog />} />
+
           <Route path="*" element={<Navigate to={RouteNames.NOT_FOUND} replace />} />
         </Route>
       </Routes>

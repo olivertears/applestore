@@ -1,14 +1,14 @@
 import axios, { AxiosHeaders, AxiosInstance } from 'axios';
-import { authService } from '../services/auth';
+import { getFromLocalStorage } from './getFromLocalStorage';
 
 export const createApi = (withToken?: boolean, contentType?: string): AxiosInstance => {
   const headers: Partial<AxiosHeaders> = {};
   if (withToken) {
-    headers['Authorization'] = `Bearer ${authService.token$}`;
+    headers['Authorization'] = `Bearer ${getFromLocalStorage('token') || ' '}`;
   }
   if (contentType) {
     headers['content-type'] = contentType;
   }
 
-  return axios.create({ baseURL: 'http://localhost:8081/', headers });
+  return axios.create({ baseURL: 'http://localhost:8081/', headers: headers });
 };

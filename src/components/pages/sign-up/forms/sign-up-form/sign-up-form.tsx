@@ -44,7 +44,6 @@ export const SignUpForm: FC = () => {
         })}
       />
       <Input
-        type="email"
         label="Логин"
         value={watch('email')}
         error={errors.email?.message}

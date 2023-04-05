@@ -1,13 +1,26 @@
-import { FC, forwardRef, useId } from 'react';
+import { FC, forwardRef, KeyboardEventHandler, useId } from 'react';
+import { integerValidator, priceValidator } from './utils';
 import * as S from './input.styles';
 import { InputProps } from './input.types';
 
 export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, value, error, ...props }, ref) => {
+  ({ label, value, error, maxWidth, type, ...props }, ref) => {
     const id = useId();
+
+    const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
+      switch (type) {
+        case 'price':
+          return priceValidator(event);
+        case 'integer':
+          return integerValidator(event);
+        default:
+          return undefined;
+      }
+    };
+
     return (
-      <S.Wrap>
-        <S.Input {...props} ref={ref} isError={!!error} id={id} />
+      <S.Wrap maxWidth={maxWidth}>
+        <S.Input {...props} ref={ref} isError={!!error} id={id} onKeyDown={onKeyDown} />
         <S.Label isError={!!error} isEmpty={!!value} htmlFor={id}>
           {label}
         </S.Label>
