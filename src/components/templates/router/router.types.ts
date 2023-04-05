@@ -11,5 +11,7 @@ export enum RouteNames {
   PROFILE = '/profile',
   CART = '/cart',
   FAVORITES = '/favorites',
-  ORDERS = '/orders'
+  ORDERS = '/orders',
+
+  CATALOG = '/catalog'
 }

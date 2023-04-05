@@ -1,4 +1,5 @@
 export { CatalogSlider } from './catalog-slider';
+export { ColorInput } from './color-input';
 export { ColorRadio } from './color-radio';
 export { Fieldset } from './fieldset';
 export { Input } from './input';
@@ -7,6 +8,7 @@ export { OptionRadio } from './option-radio';
 export { PhotoSlider } from './photo-slider';
 export { Select } from './select';
 export { Text } from './text';
+export { TextArea } from './text-area';
 
 export { Button } from './button';
 export { Card } from './card';

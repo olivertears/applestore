@@ -2,12 +2,7 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form, Input } from '../../../../ui';
 import { UpdateUserData } from '../../../../../api/user';
-import {
-  emailRegex,
-  letterValidator,
-  numberValidator,
-  pasteValidator
-} from '../../../../../utils/validators';
+import { emailRegex, letterValidator, pasteValidator } from '../../../../../utils/validators';
 
 export const UserForm: FC = () => {
   const {
@@ -46,7 +41,6 @@ export const UserForm: FC = () => {
         })}
       />
       <Input
-        type="email"
         label="Логин"
         value={watch('email')}
         error={errors.email?.message}
@@ -56,11 +50,11 @@ export const UserForm: FC = () => {
         })}
       />
       <Input
+        type="integer"
         label="Телефон"
         value={watch('phone')}
         error={errors.phone?.message}
         onPaste={pasteValidator}
-        onKeyDown={numberValidator}
         {...register('phone', {
           required: 'Это поле обязательно'
         })}

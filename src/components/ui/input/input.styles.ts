@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
+export const Wrap = styled.div<{ maxWidth?: string }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 300px;
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '300px')};
   min-width: 50px;
   position: relative;
 `;

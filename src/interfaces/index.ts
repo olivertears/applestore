@@ -7,7 +7,15 @@ export type { IFavorite } from './IFavorite';
 export type { IOrder } from './IOrder';
 export type { IOrderItem } from './IOrderItem';
 export type { IPhoto } from './IPhoto';
-export type { IProduct } from './IProduct';
+export {
+  type IProduct,
+  type Configuration,
+  type ConfigurationValue,
+  type Color,
+  ProductTypeEnum,
+  ProductParamEnum,
+  ProductConfigurationEnum
+} from './IProduct';
 export type { ITransaction } from './ITransaction';
 export type { IUser } from './IUser';
 export type { IWorker } from './IWorker';

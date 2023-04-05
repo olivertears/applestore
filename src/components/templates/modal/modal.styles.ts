@@ -44,7 +44,6 @@ export const ModalContent = styled.div`
   flex-direction: column;
   position: relative;
   width: max-content;
-  margin: auto;
 `;
 
 export const CloseButton = styled.svg`

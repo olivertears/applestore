@@ -1,10 +1,10 @@
 import { action, makeObservable, observable } from 'mobx';
-import { Catch } from '../../utils';
+import { Catch, getFromLocalStorage } from '../../utils';
 import { authApi, AuthenticateData, RegisterData } from '../../api/auth';
 import { IAuthService } from './auth.types';
 
 class AuthService implements IAuthService {
-  token$ = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token') || '') : '';
+  token$ = getFromLocalStorage('token') || '';
 
   constructor() {
     makeObservable(this, {

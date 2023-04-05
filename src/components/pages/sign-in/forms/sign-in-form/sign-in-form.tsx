@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-
 import { Button, Form, Input, Text } from '../../../../ui';
 import { userService } from '../../../../../services/user';
 import { RouteNames } from '../../../../templates/router';
@@ -30,7 +29,6 @@ export const SignInForm: FC = () => {
         Авторизация
       </Text>
       <Input
-        type="email"
         label="Логин"
         value={watch('email')}
         error={errors.email?.message}
