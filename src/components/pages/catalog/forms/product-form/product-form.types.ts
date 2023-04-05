@@ -17,7 +17,7 @@ export interface ProductFormTab {
 }
 
 export interface ProductFormData {
-  id: string;
+  id?: string;
   name: string;
   type: ProductTypeEnum;
   price?: number;

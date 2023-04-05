@@ -1,12 +1,23 @@
 export type IProduct = { [key in ProductParamEnum]?: string } & {
-  id: string;
+  id?: string;
   name: string;
   type: ProductTypeEnum;
   price?: number;
   averageRate?: number;
   configurations?: Configuration[];
-  colors?: Color[];
+  colors: Color[];
 };
+
+export interface Configuration {
+  name: ProductConfigurationEnum;
+  value: string;
+  extraPrice: number;
+}
+
+export interface Color {
+  name: string;
+  value: string;
+}
 
 export enum ProductTypeEnum {
   Mac = 'Mac',
@@ -40,19 +51,4 @@ export enum ProductConfigurationEnum {
   STORAGE = 'storage',
   MEMORY = 'memory',
   PROCESSOR = 'processor'
-}
-
-export interface Configuration {
-  name: ProductConfigurationEnum;
-  values: ConfigurationValue[];
-}
-
-export interface ConfigurationValue {
-  value: string;
-  extraPrice: number;
-}
-
-export interface Color {
-  name: string;
-  value: string;
 }

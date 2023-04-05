@@ -21,7 +21,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
     return (
       <S.Wrap maxWidth={maxWidth}>
         <S.Input {...props} ref={ref} isError={!!error} id={id} onKeyDown={onKeyDown} />
-        <S.Label isError={!!error} isEmpty={!!value} htmlFor={id}>
+        <S.Label isError={!!error} isEmpty={!!value?.toString()} htmlFor={id}>
           {label}
         </S.Label>
         {!!error && <S.Error>{error}</S.Error>}

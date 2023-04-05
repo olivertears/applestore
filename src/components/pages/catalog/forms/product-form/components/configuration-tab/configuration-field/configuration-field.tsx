@@ -5,9 +5,8 @@ import { useFieldArr } from '../../../../../../../../hooks';
 import { CONFIGURATION_NAMES } from '../../../../../../../../constants';
 import { Column, Row, Select } from '../../../../../../../ui';
 import { AddIcon } from '../../../../../../../ui/icons';
-import { ConfigurationValue } from '../../../../../../../../interfaces';
 
-import { ProductFormData } from '../../../product-form.types';
+import { ConfigurationValue, ProductFormData } from '../../../product-form.types';
 import { ConfigurationFieldProps } from './configuration-field.types';
 import { ConfigurationValueField } from './configuration-value-field';
 

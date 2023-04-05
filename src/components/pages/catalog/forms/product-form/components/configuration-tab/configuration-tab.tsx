@@ -5,13 +5,9 @@ import { Button, Row } from '../../../../../../ui';
 import { AddIcon } from '../../../../../../ui/icons';
 import { useFieldArr } from '../../../../../../../hooks';
 import { CONFIGURATION_NAMES } from '../../../../../../../constants';
-import {
-  Configuration,
-  ConfigurationValue,
-  ProductConfigurationEnum
-} from '../../../../../../../interfaces';
+import { ProductConfigurationEnum } from '../../../../../../../interfaces';
 
-import { ProductFormData } from '../../product-form.types';
+import { Configuration, ConfigurationValue, ProductFormData } from '../../product-form.types';
 import { ConfigurationField } from './configuration-field';
 import { ConfigurationTabProps } from './configuration-tab.types';
 
