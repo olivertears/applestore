@@ -1,30 +1,25 @@
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { ProductTypeEnum } from '../../../../../interfaces';
 import { Divider, Form } from '../../../../ui';
 
 import * as S from './product-form.styles';
-import { NEW_COLOR, ProductFormTabEnum } from './product-form.constants';
+import { productFormDataToProductAdapter, productToProductFormDataAdapter } from '../adapters';
+import { NEW_FORM_DATA, ProductFormTabEnum } from './product-form.constants';
 import { ProductFormData, ProductFormProps, ProductFormTab } from './product-form.types';
 import { InformationTab } from './components/information-tab';
 import { ConfigurationTab } from './components/configuration-tab';
 import { ColorTab } from './components/color-tab';
+import { MOCKED_PRODUCT } from '../../../../../services/product/product.mocked';
 
 export const ProductForm: FC<ProductFormProps> = ({ product }) => {
   const methods = useForm<ProductFormData>({
-    defaultValues: {
-      name: '',
-      type: ProductTypeEnum.Mac,
-      params: [],
-      configurations: [],
-      colors: [NEW_COLOR]
-    }
+    defaultValues: product ? productToProductFormDataAdapter(MOCKED_PRODUCT) : NEW_FORM_DATA
   });
   const { handleSubmit } = methods;
 
   const onSubmit = (data: ProductFormData) => {
-    console.log(data);
+    console.log(productFormDataToProductAdapter(data));
   };
 
   const [currentTab, setCurrentTab] = useState(ProductFormTabEnum.INFORMATION);

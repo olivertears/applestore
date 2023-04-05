@@ -68,7 +68,7 @@ export const InformationTab: FC<InformationTabProps> = ({ onNextButtonClick }) =
       />
 
       <Text type="param" textAlign="center">
-        Params
+        Параметры
       </Text>
       {params.map((param, index) => (
         <ParamField

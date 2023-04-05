@@ -10,7 +10,6 @@ export type { IPhoto } from './IPhoto';
 export {
   type IProduct,
   type Configuration,
-  type ConfigurationValue,
   type Color,
   ProductTypeEnum,
   ProductParamEnum,
