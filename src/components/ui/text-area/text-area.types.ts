@@ -4,5 +4,4 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
   label: string;
   value?: string | number;
   error?: string;
-  maxWidth?: string;
 }

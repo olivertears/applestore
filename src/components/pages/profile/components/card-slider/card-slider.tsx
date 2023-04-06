@@ -23,7 +23,7 @@ export const CardSlider: FC = () => {
       <Text type="header" textAlign="center">
         Карты
       </Text>
-      <Row>
+      <Row alignItems="center">
         <ArrowIcon onClick={moveToPrev} />
         <S.SliderView>
           <S.SliderContent left={-index * 165 + 170}>
@@ -37,7 +37,7 @@ export const CardSlider: FC = () => {
             ))}
           </S.SliderContent>
         </S.SliderView>
-        <ArrowIcon right={0} rotate={180} onClick={moveToNext} />
+        <ArrowIcon position="right" onClick={moveToNext} />
       </Row>
       <AddIcon onClick={showModal} />
       <Modal isModalOpen={isModalOpen} hideModal={hideModal}>

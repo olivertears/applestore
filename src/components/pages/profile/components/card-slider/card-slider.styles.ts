@@ -6,7 +6,7 @@ export const SliderView = styled.div`
   align-items: center;
   overflow: hidden;
   width: 640px;
-  margin: 0 60px;
+  margin: 0 80px;
   position: relative;
 `;
 

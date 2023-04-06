@@ -9,6 +9,6 @@ export const Svg = styled.svg<{ width?: string; color?: string; hover?: string }
 
   :hover {
     cursor: ${({ hover }) => !!hover && 'pointer'};
-    fill: ${({ hover }) => !!hover && hover};
+    fill: ${({ hover }) => (hover ? hover : '#fff')};
   }
 `;

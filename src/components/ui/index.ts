@@ -15,7 +15,6 @@ export { Card } from './card';
 export { Color } from './color';
 export { Column } from './column';
 export { Divider } from './divider';
-export { EmptySvg } from './empty-svg';
 export { Form } from './form';
 export { Link } from './link';
 export { PageWrap } from './page-wrap';

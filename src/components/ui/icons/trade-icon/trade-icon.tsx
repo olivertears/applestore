@@ -1,18 +1,10 @@
 import { FC } from 'react';
-import { EmptySvg } from '../../empty-svg';
+import * as S from './trade-icon.styles';
 import { TradeIconProps } from './trade-icon.types';
 
-export const TradeIcon: FC<TradeIconProps> = ({ Svg = EmptySvg, onClick }) => {
+export const TradeIcon: FC<TradeIconProps> = ({ onClick }) => {
   return (
-    <Svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 43 56"
-      fill="none"
-      stroke="#434344"
-      height="56px"
-      width="43px"
-      onClick={onClick}
-    >
+    <S.Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 56" onClick={onClick}>
       <path
         fill="#434344"
         d="m38.5 27a.99974.99974 0 0 0 -1 1v11a5.00588 5.00588 0 0 1 -5 5h-22a5.00588 5.00588 0 0 1 -5-5v-3.83594l1.543 1.543a.99989.99989 0 1 0 1.414-1.41406l-3.25-3.25a.99962.99962 0 0 0 -1.41406 0l-3.25 3.25a.99989.99989 0 1 0 1.41406 1.414l1.543-1.543v3.836a7.00818 7.00818 0 0 0 7 7h22a7.00818 7.00818 0 0 0 7-7v-11a.99974.99974 0 0 0 -1-1z"
@@ -29,6 +21,6 @@ export const TradeIcon: FC<TradeIconProps> = ({ Svg = EmptySvg, onClick }) => {
         fill="#434344"
         d="m42.457 19.293a.99962.99962 0 0 0 -1.41406 0l-1.543 1.543v-3.836a7.00818 7.00818 0 0 0 -7-7h-22a7.00818 7.00818 0 0 0 -7 7v11a1 1 0 0 0 2 0v-11a5.00588 5.00588 0 0 1 5-5h22a5.00588 5.00588 0 0 1 5 5v3.83594l-1.543-1.543a.99989.99989 0 0 0 -1.41394 1.41406l3.25 3.25a.99963.99963 0 0 0 1.41406 0l3.25-3.25a.99962.99962 0 0 0 -.00006-1.414z"
       />
-    </Svg>
+    </S.Svg>
   );
 };

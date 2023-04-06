@@ -7,15 +7,9 @@ export const Wrap = styled.div`
   outline: 1px solid #dadada;
   position: relative;
   text-align: center;
+  background-color: #fff;
 
   :hover {
     outline: 1px solid #1d1d1f;
   }
-`;
-
-export const CloseIconSvg = styled.svg`
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 15px;
 `;

@@ -12,7 +12,7 @@ export const UnitSlider: FC = () => {
       <Text type="title" padding="0 20px" margin="0 0 20px">
         Store. <Color>The best way to buy the products you love.</Color>
       </Text>
-      <CatalogSlider>
+      <CatalogSlider marginBottom="50px">
         {STORE_UNIT_CARDS.map(({ name, link, img }) => (
           <Card key={name} onClick={() => navigate(link)}>
             <S.Unit img={img}>

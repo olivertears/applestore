@@ -29,7 +29,7 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form maxWidth="300px" onSubmit={handleSubmit(onSubmit)}>
       <Text type="header" textAlign="center">
         Адрес
       </Text>
@@ -76,7 +76,6 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
       />
       <Row>
         <Input
-          maxWidth="142.5px"
           label="Дом"
           value={watch('house')}
           error={errors.house?.message}
@@ -85,7 +84,6 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
           })}
         />
         <Input
-          maxWidth="142.5px"
           label="Квартира"
           value={watch('apartment')}
           error={errors.apartment?.message}

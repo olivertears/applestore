@@ -15,7 +15,7 @@ export const ParamField: FC<ParamFieldProps> = ({ remove, index, availableParams
   } = useFormContext<ProductFormData>();
 
   return (
-    <Row>
+    <Row alignItems="start">
       <Select label="Параметр" {...register(`params.${index}.name`)}>
         {[watch(`params.${index}.name`), ...availableParams].map((key) => (
           <option key={key} value={key}>
@@ -31,7 +31,7 @@ export const ParamField: FC<ParamFieldProps> = ({ remove, index, availableParams
           required: 'Это поле обязательно'
         })}
       />
-      <DeleteIcon width="50px" onClick={() => remove(index)} />
+      <DeleteIcon marginTop="10px" onClick={() => remove(index)} />
     </Row>
   );
 };
