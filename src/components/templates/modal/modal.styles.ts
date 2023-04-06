@@ -45,11 +45,3 @@ export const ModalContent = styled.div`
   position: relative;
   width: max-content;
 `;
-
-export const CloseButton = styled.svg`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 5px;
-  right: 5px;
-`;

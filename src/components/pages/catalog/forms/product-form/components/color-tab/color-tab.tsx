@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Button, Column, Row } from '../../../../../../ui';
+import { Button, Row } from '../../../../../../ui';
 import { AddIcon } from '../../../../../../ui/icons';
 import { useFieldArr } from '../../../../../../../hooks';
 
@@ -16,7 +16,7 @@ export const ColorTab: FC<ColorTabProps> = ({ onPrevButtonClick }) => {
   const [colors, appendColor, removeColor] = useFieldArr(control, 'colors');
 
   return (
-    <Column>
+    <>
       {colors.map((color, index) => (
         <ColorField key={color.id} index={index} remove={removeColor} />
       ))}
@@ -27,6 +27,6 @@ export const ColorTab: FC<ColorTabProps> = ({ onPrevButtonClick }) => {
         </Button>
         <Button type="submit">СОХРАНИТЬ</Button>
       </Row>
-    </Column>
+    </>
   );
 };

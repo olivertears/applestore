@@ -12,7 +12,7 @@ export const ErrorItem: FC<PropsWithChildren<ErrorItemProps>> = ({ children, id 
 
   return (
     <S.Wrap>
-      <CloseIcon Svg={S.CloseIconSvg} onClick={() => errorService.removeError(id)} />
+      <CloseIcon width="15px" onClick={() => errorService.removeError(id)} />
       {children}
     </S.Wrap>
   );

@@ -4,7 +4,7 @@ import * as S from './input.styles';
 import { InputProps } from './input.types';
 
 export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, value, error, maxWidth, type, ...props }, ref) => {
+  ({ label, value, error, type, ...props }, ref) => {
     const id = useId();
 
     const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
@@ -19,7 +19,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <S.Wrap maxWidth={maxWidth}>
+      <S.Wrap>
         <S.Input {...props} ref={ref} isError={!!error} id={id} onKeyDown={onKeyDown} />
         <S.Label isError={!!error} isEmpty={!!value?.toString()} htmlFor={id}>
           {label}

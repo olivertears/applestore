@@ -7,7 +7,7 @@ export const Wrap = styled.div`
 `;
 
 export const ErrorContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   display: flex;

@@ -23,7 +23,7 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form maxWidth="300px" onSubmit={handleSubmit(onSubmit)}>
       <Text type="header" textAlign="center">
         Карта
       </Text>
@@ -53,7 +53,6 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
       <Row>
         <Input
           type="integer"
-          maxWidth="142.5px"
           label="Месяц"
           value={watch('month')}
           error={errors.month?.message}
@@ -64,7 +63,6 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
         />
         <Input
           type="integer"
-          maxWidth="142.5px"
           label="Год"
           value={watch('year')}
           error={errors.year?.message}

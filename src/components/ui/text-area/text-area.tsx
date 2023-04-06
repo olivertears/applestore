@@ -3,11 +3,11 @@ import * as S from './text-area.styles';
 import { TextareaProps } from './text-area.types';
 
 export const TextArea: FC<TextareaProps> = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ label, value, error, maxWidth, ...props }, ref) => {
+  ({ label, value, error, ...props }, ref) => {
     const id = useId();
 
     return (
-      <S.Wrap maxWidth={maxWidth}>
+      <S.Wrap>
         <S.TextArea {...props} ref={ref} isError={!!error} id={id} />
         <S.Label isError={!!error} isEmpty={!!value} htmlFor={id}>
           {label}

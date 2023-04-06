@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Divider, Form } from '../../../../ui';
+import { Divider, Form, Loader } from '../../../../ui';
 
 import * as S from './product-form.styles';
 import { productFormDataToProductAdapter, productToProductFormDataAdapter } from '../adapters';
@@ -50,7 +50,7 @@ export const ProductForm: FC<ProductFormProps> = ({ product }) => {
 
   return (
     <FormProvider {...methods}>
-      <Form onSubmit={handleSubmit(onSubmit)} minWidth="545px">
+      <Form onSubmit={handleSubmit(onSubmit)} maxWidth="545px" minWidth="545px">
         <S.ProductFormTabs>
           {PRODUCT_FORM_TABS.map(({ tab }) => (
             <S.Tab key={tab} selected={currentTab === tab}>

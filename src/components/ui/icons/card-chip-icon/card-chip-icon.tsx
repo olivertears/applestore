@@ -7,10 +7,6 @@ export const CardChipIcon: FC<CardChipIconProps> = ({ onClick, isActive }) => {
     <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 300"
-      fill="1d1d1f"
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
       isActive={isActive}
       onClick={onClick}
     >

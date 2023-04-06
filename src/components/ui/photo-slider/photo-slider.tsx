@@ -8,15 +8,14 @@ export const PhotoSlider: FC<PhotoSliderProps> = ({ images }) => {
 
   return (
     <S.Wrap>
-      <ArrowIcon left={20} visible={index !== 0} onClick={() => setIndex(index - 1)} />
+      <ArrowIcon visible={index !== 0} onClick={() => setIndex(index - 1)} />
       <S.Slider index={index}>
         {images.map((src) => (
           <S.Image key={src} src={src}></S.Image>
         ))}
       </S.Slider>
       <ArrowIcon
-        right={20}
-        rotate={180}
+        position="right"
         visible={index < images.length - 1}
         onClick={() => setIndex(index + 1)}
       />

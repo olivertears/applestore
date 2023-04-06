@@ -5,7 +5,7 @@ import { Modal } from '../../templates/modal';
 import { ProductForm } from './forms/product-form';
 
 export const Catalog: FC = () => {
-  const { isModalOpen, showModal, hideModal, selectedItemId } = useModal();
+  const { isModalOpen, showModal, hideModal } = useModal();
 
   return (
     <PageWrap>

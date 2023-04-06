@@ -1,8 +1,5 @@
 export interface ArrowIconProps {
-  top?: number;
-  left?: number;
-  right?: number;
-  rotate?: number;
+  position?: 'left' | 'right';
   visible?: boolean;
   onClick?: () => void;
 }

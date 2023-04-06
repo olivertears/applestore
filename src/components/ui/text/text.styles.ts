@@ -1,7 +1,12 @@
 import styled from 'styled-components';
-import { TextProps } from './text.types';
 
-export const Title = styled.div<Omit<TextProps, 'type'>>`
+export interface TextProps {
+  textAlign?: 'center' | 'left' | 'right';
+  padding?: string;
+  margin?: string;
+}
+
+export const Title = styled.div<TextProps>`
   font-size: 48px;
   font-weight: bold;
   color: #1d1d1f;
@@ -13,7 +18,7 @@ export const Title = styled.div<Omit<TextProps, 'type'>>`
  }
 `;
 
-export const Header = styled.div<Omit<TextProps, 'type'>>`
+export const Header = styled.div<TextProps>`
   font-size: 24px;
   font-weight: bold;
   color: #1d1d1f;
@@ -24,7 +29,7 @@ export const Header = styled.div<Omit<TextProps, 'type'>>`
   margin: ${({ margin }) => margin};
 `;
 
-export const Param = styled.div<Omit<TextProps, 'type'>>`
+export const Param = styled.div<TextProps>`
   font-size: 17px;
   font-weight: bold;
   color: #1d1d1f;
@@ -35,7 +40,7 @@ export const Param = styled.div<Omit<TextProps, 'type'>>`
   margin: ${({ margin }) => margin};
 `;
 
-export const Info = styled.div<Omit<TextProps, 'type'>>`
+export const Info = styled.div<TextProps>`
   font-size: 14px;
   color: #868686;
   max-width: 1040px;
@@ -45,7 +50,7 @@ export const Info = styled.div<Omit<TextProps, 'type'>>`
   margin: ${({ margin }) => margin};
 `;
 
-export const Text = styled.div<Omit<TextProps, 'type'>>`
+export const Text = styled.div<TextProps>`
   font-size: 12px;
   color: #1d1d1f;
   max-width: 1040px;

@@ -14,7 +14,7 @@ export const ColorField: FC<ColorFieldProps> = ({ remove, index }) => {
   } = useFormContext<ProductFormData>();
 
   return (
-    <Row>
+    <Row alignItems="start" width="300px">
       <ColorInput color={watch(`colors.${index}.value`)} {...register(`colors.${index}.value`)} />
       <Input
         label="Название"
@@ -24,7 +24,9 @@ export const ColorField: FC<ColorFieldProps> = ({ remove, index }) => {
           required: 'Это поле обязательно'
         })}
       />
-      {watch('colors').length !== 1 && <DeleteIcon width="50px" onClick={() => remove(index)} />}
+      {watch('colors').length !== 1 && (
+        <DeleteIcon marginTop="10px" onClick={() => remove(index)} />
+      )}
     </Row>
   );
 };

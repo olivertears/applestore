@@ -1,6 +1,4 @@
-import { SVGProps, ReactElement } from 'react';
-
 export interface CloseIconProps {
-  Svg?: (props: SVGProps<SVGElement>) => ReactElement;
+  width?: string;
   onClick?: () => void;
 }

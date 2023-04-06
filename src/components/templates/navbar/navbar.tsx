@@ -25,7 +25,7 @@ export const Navbar: FC = () => {
   return (
     <S.Wrap>
       <S.Navbar>
-        <AppleIcon hover={'#fff'} onClick={() => navigate(RouteNames.MENU)} />
+        <AppleIcon onClick={() => navigate(RouteNames.MENU)} />
         <S.StyledLink
           to={RouteNames.STORE}
           onMouseOver={() => setIsStoreDropdownOpen(true)}

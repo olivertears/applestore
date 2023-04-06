@@ -19,9 +19,8 @@ export const ConfigurationValueField: FC<ConfigurationValueFieldProps> = ({
   } = useFormContext<ProductFormData>();
 
   return (
-    <Row>
+    <Row alignItems="start" width="380px">
       <Input
-        maxWidth="150px"
         label="Значение"
         value={watch(`configurations.${configurationIndex}.values.${index}.value`)}
         error={errors.configurations?.[configurationIndex]?.values?.[index]?.value?.message}
@@ -30,7 +29,6 @@ export const ConfigurationValueField: FC<ConfigurationValueFieldProps> = ({
         })}
       />
       <Input
-        maxWidth="150px"
         type="price"
         label="Доплата"
         value={watch(`configurations.${configurationIndex}.values.${index}.extraPrice`)}
@@ -40,7 +38,7 @@ export const ConfigurationValueField: FC<ConfigurationValueFieldProps> = ({
         })}
       />
       <DeleteIcon
-        width="50px"
+        marginTop="10px"
         onClick={() =>
           watch(`configurations.${configurationIndex}.values`).length > 1
             ? remove(index)
