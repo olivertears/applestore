@@ -1,12 +1,10 @@
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { emailRegex } from '../../../../../utils';
 import { Button, Form, Input, Loader, Text } from '../../../../ui';
-import { userService } from '../../../../../services/user';
 import { RouteNames } from '../../../../templates/router';
-import { IUser } from '../../../../../interfaces';
 import { AuthenticateData } from '../../../../../api/auth';
-import { emailRegex } from '../../../../../utils/validators';
 import { authService } from '../../../../../services/auth';
 
 export const SignInForm: FC = () => {

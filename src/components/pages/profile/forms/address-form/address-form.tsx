@@ -4,7 +4,6 @@ import { Button, Form, Input, Row, Text } from '../../../../ui';
 import { IAddress } from '../../../../../interfaces';
 import { AddressFormProps } from './address-form.types';
 import { AddressItem } from '../../components/address-item';
-import { letterValidator, pasteValidator } from '../../../../../utils/validators';
 
 export const AddressForm: FC<AddressFormProps> = ({ address }) => {
   const {
@@ -35,41 +34,41 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
       </Text>
       <AddressItem address={getValues()} />
       <Input
+        type="letters"
+        preventPaste
         label="Страна"
         value={watch('country')}
         error={errors.country?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('country', {
           required: 'Это поле обязательно'
         })}
       />
       <Input
+        type="letters"
+        preventPaste
         label="Область"
         value={watch('state')}
         error={errors.state?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('state', {
           required: 'Это поле обязательно'
         })}
       />
       <Input
+        type="letters"
+        preventPaste
         label="Город"
         value={watch('city')}
         error={errors.city?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('city', {
           required: 'Это поле обязательно'
         })}
       />
       <Input
+        type="letters"
+        preventPaste
         label="Улица"
         value={watch('street')}
         error={errors.street?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('street', {
           required: 'Это поле обязательно'
         })}

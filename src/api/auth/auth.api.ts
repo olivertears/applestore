@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { Catch, createApi } from '../../utils';
-import { IAuthApi, AuthenticateData, type RegisterData } from './auth.types';
+import { IAuthApi, AuthenticateData, RegisterData } from './auth.types';
 
 const api = createApi();
 
