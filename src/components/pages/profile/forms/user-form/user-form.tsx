@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { emailRegex } from '../../../../../utils';
 import { Button, Form, Input } from '../../../../ui';
 import { UpdateUserData } from '../../../../../api/user';
-import { emailRegex, letterValidator, pasteValidator } from '../../../../../utils/validators';
 
 export const UserForm: FC = () => {
   const {
@@ -21,21 +21,21 @@ export const UserForm: FC = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
+        type="letters"
+        preventPaste
         label="Имя"
         value={watch('firstname')}
         error={errors.firstname?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('firstname', {
           required: 'Это поле обязательно'
         })}
       />
       <Input
+        type="letters"
+        preventPaste
         label="Фамилия"
         value={watch('lastname')}
         error={errors.lastname?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('lastname', {
           required: 'Это поле обязательно'
         })}
@@ -50,11 +50,11 @@ export const UserForm: FC = () => {
         })}
       />
       <Input
+        preventPaste
         type="integer"
         label="Телефон"
         value={watch('phone')}
         error={errors.phone?.message}
-        onPaste={pasteValidator}
         {...register('phone', {
           required: 'Это поле обязательно'
         })}

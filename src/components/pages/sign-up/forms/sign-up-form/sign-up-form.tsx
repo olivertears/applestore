@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { emailRegex } from '../../../../../utils';
+import { RouteNames } from '../../../../templates/router';
 import { Button, Form, Input, Loader, Text } from '../../../../ui';
 import { RegisterData } from '../../../../../api/auth';
-import { emailRegex, letterValidator, pasteValidator } from '../../../../../utils/validators';
 import { authService } from '../../../../../services/auth';
-import { useNavigate } from 'react-router-dom';
-import { RouteNames } from '../../../../templates/router';
 
 export const SignUpForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,21 +39,21 @@ export const SignUpForm: FC = () => {
         Регистрация
       </Text>
       <Input
+        type="letters"
+        preventPaste
         label="Имя"
         value={watch('firstname')}
         error={errors.firstname?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('firstname', {
           required: 'Это поле обязательно'
         })}
       />
       <Input
+        type="letters"
+        preventPaste
         label="Фамилия"
         value={watch('lastname')}
         error={errors.lastname?.message}
-        onPaste={pasteValidator}
-        onKeyDown={letterValidator}
         {...register('lastname', {
           required: 'Это поле обязательно'
         })}
