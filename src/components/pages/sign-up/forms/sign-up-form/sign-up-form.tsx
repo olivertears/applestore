@@ -1,21 +1,36 @@
-import { FC } from 'react';
-import { Button, Form, Input, Text } from '../../../../ui';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Button, Form, Input, Loader, Text } from '../../../../ui';
 import { RegisterData } from '../../../../../api/auth';
 import { emailRegex, letterValidator, pasteValidator } from '../../../../../utils/validators';
+import { authService } from '../../../../../services/auth';
+import { useNavigate } from 'react-router-dom';
+import { RouteNames } from '../../../../templates/router';
 
 export const SignUpForm: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    setError,
+    resetField,
     formState: { errors }
   } = useForm<RegisterData>({
     defaultValues: { lastname: '', firstname: '', email: '', password: '' }
   });
 
   const onSubmit = (data: RegisterData) => {
-    console.log(data);
+    setIsLoading(true);
+    authService
+      .register(data)
+      .then(() => navigate(RouteNames.PROFILE))
+      .catch((error) => {
+        resetField('email');
+        setError('email', { type: 'custom', message: error.message }, { shouldFocus: true });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -62,7 +77,9 @@ export const SignUpForm: FC = () => {
           minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
         })}
       />
-      <Button type="submit">ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? <Loader /> : 'ЗАРЕГИСТРИРОВАТЬСЯ'}
+      </Button>
     </Form>
   );
 };

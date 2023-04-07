@@ -1,5 +1,4 @@
 import { action, makeObservable, observable } from 'mobx';
-import { Catch } from '../../utils';
 import { IUser } from '../../interfaces';
 import { ChangePasswordData, UpdateUserData, userApi } from '../../api/user';
 import { IUserService } from './user.types';
@@ -18,21 +17,18 @@ class UserService implements IUserService {
     this.user$ = user;
   }
 
-  @Catch
   async getUser() {
-    const user = await userApi.getUser();
-    this.setUser(user.data);
+    const { data } = await userApi.getUser();
+    this.setUser(data);
   }
 
-  @Catch
   async updateUser(updateUserData: UpdateUserData) {
-    const user = await userApi.updateUser(updateUserData);
-    this.setUser(user.data);
+    const { data } = await userApi.updateUser(updateUserData);
+    this.setUser(data);
   }
 
-  @Catch
   async changePassword(changePasswordData: ChangePasswordData) {
-    const res = await userApi.changePassword(changePasswordData);
+    await userApi.changePassword(changePasswordData);
   }
 }
 
