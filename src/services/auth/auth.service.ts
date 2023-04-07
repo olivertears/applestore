@@ -1,7 +1,9 @@
 import { action, makeObservable, observable } from 'mobx';
-import { Catch, getFromLocalStorage } from '../../utils';
+import { getFromLocalStorage } from '../../utils';
 import { authApi, AuthenticateData, RegisterData } from '../../api/auth';
 import { IAuthService } from './auth.types';
+import { userService } from '../user';
+import { IUser } from '../../interfaces';
 
 class AuthService implements IAuthService {
   token$ = getFromLocalStorage('token') || '';
@@ -18,16 +20,16 @@ class AuthService implements IAuthService {
     localStorage.setItem('token', JSON.stringify(token));
   }
 
-  @Catch
   async authenticate(authenticateData: AuthenticateData) {
-    const res = await authApi.authenticate(authenticateData);
-    this.setToken(res.data);
+    const { data } = await authApi.authenticate(authenticateData);
+    this.setToken(data);
+    userService.setUser({} as IUser);
   }
 
-  @Catch
   async register(registerData: RegisterData) {
-    const res = await authApi.register(registerData);
-    this.setToken(res.data);
+    const { data } = await authApi.register(registerData);
+    this.setToken(data);
+    userService.setUser({} as IUser);
   }
 }
 

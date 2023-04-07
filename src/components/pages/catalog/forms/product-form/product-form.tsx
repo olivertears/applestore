@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Divider, Form, Loader } from '../../../../ui';
+import { Divider, Form } from '../../../../ui';
 
 import * as S from './product-form.styles';
 import { productFormDataToProductAdapter, productToProductFormDataAdapter } from '../adapters';

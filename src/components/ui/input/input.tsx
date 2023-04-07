@@ -20,7 +20,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <S.Wrap>
-        <S.Input {...props} ref={ref} isError={!!error} id={id} onKeyDown={onKeyDown} />
+        <S.Input {...props} type={type} ref={ref} isError={!!error} id={id} onKeyDown={onKeyDown} />
         <S.Label isError={!!error} isEmpty={!!value?.toString()} htmlFor={id}>
           {label}
         </S.Label>

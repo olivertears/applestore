@@ -9,7 +9,7 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(29, 29, 31, 0.5);
+  background-color: rgba(29, 29, 31, 0.7);
 `;
 
 export const Modal = styled.div`

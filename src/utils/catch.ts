@@ -1,13 +1,22 @@
+import { AxiosError, AxiosResponse } from 'axios';
 import { errorService } from '../services/error';
 import { IError } from '../interfaces';
 
-export const Catch = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
-  const fn = descriptor.value;
-  descriptor.value = async (...args: any[]) => {
-    try {
-      await fn.apply(this, args);
-    } catch (error: unknown) {
-      errorService.addError(error as IError);
-    }
-  };
-};
+export function Catch<Args extends any[], Response>(
+  target: any,
+  propertyKey: string,
+  descriptor: TypedPropertyDescriptor<(...args: Args) => Promise<AxiosResponse<Response>>>
+) {
+  const originalMethod = descriptor.value;
+
+  if (originalMethod) {
+    descriptor.value = async function (...args: Args): Promise<AxiosResponse<Response>> {
+      try {
+        return await originalMethod.apply(this, args);
+      } catch (error: unknown) {
+        errorService.addError((error as AxiosError).response?.data as IError);
+        throw Error(((error as AxiosError).response?.data as IError).message);
+      }
+    };
+  }
+}

@@ -1,26 +1,37 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Text } from '../../../../ui';
+import { Button, Form, Input, Loader, Text } from '../../../../ui';
 import { userService } from '../../../../../services/user';
 import { RouteNames } from '../../../../templates/router';
 import { IUser } from '../../../../../interfaces';
 import { AuthenticateData } from '../../../../../api/auth';
 import { emailRegex } from '../../../../../utils/validators';
+import { authService } from '../../../../../services/auth';
 
 export const SignInForm: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    setError,
+    reset,
     formState: { errors }
   } = useForm<AuthenticateData>({ defaultValues: { email: '', password: '' } });
 
   const onSubmit = (data: AuthenticateData) => {
-    console.log(data);
-    userService.setUser({} as IUser);
-    navigate(RouteNames.PROFILE);
+    setIsLoading(true);
+    authService
+      .authenticate(data)
+      .then(() => navigate(RouteNames.PROFILE))
+      .catch((error) => {
+        reset();
+        setError('email', { type: 'custom', message: error.message }, { shouldFocus: true });
+        setError('password', { type: 'custom', message: error.message }, { shouldFocus: true });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -47,7 +58,9 @@ export const SignInForm: FC = () => {
           minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
         })}
       />
-      <Button type="submit">ВОЙТИ</Button>
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? <Loader /> : 'ВОЙТИ'}
+      </Button>
     </Form>
   );
 };

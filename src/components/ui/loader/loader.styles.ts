@@ -1,12 +1,29 @@
 import styled, { keyframes } from 'styled-components';
 
-const animation = keyframes`
-  0%,
-  100% {
-    opacity: 1;
+const animation1 = keyframes`
+  0% {
+    transform: scale(0);
   }
-  50% {
-    opacity: 0.5;
+  100% {
+    transform: scale(1);
+  }
+`;
+
+const animation2 = keyframes`
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+`;
+
+const animation3 = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
   }
 `;
 
@@ -20,6 +37,7 @@ export const Wrap = styled.div`
   top: 0;
   left: 0;
   background-color: rgba(29, 29, 31, 0.5);
+  z-index: 1;
 `;
 
 export const Loader = styled.div`
@@ -30,55 +48,31 @@ export const Loader = styled.div`
 
   div {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    top: 33px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
-    background: #1d1d1f;
-    animation: ${animation} 1.2s linear infinite;
-  }
-  div:nth-child(1) {
-    top: 8px;
-    left: 8px;
-    animation-delay: 0s;
-  }
-  div:nth-child(2) {
-    top: 8px;
-    left: 32px;
-    animation-delay: -0.4s;
-  }
-  div:nth-child(3) {
-    top: 8px;
-    left: 56px;
-    animation-delay: -0.8s;
-  }
-  div:nth-child(4) {
-    top: 32px;
-    left: 8px;
-    animation-delay: -0.4s;
-  }
-  div:nth-child(5) {
-    top: 32px;
-    left: 32px;
-    animation-delay: -0.8s;
-  }
-  div:nth-child(6) {
-    top: 32px;
-    left: 56px;
-    animation-delay: -1.2s;
-  }
-  div:nth-child(7) {
-    top: 56px;
-    left: 8px;
-    animation-delay: -0.8s;
-  }
-  div:nth-child(8) {
-    top: 56px;
-    left: 32px;
-    animation-delay: -1.2s;
-  }
-  div:nth-child(9) {
-    top: 56px;
-    left: 56px;
-    animation-delay: -1.6s;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+    :nth-child(1) {
+      left: 8px;
+      animation: ${animation1} 0.6s infinite;
+    }
+
+    :nth-child(2) {
+      left: 8px;
+      animation: ${animation2} 0.6s infinite;
+    }
+
+    :nth-child(3) {
+      left: 32px;
+      animation: ${animation2} 0.6s infinite;
+    }
+
+    :nth-child(4) {
+      left: 56px;
+      animation: ${animation3} 0.6s infinite;
+    }
   }
 `;
