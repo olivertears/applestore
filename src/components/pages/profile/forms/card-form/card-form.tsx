@@ -1,28 +1,55 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Row, Text } from '../../../../ui';
-import { cardToCardFormValuesAdapter } from '../../adapters';
-import { CardFormProps, CardFormValues } from './card-form.types';
+import { Button, Form, Input, Loader, Row, Text } from '../../../../ui';
+import { CheckboxIcon, DeleteIcon } from '../../../../ui/icons';
+import { cardFormDataToCardAdapter, cardToCardFormDataAdapter } from '../../adapters';
+import { cardService } from '../../../../../services/card';
+import { CardFormData, CardFormProps } from './card-form.types';
 import { CardItem } from '../../components/card-item';
-import { DeleteIcon } from '../../../../ui/icons';
 
-export const CardForm: FC<CardFormProps> = ({ card }) => {
+export const CardForm: FC<CardFormProps> = ({ card, hideModal }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
     getValues,
     formState: { errors }
-  } = useForm<CardFormValues>({
-    defaultValues: cardToCardFormValuesAdapter(card)
+  } = useForm<CardFormData>({
+    defaultValues: cardToCardFormDataAdapter(card)
   });
 
-  const onSubmit = (data: CardFormValues) => {
-    console.log(data);
+  const onSubmit = (data: CardFormData) => {
+    setIsLoading(true);
+    card
+      ? cardService
+          .updateCard({ ...cardFormDataToCardAdapter(data), id: card.id })
+          .then(hideModal)
+          .finally(() => setIsLoading(false))
+      : cardService
+          .addCard(cardFormDataToCardAdapter(data))
+          .then(hideModal)
+          .finally(() => setIsLoading(false));
   };
+
+  const onDelete = (id: number) => {
+    setIsLoading(true);
+    cardService
+      .deleteCard(id)
+      .then(hideModal)
+      .finally(() => setIsLoading(false));
+  };
+
+  const onActiveStatusChange = (id: number) => {
+    setIsLoading(true);
+    cardService.setActive(id).finally(() => setIsLoading(false));
+  };
+
+  console.log(cardService.cards$);
 
   return (
     <Form maxWidth="300px" onSubmit={handleSubmit(onSubmit)}>
+      {isLoading && <Loader />}
       <Text type="header" textAlign="center">
         Карта
       </Text>
@@ -73,7 +100,12 @@ export const CardForm: FC<CardFormProps> = ({ card }) => {
       </Row>
       <Row>
         <Button type="submit">{card ? 'СОХРАНИТЬ' : 'ДОБАВИТЬ'}</Button>
-        {card?.id && <DeleteIcon />}
+        {card?.id && (
+          <>
+            <CheckboxIcon checked={card.isActive} onClick={() => onActiveStatusChange(card?.id)} />
+            <DeleteIcon onClick={() => onDelete(card?.id)} />
+          </>
+        )}
       </Row>
     </Form>
   );

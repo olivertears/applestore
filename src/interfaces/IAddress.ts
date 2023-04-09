@@ -1,5 +1,5 @@
 export interface IAddress {
-  id: string;
+  id: number;
   userId: string;
   country: string;
   state: string;
@@ -7,4 +7,5 @@ export interface IAddress {
   street: string;
   house: string;
   apartment?: string;
+  isActive: boolean;
 }

@@ -1,6 +1,6 @@
 import { IAddress } from '../../../../../interfaces';
 
 export interface AddressItemProps {
-  address?: IAddress;
+  address?: Omit<IAddress, 'id' | 'isActive'>;
   onClick?: () => void;
 }

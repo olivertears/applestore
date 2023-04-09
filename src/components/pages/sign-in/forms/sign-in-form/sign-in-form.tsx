@@ -15,7 +15,7 @@ export const SignInForm: FC = () => {
     handleSubmit,
     watch,
     setError,
-    reset,
+    resetField,
     formState: { errors }
   } = useForm<AuthenticateData>({ defaultValues: { email: '', password: '' } });
 
@@ -25,9 +25,10 @@ export const SignInForm: FC = () => {
       .authenticate(data)
       .then(() => navigate(RouteNames.PROFILE))
       .catch((error) => {
-        reset();
+        resetField('email');
+        resetField('password');
         setError('email', { type: 'custom', message: error.message }, { shouldFocus: true });
-        setError('password', { type: 'custom', message: error.message }, { shouldFocus: true });
+        setError('password', { type: 'custom', message: error.message });
       })
       .finally(() => setIsLoading(false));
   };

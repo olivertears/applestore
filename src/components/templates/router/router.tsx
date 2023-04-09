@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
@@ -18,6 +18,10 @@ import { UnitType } from '../../pages/unit-type';
 import { Catalog } from '../../pages/catalog';
 
 export const Router: FC = observer(() => {
+  useEffect(() => {
+    localStorage.getItem('token') && userService.getUser();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

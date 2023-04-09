@@ -6,7 +6,7 @@ export const Wrap = styled.div<{ avatar: string }>`
   min-height: 300px;
   border-radius: 10px;
   outline: 1px solid #dadada;
-  background: ${({ avatar }) => `url("http://localhost:8081/aws/${avatar}")`} no-repeat center;
+  background: ${({ avatar }) => `url('data:image/jpeg;base64,${avatar}')`} no-repeat center;
   background-size: cover;
 
   :hover {
@@ -14,6 +14,8 @@ export const Wrap = styled.div<{ avatar: string }>`
     outline: 1px solid #434344;
   }
 `;
+
+// background: ${({ avatar }) => `url("http://localhost:8081/aws/${avatar}")`} no-repeat center;
 
 export const Label = styled.label`
   position: absolute;

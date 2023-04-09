@@ -9,11 +9,9 @@ export interface IUserApi {
 }
 
 export type UpdateUserData = {
-  id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
 };
 
 export type ChangePasswordData = {

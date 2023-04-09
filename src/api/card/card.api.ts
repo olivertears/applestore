@@ -9,12 +9,12 @@ class CardApi implements ICardApi {
   endpoint = 'cards' as const;
 
   @Catch
-  addCard(addCardData: ICard): Promise<AxiosResponse<ICard>> {
+  addCard(addCardData: Omit<ICard, 'id' | 'isActive'>): Promise<AxiosResponse<ICard>> {
     return api.post(this.endpoint, addCardData);
   }
 
   @Catch
-  deleteCard(id: string): Promise<AxiosResponse> {
+  deleteCard(id: number): Promise<AxiosResponse> {
     return api.delete(this.endpoint + '/' + id);
   }
 
@@ -24,8 +24,12 @@ class CardApi implements ICardApi {
   }
 
   @Catch
-  updateCard(updateCardData: ICard): Promise<AxiosResponse<ICard>> {
+  updateCard(updateCardData: Omit<ICard, 'isActive'>): Promise<AxiosResponse<ICard>> {
     return api.post(this.endpoint, updateCardData);
+  }
+
+  setActive(id: number): Promise<AxiosResponse<ICard>> {
+    return api.put(this.endpoint + '/' + id + '/setActive');
   }
 }
 

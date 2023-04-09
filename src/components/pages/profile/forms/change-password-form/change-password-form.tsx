@@ -1,19 +1,32 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button, Form, Input, Text } from '../../../../ui';
+import { Button, Form, Input, Loader, Text } from '../../../../ui';
 import { ChangePasswordData } from '../../../../../api/user';
+import { userService } from '../../../../../services/user';
 
 export const ChangePasswordForm: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
+    setError,
+    resetField,
     formState: { errors }
   } = useForm<ChangePasswordData>({ defaultValues: { oldPassword: '', newPassword: '' } });
 
   const onSubmit = (data: ChangePasswordData) => {
-    console.log(data);
+    setIsLoading(true);
+    userService
+      .changePassword(data)
+      .catch((error) => {
+        resetField('oldPassword');
+        resetField('newPassword');
+        setError('oldPassword', { type: 'custom', message: error.message }, { shouldFocus: true });
+        setError('newPassword', { type: 'custom', message: error.message });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -41,7 +54,9 @@ export const ChangePasswordForm: FC = () => {
           minLength: { value: 6, message: 'Длина пароля не может быть менее 6 символов' }
         })}
       />
-      <Button type="submit">ВОЙТИ</Button>
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? <Loader /> : 'СОХРАНИТЬ'}
+      </Button>
     </Form>
   );
 };

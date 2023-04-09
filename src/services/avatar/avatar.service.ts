@@ -18,6 +18,12 @@ class AvatarService implements IAvatarService {
     this.setAvatar();
   }
 
+  async getAvatar(): Promise<string> {
+    const { data } = await avatarApi.getAvatar();
+    this.setAvatar(data);
+    return data;
+  }
+
   async updateAvatar(avatar: File) {
     const { data } = await avatarApi.updateAvatar(avatar);
     this.setAvatar(data);

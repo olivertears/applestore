@@ -5,7 +5,7 @@ import { IAvatarApi } from './avatar.types';
 const api = createApi(true, 'multipart/form-data');
 
 class AvatarApi implements IAvatarApi {
-  endpoint = 'users/avatar' as const;
+  endpoint = 'users/photo' as const;
 
   @Catch
   addAvatar(avatar: File): Promise<AxiosResponse<string>> {
@@ -15,6 +15,11 @@ class AvatarApi implements IAvatarApi {
   @Catch
   deleteAvatar(avatarName: string): Promise<AxiosResponse> {
     return api.delete(this.endpoint + '/' + avatarName);
+  }
+
+  @Catch
+  getAvatar(): Promise<AxiosResponse<string>> {
+    return api.get(this.endpoint);
   }
 
   @Catch

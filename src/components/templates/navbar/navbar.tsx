@@ -18,10 +18,6 @@ export const Navbar: FC = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const logout = () => {
-    userService.setUser(null);
-  };
-
   return (
     <S.Wrap>
       <S.Navbar>
@@ -39,7 +35,7 @@ export const Navbar: FC = () => {
           </S.StyledLink>
         ))}
         {!!userService.user$ && (
-          <S.StyledLink to={RouteNames.SIGN_IN} onClick={logout}>
+          <S.StyledLink to={RouteNames.SIGN_IN} onClick={userService.logout}>
             Выйти
           </S.StyledLink>
         )}

@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { addressService } from '../../../../../services/address';
 import { Column, Row, Text } from '../../../../ui';
 import { AddIcon, DeleteIcon } from '../../../../ui/icons';
@@ -7,8 +8,12 @@ import { Modal } from '../../../../templates/modal';
 import { AddressForm } from '../../forms/address-form';
 import { AddressItem } from '../address-item';
 
-export const AddressList: FC = () => {
+export const AddressList: FC = observer(() => {
   const { isModalOpen, showModal, hideModal, selectedItemId } = useModal();
+
+  useEffect(() => {
+    addressService.getAddresses();
+  }, []);
 
   return (
     <Column>
@@ -16,17 +21,15 @@ export const AddressList: FC = () => {
         Адреса
       </Text>
       {addressService.addresses$.map((address) => (
-        <Row key={address.id}>
-          <AddressItem address={address} onClick={() => showModal(address.id)} />
-          <DeleteIcon />
-        </Row>
+        <AddressItem key={address.id} address={address} onClick={() => showModal(address.id)} />
       ))}
       <Modal isModalOpen={isModalOpen} hideModal={hideModal}>
         <AddressForm
+          hideModal={hideModal}
           address={addressService.addresses$.find((address) => address.id === selectedItemId)}
         />
       </Modal>
       <AddIcon onClick={showModal} />
     </Column>
   );
-};
+});
