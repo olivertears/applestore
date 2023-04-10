@@ -3,7 +3,6 @@ import { getFromLocalStorage } from '../../utils';
 import { authApi, AuthenticateData, RegisterData } from '../../api/auth';
 import { IAuthService } from './auth.types';
 import { userService } from '../user';
-import { IUser } from '../../interfaces';
 
 class AuthService implements IAuthService {
   token$ = getFromLocalStorage('token') || '';
@@ -22,14 +21,14 @@ class AuthService implements IAuthService {
 
   async authenticate(authenticateData: AuthenticateData) {
     const { data } = await authApi.authenticate(authenticateData);
-    this.setToken(data);
-    userService.setUser({} as IUser);
+    this.setToken(data.token);
+    userService.setUser(data.userResponse);
   }
 
   async register(registerData: RegisterData) {
     const { data } = await authApi.register(registerData);
-    this.setToken(data);
-    userService.setUser({} as IUser);
+    this.setToken(data.token);
+    userService.setUser(data.userResponse);
   }
 }
 

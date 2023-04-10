@@ -1,10 +1,16 @@
 import { AxiosResponse } from 'axios';
+import { IUser } from '../../interfaces';
 
 export interface IAuthApi {
   endpoint: 'auth';
-  authenticate: (authenticateData: AuthenticateData) => Promise<AxiosResponse<string>>;
-  register: (registerData: RegisterData) => Promise<AxiosResponse<string>>;
+  authenticate: (authenticateData: AuthenticateData) => Promise<AxiosResponse<AuthResponse>>;
+  register: (registerData: RegisterData) => Promise<AxiosResponse<AuthResponse>>;
 }
+
+export type AuthResponse = {
+  token: string;
+  userResponse: IUser;
+};
 
 export type AuthenticateData = {
   email: string;
@@ -12,8 +18,8 @@ export type AuthenticateData = {
 };
 
 export type RegisterData = {
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 };

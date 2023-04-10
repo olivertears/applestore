@@ -20,7 +20,7 @@ class UserApi implements IUserApi {
 
   @Catch
   changePassword(changePasswordData: ChangePasswordData): Promise<AxiosResponse> {
-    return api.post(this.endpoint, changePasswordData);
+    return api.put(this.endpoint + '/changePassword', changePasswordData);
   }
 }
 

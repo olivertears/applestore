@@ -2,8 +2,9 @@ import { IAddress } from '../../interfaces';
 
 export interface IAddressService {
   addresses$: IAddress[];
-  addAddress: (addAddressData: IAddress) => void;
-  deleteAddress: (id: string) => void;
+  addAddress: (addAddressData: Omit<IAddress, 'id' | 'status'>) => void;
+  deleteAddress: (id: number) => void;
   getAddresses: () => void;
-  updateAddress: (updateAddressData: IAddress) => void;
+  updateAddress: (updateAddressData: Omit<IAddress, 'status'>) => void;
+  setActive: (id: number) => void;
 }

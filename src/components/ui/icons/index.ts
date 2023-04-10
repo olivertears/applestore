@@ -5,6 +5,7 @@ export { ArrowIcon } from './arrow-icon';
 export { CarIcon } from './car-icon';
 export { CardChipIcon } from './card-chip-icon';
 export { CardIcon } from './card-icon';
+export { CheckboxIcon } from './checkbox-icon';
 export { CloseIcon } from './close-icon';
 export { DeleteIcon } from './delete-icon';
 export { SmileIcon } from './smile-icon';

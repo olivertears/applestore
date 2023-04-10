@@ -6,8 +6,10 @@ export const Wrap = styled.div<{ avatar: string }>`
   min-height: 300px;
   border-radius: 10px;
   outline: 1px solid #dadada;
-  background: ${({ avatar }) => `url("http://localhost:8081/aws/${avatar}")`} no-repeat center;
+  background: ${({ avatar }) => !!avatar && `url('data:image/jpeg;base64,${avatar}')`} no-repeat
+    center;
   background-size: cover;
+  overflow: hidden;
 
   :hover {
     cursor: pointer;

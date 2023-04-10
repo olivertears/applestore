@@ -1,7 +1,7 @@
 export interface ICard {
-  id: string;
-  userId: string;
+  id: number;
   number: string;
   validityDate: string;
   owner: string;
+  status: boolean;
 }

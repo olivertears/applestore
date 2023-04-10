@@ -1,32 +1,47 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { useForm } from 'react-hook-form';
-import { emailRegex } from '../../../../../utils';
-import { Button, Form, Input } from '../../../../ui';
+import { Button, Form, Input, Loader, Text } from '../../../../ui';
 import { UpdateUserData } from '../../../../../api/user';
+import { userService } from '../../../../../services/user';
+import { UserFormProps } from './user-form.types';
 
-export const UserForm: FC = () => {
+export const UserForm: FC<UserFormProps> = observer(({ hideModal }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors }
   } = useForm<UpdateUserData>({
-    defaultValues: { lastname: '', firstname: '', email: '', phone: '' }
+    defaultValues: {
+      firstName: userService.user$?.firstName || '',
+      lastName: userService.user$?.lastName || '',
+      phoneNumber: userService.user$?.phoneNumber || ''
+    }
   });
 
   const onSubmit = (data: UpdateUserData) => {
-    console.log(data);
+    setIsLoading(true);
+    userService
+      .updateUser(data)
+      .then(hideModal)
+      .finally(() => setIsLoading(false));
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {isLoading && <Loader />}
+      <Text type="header" textAlign="center">
+        Личная информация
+      </Text>
       <Input
         type="letters"
         preventPaste
         label="Имя"
-        value={watch('firstname')}
-        error={errors.firstname?.message}
-        {...register('firstname', {
+        value={watch('firstName')}
+        error={errors.firstName?.message}
+        {...register('firstName', {
           required: 'Это поле обязательно'
         })}
       />
@@ -34,32 +49,21 @@ export const UserForm: FC = () => {
         type="letters"
         preventPaste
         label="Фамилия"
-        value={watch('lastname')}
-        error={errors.lastname?.message}
-        {...register('lastname', {
+        value={watch('lastName')}
+        error={errors.lastName?.message}
+        {...register('lastName', {
           required: 'Это поле обязательно'
-        })}
-      />
-      <Input
-        label="Логин"
-        value={watch('email')}
-        error={errors.email?.message}
-        {...register('email', {
-          required: 'Это поле обязательно',
-          pattern: { value: emailRegex, message: 'Указанный адрес электронной почты не существует' }
         })}
       />
       <Input
         preventPaste
         type="integer"
         label="Телефон"
-        value={watch('phone')}
-        error={errors.phone?.message}
-        {...register('phone', {
-          required: 'Это поле обязательно'
-        })}
+        value={watch('phoneNumber')}
+        error={errors.phoneNumber?.message}
+        {...register('phoneNumber')}
       />
       <Button type="submit">СОХРАНИТЬ</Button>
     </Form>
   );
-};
+});

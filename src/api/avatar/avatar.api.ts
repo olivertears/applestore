@@ -1,15 +1,15 @@
 import { AxiosResponse } from 'axios';
 import { Catch, createApi } from '../../utils';
-import { IAvatarApi } from './avatar.types';
+import { AvatarData, IAvatarApi } from './avatar.types';
 
 const api = createApi(true, 'multipart/form-data');
 
 class AvatarApi implements IAvatarApi {
-  endpoint = 'users/avatar' as const;
+  endpoint = 'users/photo' as const;
 
   @Catch
-  addAvatar(avatar: File): Promise<AxiosResponse<string>> {
-    return api.post(this.endpoint, avatar);
+  addAvatar(avatarData: AvatarData): Promise<AxiosResponse<string>> {
+    return api.post(this.endpoint, avatarData);
   }
 
   @Catch
@@ -18,8 +18,13 @@ class AvatarApi implements IAvatarApi {
   }
 
   @Catch
-  updateAvatar(avatar: File): Promise<AxiosResponse<string>> {
-    return api.post(this.endpoint, avatar);
+  getAvatar(): Promise<AxiosResponse<string>> {
+    return api.get(this.endpoint);
+  }
+
+  @Catch
+  updateAvatar(avatarData: AvatarData): Promise<AxiosResponse<string>> {
+    return api.post(this.endpoint, avatarData);
   }
 }
 

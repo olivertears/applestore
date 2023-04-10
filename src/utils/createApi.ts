@@ -4,7 +4,7 @@ import { getFromLocalStorage } from './getFromLocalStorage';
 export const createApi = (withToken?: boolean, contentType?: string): AxiosInstance => {
   const headers: Partial<AxiosHeaders> = {};
   if (withToken) {
-    headers['Authorization'] = `Bearer ${getFromLocalStorage('token') || ' '}`;
+    headers['Authorization'] = `Bearer ${getFromLocalStorage('token')}`;
   }
   if (contentType) {
     headers['content-type'] = contentType;

@@ -2,10 +2,9 @@ import { action, makeObservable, observable } from 'mobx';
 import { cardApi } from '../../api/card';
 import { ICard } from '../../interfaces';
 import { ICardService } from './card.types';
-import { MOCKED_CARDS } from './card.mocked';
 
 class CardService implements ICardService {
-  cards$: ICard[] = MOCKED_CARDS;
+  cards$: ICard[] = [];
 
   constructor() {
     makeObservable(this, {
@@ -18,12 +17,12 @@ class CardService implements ICardService {
     this.cards$ = cards;
   }
 
-  async addCard(addCardData: ICard) {
+  async addCard(addCardData: Omit<ICard, 'id' | 'status'>) {
     const { data } = await cardApi.addCard(addCardData);
     this.setCards([...this.cards$, data]);
   }
 
-  async deleteCard(id: string) {
+  async deleteCard(id: number) {
     await cardApi.deleteCard(id);
     this.setCards(this.cards$.filter((card) => card.id !== id));
   }
@@ -33,9 +32,19 @@ class CardService implements ICardService {
     this.setCards(data);
   }
 
-  async updateCard(updateCardData: ICard) {
+  async updateCard(updateCardData: Omit<ICard, 'status'>) {
     const { data } = await cardApi.updateCard(updateCardData);
     this.setCards(this.cards$.map((card) => (card.id === updateCardData.id ? data : card)));
+  }
+
+  async setActive(id: number) {
+    const { data } = await cardApi.setActive(id);
+    this.setCards(
+      this.cards$.map((card) => {
+        if (card.status) return { ...card, status: false };
+        return card.id === id ? data : card;
+      })
+    );
   }
 }
 

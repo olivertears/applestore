@@ -18,7 +18,7 @@ export const SignUpForm: FC = () => {
     resetField,
     formState: { errors }
   } = useForm<RegisterData>({
-    defaultValues: { lastname: '', firstname: '', email: '', password: '' }
+    defaultValues: { lastName: '', firstName: '', email: '', password: '' }
   });
 
   const onSubmit = (data: RegisterData) => {
@@ -42,9 +42,9 @@ export const SignUpForm: FC = () => {
         type="letters"
         preventPaste
         label="Имя"
-        value={watch('firstname')}
-        error={errors.firstname?.message}
-        {...register('firstname', {
+        value={watch('firstName')}
+        error={errors.firstName?.message}
+        {...register('firstName', {
           required: 'Это поле обязательно'
         })}
       />
@@ -52,9 +52,9 @@ export const SignUpForm: FC = () => {
         type="letters"
         preventPaste
         label="Фамилия"
-        value={watch('lastname')}
-        error={errors.lastname?.message}
-        {...register('lastname', {
+        value={watch('lastName')}
+        error={errors.lastName?.message}
+        {...register('lastName', {
           required: 'Это поле обязательно'
         })}
       />

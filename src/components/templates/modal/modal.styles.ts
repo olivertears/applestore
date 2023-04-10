@@ -10,6 +10,7 @@ export const Background = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(29, 29, 31, 0.7);
+  z-index: 2;
 `;
 
 export const Modal = styled.div`

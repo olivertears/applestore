@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Divider, PageWrap, Row, Text } from '../../ui';
-import { UserForm } from './forms/user-form';
+import { UserInfo } from './components/user-info';
 import { AddressList } from './components/address-list';
 import { CardSlider } from './components/card-slider';
 import { ChangePasswordForm } from './forms/change-password-form';
@@ -14,7 +14,7 @@ export const Profile: FC = () => {
       </Text>
       <Row>
         <Avatar />
-        <UserForm />
+        <UserInfo />
       </Row>
       <Divider />
       <CardSlider />

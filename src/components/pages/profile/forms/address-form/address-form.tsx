@@ -1,18 +1,21 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Row, Text } from '../../../../ui';
+import { Button, Form, Input, Loader, Row, Text } from '../../../../ui';
+import { CheckboxIcon, DeleteIcon } from '../../../../ui/icons';
+import { addressService } from '../../../../../services/address';
 import { IAddress } from '../../../../../interfaces';
 import { AddressFormProps } from './address-form.types';
 import { AddressItem } from '../../components/address-item';
 
-export const AddressForm: FC<AddressFormProps> = ({ address }) => {
+export const AddressForm: FC<AddressFormProps> = ({ address, hideModal }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
     getValues,
     formState: { errors }
-  } = useForm<IAddress>({
+  } = useForm<Omit<IAddress, 'id' | 'status'>>({
     defaultValues: {
       country: address?.country || '',
       state: address?.state || '',
@@ -23,12 +26,35 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
     }
   });
 
-  const onSubmit = (data: IAddress) => {
-    console.log(data);
+  const onSubmit = (data: Omit<IAddress, 'id' | 'status'>) => {
+    setIsLoading(true);
+    address
+      ? addressService
+          .updateAddress({ ...data, id: address.id })
+          .then(hideModal)
+          .finally(() => setIsLoading(false))
+      : addressService
+          .addAddress(data)
+          .then(hideModal)
+          .finally(() => setIsLoading(false));
+  };
+
+  const onDelete = (id: number) => {
+    setIsLoading(true);
+    addressService
+      .deleteAddress(id)
+      .then(hideModal)
+      .finally(() => setIsLoading(false));
+  };
+
+  const onActiveStatusChange = (id: number) => {
+    setIsLoading(true);
+    addressService.setActive(id).finally(() => setIsLoading(false));
   };
 
   return (
     <Form maxWidth="300px" onSubmit={handleSubmit(onSubmit)}>
+      {isLoading && <Loader />}
       <Text type="header" textAlign="center">
         Адрес
       </Text>
@@ -89,7 +115,18 @@ export const AddressForm: FC<AddressFormProps> = ({ address }) => {
           {...register('apartment')}
         />
       </Row>
-      <Button type="submit">{address ? 'СОХРАНИТЬ' : 'ДОБАВИТЬ'}</Button>
+      <Row>
+        <Button type="submit">{address ? 'СОХРАНИТЬ' : 'ДОБАВИТЬ'}</Button>
+        {address?.id && (
+          <>
+            <CheckboxIcon
+              checked={address.status}
+              onClick={!address.status ? () => onActiveStatusChange(address?.id) : undefined}
+            />
+            <DeleteIcon onClick={() => onDelete(address?.id)} />
+          </>
+        )}
+      </Row>
     </Form>
   );
 };
