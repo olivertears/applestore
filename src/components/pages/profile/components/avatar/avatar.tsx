@@ -1,36 +1,30 @@
 import { ChangeEventHandler, FC, useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Loader, Skeleton } from '../../../../ui';
+import { avatarService } from '../../../../../services/avatar';
 import * as S from './avatar.styles';
 import { userService } from '../../../../../services/user';
-import { Skeleton } from '../../../../ui';
-import { avatarService } from '../../../../../services/avatar';
-import { observer } from 'mobx-react-lite';
-import { avatarApi } from '../../../../../api/avatar';
-import { authService } from '../../../../../services/auth';
+import { cardService } from '../../../../../services/card';
 
 export const Avatar: FC = observer(() => {
-  const submit: ChangeEventHandler<HTMLInputElement> = async (event) => {
-    if (event.target.files) {
-      userService.user$?.avatar
-        ? avatarService.updateAvatar(event.target.files[0])
-        : avatarService.addAvatar(event.target.files[0]);
-    }
-  };
-
-  const [res, serRes] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    get();
+    avatarService.getAvatar().finally(() => setIsLoading(false));
   }, []);
 
-  const get = async () => {
-    const { data } = await avatarApi.getAvatar();
-    serRes(data);
+  const onAvatarChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
+    if (event.target.files) {
+      setIsLoading(true);
+      avatarService.addAvatar(event.target.files[0]).finally(() => setIsLoading(false));
+    }
   };
 
   return (
     <Skeleton>
-      <S.Wrap avatar={res}>
+      <S.Wrap avatar={avatarService.avatar$}>
+        {isLoading && <Loader />}
         <S.Label htmlFor="avatar" />
-        <S.Input type="file" id="avatar" onChange={submit} />
+        <S.Input type="file" id="avatar" onChange={onAvatarChange} />
       </S.Wrap>
     </Skeleton>
   );

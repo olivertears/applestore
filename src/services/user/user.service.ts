@@ -10,12 +10,17 @@ class UserService implements IUserService {
   constructor() {
     makeObservable(this, {
       user$: observable,
-      setUser: action
+      setUser: action,
+      setAvatar: action
     });
   }
 
   setUser(user: IUser | null) {
     this.user$ = user;
+  }
+
+  setAvatar(avatar?: string) {
+    this.user$ = { ...this.user$, avatar } as IUser;
   }
 
   async getUser() {

@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Loader } from '../../../../ui';
+import { Button, Form, Input, Loader, Text } from '../../../../ui';
 import { UpdateUserData } from '../../../../../api/user';
 import { userService } from '../../../../../services/user';
+import { UserFormProps } from './user-form.types';
 
-export const UserForm: FC = observer(() => {
+export const UserForm: FC<UserFormProps> = observer(({ hideModal }) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -22,11 +23,18 @@ export const UserForm: FC = observer(() => {
 
   const onSubmit = (data: UpdateUserData) => {
     setIsLoading(true);
-    userService.updateUser(data).finally(() => setIsLoading(false));
+    userService
+      .updateUser(data)
+      .then(hideModal)
+      .finally(() => setIsLoading(false));
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {isLoading && <Loader />}
+      <Text type="header" textAlign="center">
+        Личная информация
+      </Text>
       <Input
         type="letters"
         preventPaste
@@ -55,9 +63,7 @@ export const UserForm: FC = observer(() => {
         error={errors.phoneNumber?.message}
         {...register('phoneNumber')}
       />
-      <Button type="submit" disabled={isLoading}>
-        {isLoading ? <Loader /> : 'СОХРАНИТЬ'}
-      </Button>
+      <Button type="submit">СОХРАНИТЬ</Button>
     </Form>
   );
 });

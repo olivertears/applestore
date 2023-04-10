@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { addressService } from '../../../../../services/address';
-import { Column, Row, Text } from '../../../../ui';
-import { AddIcon, DeleteIcon } from '../../../../ui/icons';
+import { Column, Text } from '../../../../ui';
+import { AddIcon } from '../../../../ui/icons';
 import { useModal } from '../../../../../hooks';
 import { Modal } from '../../../../templates/modal';
 import { AddressForm } from '../../forms/address-form';

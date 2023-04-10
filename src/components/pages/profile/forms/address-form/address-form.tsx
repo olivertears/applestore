@@ -15,7 +15,7 @@ export const AddressForm: FC<AddressFormProps> = ({ address, hideModal }) => {
     watch,
     getValues,
     formState: { errors }
-  } = useForm<Omit<IAddress, 'id' | 'isActive'>>({
+  } = useForm<Omit<IAddress, 'id' | 'status'>>({
     defaultValues: {
       country: address?.country || '',
       state: address?.state || '',
@@ -26,7 +26,7 @@ export const AddressForm: FC<AddressFormProps> = ({ address, hideModal }) => {
     }
   });
 
-  const onSubmit = (data: Omit<IAddress, 'id' | 'isActive'>) => {
+  const onSubmit = (data: Omit<IAddress, 'id' | 'status'>) => {
     setIsLoading(true);
     address
       ? addressService
@@ -120,8 +120,8 @@ export const AddressForm: FC<AddressFormProps> = ({ address, hideModal }) => {
         {address?.id && (
           <>
             <CheckboxIcon
-              checked={address.isActive}
-              onClick={() => onActiveStatusChange(address?.id)}
+              checked={address.status}
+              onClick={!address.status ? () => onActiveStatusChange(address?.id) : undefined}
             />
             <DeleteIcon onClick={() => onDelete(address?.id)} />
           </>

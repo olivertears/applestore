@@ -9,7 +9,7 @@ class CardApi implements ICardApi {
   endpoint = 'cards' as const;
 
   @Catch
-  addCard(addCardData: Omit<ICard, 'id' | 'isActive'>): Promise<AxiosResponse<ICard>> {
+  addCard(addCardData: Omit<ICard, 'id' | 'status'>): Promise<AxiosResponse<ICard>> {
     return api.post(this.endpoint, addCardData);
   }
 
@@ -24,7 +24,7 @@ class CardApi implements ICardApi {
   }
 
   @Catch
-  updateCard(updateCardData: Omit<ICard, 'isActive'>): Promise<AxiosResponse<ICard>> {
+  updateCard(updateCardData: Omit<ICard, 'status'>): Promise<AxiosResponse<ICard>> {
     return api.post(this.endpoint, updateCardData);
   }
 

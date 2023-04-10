@@ -17,7 +17,7 @@ class AddressService implements IAddressService {
     this.addresses$ = addresses;
   }
 
-  async addAddress(addAddressData: Omit<IAddress, 'id' | 'isActive'>) {
+  async addAddress(addAddressData: Omit<IAddress, 'id' | 'status'>) {
     const { data } = await addressApi.addAddress(addAddressData);
     this.setAddresses([...this.addresses$, data]);
   }
@@ -32,7 +32,7 @@ class AddressService implements IAddressService {
     this.setAddresses(data);
   }
 
-  async updateAddress(updateAddressData: Omit<IAddress, 'isActive'>) {
+  async updateAddress(updateAddressData: Omit<IAddress, 'status'>) {
     const { data } = await addressApi.updateAddress(updateAddressData);
     this.setAddresses(
       this.addresses$.map((address) => (address.id === updateAddressData.id ? data : address))
@@ -43,7 +43,7 @@ class AddressService implements IAddressService {
     const { data } = await addressApi.setActive(id);
     this.setAddresses(
       this.addresses$.map((address) => {
-        if (address.isActive) return { ...address, isActive: false };
+        if (address.status) return { ...address, status: false };
         return address.id === id ? data : address;
       })
     );

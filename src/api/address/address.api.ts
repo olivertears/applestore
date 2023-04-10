@@ -9,7 +9,7 @@ class AddressApi implements IAddressApi {
   endpoint = 'addresses' as const;
 
   @Catch
-  addAddress(addAddressData: Omit<IAddress, 'id' | 'isActive'>): Promise<AxiosResponse<IAddress>> {
+  addAddress(addAddressData: Omit<IAddress, 'id' | 'status'>): Promise<AxiosResponse<IAddress>> {
     return api.post(this.endpoint, addAddressData);
   }
 
@@ -24,7 +24,7 @@ class AddressApi implements IAddressApi {
   }
 
   @Catch
-  updateAddress(updateAddressData: Omit<IAddress, 'isActive'>): Promise<AxiosResponse<IAddress>> {
+  updateAddress(updateAddressData: Omit<IAddress, 'status'>): Promise<AxiosResponse<IAddress>> {
     return api.put(this.endpoint, updateAddressData);
   }
 

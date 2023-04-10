@@ -1,6 +1,9 @@
+import { AvatarData } from '../../api/avatar';
+
 export interface IAvatarService {
-  addAvatar: (avatar: File) => void;
+  avatar$: string;
+  addAvatar: (file: File) => void;
   deleteAvatar: (avatarName: string) => void;
-  getAvatar: () => Promise<string>;
-  updateAvatar: (avatar: File) => void;
+  getAvatar: () => void;
+  updateAvatar: (avatarData: AvatarData) => void;
 }

@@ -45,8 +45,6 @@ export const CardForm: FC<CardFormProps> = ({ card, hideModal }) => {
     cardService.setActive(id).finally(() => setIsLoading(false));
   };
 
-  console.log(cardService.cards$);
-
   return (
     <Form maxWidth="300px" onSubmit={handleSubmit(onSubmit)}>
       {isLoading && <Loader />}
@@ -102,7 +100,10 @@ export const CardForm: FC<CardFormProps> = ({ card, hideModal }) => {
         <Button type="submit">{card ? 'СОХРАНИТЬ' : 'ДОБАВИТЬ'}</Button>
         {card?.id && (
           <>
-            <CheckboxIcon checked={card.isActive} onClick={() => onActiveStatusChange(card?.id)} />
+            <CheckboxIcon
+              checked={card.status}
+              onClick={!card?.status ? () => onActiveStatusChange(card?.id) : undefined}
+            />
             <DeleteIcon onClick={() => onDelete(card?.id)} />
           </>
         )}

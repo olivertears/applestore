@@ -3,5 +3,5 @@ export interface ICard {
   number: string;
   validityDate: string;
   owner: string;
-  isActive: boolean;
+  status: boolean;
 }

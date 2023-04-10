@@ -1,11 +1,14 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button, Form, Input, Loader, Text } from '../../../../ui';
+import { Button, Column, Form, Input, Loader, Text } from '../../../../ui';
 import { ChangePasswordData } from '../../../../../api/user';
 import { userService } from '../../../../../services/user';
+import { Modal } from '../../../../templates/modal';
+import { useModal } from '../../../../../hooks';
 
 export const ChangePasswordForm: FC = () => {
+  const { isModalOpen, showModal, hideModal } = useModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -13,6 +16,7 @@ export const ChangePasswordForm: FC = () => {
     watch,
     setError,
     resetField,
+    reset,
     formState: { errors }
   } = useForm<ChangePasswordData>({ defaultValues: { oldPassword: '', newPassword: '' } });
 
@@ -20,6 +24,10 @@ export const ChangePasswordForm: FC = () => {
     setIsLoading(true);
     userService
       .changePassword(data)
+      .then(() => {
+        reset();
+        showModal();
+      })
       .catch((error) => {
         resetField('oldPassword');
         resetField('newPassword');
@@ -57,6 +65,16 @@ export const ChangePasswordForm: FC = () => {
       <Button type="submit" disabled={isLoading}>
         {isLoading ? <Loader /> : 'СОХРАНИТЬ'}
       </Button>
+      <Modal isModalOpen={isModalOpen} hideModal={hideModal}>
+        <Column>
+          <Text type="header" textAlign="center">
+            Поздравляем
+          </Text>
+          <Text type="param" textAlign="center">
+            Ваш пароль был успешно изменен
+          </Text>
+        </Column>
+      </Modal>
     </Form>
   );
 };

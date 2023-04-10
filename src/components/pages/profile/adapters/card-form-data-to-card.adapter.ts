@@ -4,7 +4,7 @@ import { cardMonthPattern, cardNumberPattern, cardOwnerPattern, cardYearPattern 
 
 export const cardFormDataToCardAdapter = (
   cardFormData: CardFormData
-): Omit<ICard, 'id' | 'isActive'> => ({
+): Omit<ICard, 'id' | 'status'> => ({
   number: cardNumberPattern(cardFormData.number),
   owner: cardOwnerPattern(cardFormData.owner),
   validityDate: cardMonthPattern(cardFormData.month) + '/' + cardYearPattern(cardFormData.year)

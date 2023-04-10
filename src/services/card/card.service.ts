@@ -17,7 +17,7 @@ class CardService implements ICardService {
     this.cards$ = cards;
   }
 
-  async addCard(addCardData: Omit<ICard, 'id' | 'isActive'>) {
+  async addCard(addCardData: Omit<ICard, 'id' | 'status'>) {
     const { data } = await cardApi.addCard(addCardData);
     this.setCards([...this.cards$, data]);
   }
@@ -32,7 +32,7 @@ class CardService implements ICardService {
     this.setCards(data);
   }
 
-  async updateCard(updateCardData: Omit<ICard, 'isActive'>) {
+  async updateCard(updateCardData: Omit<ICard, 'status'>) {
     const { data } = await cardApi.updateCard(updateCardData);
     this.setCards(this.cards$.map((card) => (card.id === updateCardData.id ? data : card)));
   }
@@ -41,7 +41,7 @@ class CardService implements ICardService {
     const { data } = await cardApi.setActive(id);
     this.setCards(
       this.cards$.map((card) => {
-        if (card.isActive) return { ...card, isActive: false };
+        if (card.status) return { ...card, status: false };
         return card.id === id ? data : card;
       })
     );

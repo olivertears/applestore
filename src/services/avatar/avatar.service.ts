@@ -1,31 +1,40 @@
-import { avatarApi } from '../../api/avatar';
-import { IUser } from '../../interfaces';
+import { avatarApi, AvatarData } from '../../api/avatar';
 import { IAvatarService } from './avatar.types';
+import { action, makeObservable, observable } from 'mobx';
 import { userService } from '../user';
 
 class AvatarService implements IAvatarService {
-  setAvatar(avatar?: string) {
-    userService.setUser({ ...userService.user$, avatar } as IUser);
+  avatar$ = '';
+
+  constructor() {
+    makeObservable(this, {
+      avatar$: observable,
+      setAvatar: action
+    });
   }
 
-  async addAvatar(avatar: File) {
-    const { data } = await avatarApi.addAvatar(avatar);
-    this.setAvatar(data);
+  setAvatar(avatar: string) {
+    this.avatar$ = avatar;
+  }
+
+  async addAvatar(file: File) {
+    const { data } = await avatarApi.addAvatar({ file });
+    userService.setAvatar(data);
+    await this.getAvatar();
   }
 
   async deleteAvatar(avatarName: string) {
     await avatarApi.deleteAvatar(avatarName);
-    this.setAvatar();
+    this.setAvatar('');
   }
 
-  async getAvatar(): Promise<string> {
+  async getAvatar() {
     const { data } = await avatarApi.getAvatar();
     this.setAvatar(data);
-    return data;
   }
 
-  async updateAvatar(avatar: File) {
-    const { data } = await avatarApi.updateAvatar(avatar);
+  async updateAvatar(avatarData: AvatarData) {
+    const { data } = await avatarApi.updateAvatar(avatarData);
     this.setAvatar(data);
   }
 }
