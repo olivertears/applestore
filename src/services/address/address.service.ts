@@ -41,12 +41,7 @@ class AddressService implements IAddressService {
 
   async setActive(id: number) {
     const { data } = await addressApi.setActive(id);
-    this.setAddresses(
-      this.addresses$.map((address) => {
-        if (address.status) return { ...address, status: false };
-        return address.id === id ? data : address;
-      })
-    );
+    this.setAddresses(data);
   }
 }
 

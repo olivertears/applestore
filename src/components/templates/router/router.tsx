@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
@@ -16,29 +16,32 @@ import { Cart } from '../../pages/cart';
 import { Orders } from '../../pages/orders';
 import { UnitType } from '../../pages/unit-type';
 import { Catalog } from '../../pages/catalog';
+import { ProtectedRoute } from './protected-route';
+import { authGuard, roleGuard } from './guards';
 
 export const Router: FC = observer(() => {
-  useEffect(() => {
-    localStorage.getItem('token') && userService.getUser();
-  }, []);
-
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Navbar />}>
-          {!!userService.user$ ? (
-            <>
-              <Route path={RouteNames.PROFILE} element={<Profile />} />
-              <Route path={RouteNames.CART} element={<Cart />} />
-              <Route path={RouteNames.FAVORITES} element={<Favorites />} />
-              <Route path={RouteNames.ORDERS} element={<Orders />} />
-            </>
-          ) : (
+          {!userService.user$ && (
             <>
               <Route path={RouteNames.SIGN_IN} element={<SignIn />} />
               <Route path={RouteNames.SIGN_UP} element={<SignUp />} />
             </>
           )}
+
+          <Route element={<ProtectedRoute guard={authGuard} />}>
+            <Route path={RouteNames.PROFILE} element={<Profile />} />
+            <Route path={RouteNames.CART} element={<Cart />} />
+            <Route path={RouteNames.FAVORITES} element={<Favorites />} />
+            <Route path={RouteNames.ORDERS} element={<Orders />} />
+
+            <Route element={<ProtectedRoute guard={roleGuard('MANAGER')} />}>
+              <Route path={RouteNames.CATALOG} element={<Catalog />} />
+            </Route>
+          </Route>
+
           <Route path={RouteNames.MENU} element={<Menu />} />
           <Route path={RouteNames.STORE} element={<Store />}>
             <Route path={RouteNames.STORE_UNIT} element={<UnitType />}>
@@ -46,8 +49,6 @@ export const Router: FC = observer(() => {
             </Route>
           </Route>
           <Route path={RouteNames.NOT_FOUND} element={<NotFound />} />
-
-          <Route path={RouteNames.CATALOG} element={<Catalog />} />
 
           <Route path="*" element={<Navigate to={RouteNames.NOT_FOUND} replace />} />
         </Route>

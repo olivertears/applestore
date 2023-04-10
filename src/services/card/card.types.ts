@@ -2,9 +2,9 @@ import { ICard } from '../../interfaces';
 
 export interface ICardService {
   cards$: ICard[];
-  addCard: (addCardData: Omit<ICard, 'id' | 'isActive'>) => void;
+  addCard: (addCardData: Omit<ICard, 'id' | 'status'>) => void;
   deleteCard: (id: number) => void;
   getCards: () => void;
-  updateCard: (updateCardData: Omit<ICard, 'isActive'>) => void;
+  updateCard: (updateCardData: Omit<ICard, 'status'>) => void;
   setActive: (id: number) => void;
 }

@@ -49,7 +49,10 @@ export const AddressForm: FC<AddressFormProps> = ({ address, hideModal }) => {
 
   const onActiveStatusChange = (id: number) => {
     setIsLoading(true);
-    addressService.setActive(id).finally(() => setIsLoading(false));
+    addressService
+      .setActive(id)
+      .then(hideModal)
+      .finally(() => setIsLoading(false));
   };
 
   return (

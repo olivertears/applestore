@@ -1,10 +1,10 @@
 import { ChangeEventHandler, FC, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Loader, Skeleton } from '../../../../ui';
+import { CloseIcon } from '../../../../ui/icons';
 import { avatarService } from '../../../../../services/avatar';
 import * as S from './avatar.styles';
 import { userService } from '../../../../../services/user';
-import { cardService } from '../../../../../services/card';
 
 export const Avatar: FC = observer(() => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,12 +19,20 @@ export const Avatar: FC = observer(() => {
     }
   };
 
+  const onAvatarDelete = () => {
+    setIsLoading(true);
+    avatarService.deleteAvatar().finally(() => setIsLoading(false));
+  };
+
   return (
     <Skeleton>
       <S.Wrap avatar={avatarService.avatar$}>
         {isLoading && <Loader />}
         <S.Label htmlFor="avatar" />
         <S.Input type="file" id="avatar" onChange={onAvatarChange} />
+        {!isLoading && userService.user$?.avatar !== 'default_path.jpg' && (
+          <CloseIcon onClick={onAvatarDelete} />
+        )}
       </S.Wrap>
     </Skeleton>
   );

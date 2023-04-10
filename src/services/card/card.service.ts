@@ -39,12 +39,7 @@ class CardService implements ICardService {
 
   async setActive(id: number) {
     const { data } = await cardApi.setActive(id);
-    this.setCards(
-      this.cards$.map((card) => {
-        if (card.status) return { ...card, status: false };
-        return card.id === id ? data : card;
-      })
-    );
+    this.setCards(data);
   }
 }
 

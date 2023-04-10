@@ -7,5 +7,5 @@ export interface IAddressApi {
   deleteAddress: (id: number) => Promise<AxiosResponse>;
   getAddresses: () => Promise<AxiosResponse<IAddress[]>>;
   updateAddress: (updateAddressData: Omit<IAddress, 'status'>) => Promise<AxiosResponse<IAddress>>;
-  setActive: (id: number) => Promise<AxiosResponse<IAddress>>;
+  setActive: (id: number) => Promise<AxiosResponse<IAddress[]>>;
 }

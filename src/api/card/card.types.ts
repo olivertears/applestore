@@ -7,5 +7,5 @@ export interface ICardApi {
   deleteCard: (id: number) => Promise<AxiosResponse>;
   getCards: () => Promise<AxiosResponse<ICard[]>>;
   updateCard: (updateCardData: Omit<ICard, 'isActive'>) => Promise<AxiosResponse<ICard>>;
-  setActive: (id: number) => Promise<AxiosResponse<ICard>>;
+  setActive: (id: number) => Promise<AxiosResponse<ICard[]>>;
 }

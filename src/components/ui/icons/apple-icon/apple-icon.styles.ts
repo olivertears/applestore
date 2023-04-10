@@ -8,7 +8,7 @@ export const Svg = styled.svg<{ width?: string; color?: string; hover?: string }
   z-index: 1;
 
   :hover {
-    cursor: ${({ hover }) => !!hover && 'pointer'};
+    cursor: ${({ onClick }) => !!onClick && 'pointer'};
     fill: ${({ hover }) => (hover ? hover : '#fff')};
   }
 `;
