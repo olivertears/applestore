@@ -8,14 +8,16 @@ import { ProductParamEnum, ProductTypeEnum } from '../../../../../../../interfac
 import { PARAM_NAMES } from '../../../../../../../constants';
 
 import { Param, ProductFormData } from '../../product-form.types';
-import { ParamField } from './param-field';
 import { InformationTabProps } from './Information-tab.types';
+import { ParamField } from './param-field';
+import { Video } from './video';
 
 export const InformationTab: FC<InformationTabProps> = ({ onNextButtonClick }) => {
   const {
     control,
     register,
     watch,
+    setValue,
     formState: { errors }
   } = useFormContext<ProductFormData>();
 
@@ -41,12 +43,14 @@ export const InformationTab: FC<InformationTabProps> = ({ onNextButtonClick }) =
     <>
       <Select
         label="Тип"
-        {...register('type', {
-          required: 'Это поле обязательно'
-        })}
+        value={watch('type')}
+        required
+        onSelect={(value) => setValue('type', value as ProductTypeEnum)}
       >
         {Object.keys(ProductTypeEnum).map((key) => (
-          <option key={key}>{key}</option>
+          <option key={key} value={key}>
+            {key}
+          </option>
         ))}
       </Select>
       <Input
@@ -66,6 +70,8 @@ export const InformationTab: FC<InformationTabProps> = ({ onNextButtonClick }) =
           required: 'Это поле обязательно'
         })}
       />
+
+      <Video />
 
       <Text type="param" textAlign="center">
         Параметры

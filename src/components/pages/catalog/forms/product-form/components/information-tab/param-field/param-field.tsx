@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
+import { ProductParamEnum } from '../../../../../../../../interfaces';
 import { PARAM_NAMES } from '../../../../../../../../constants';
 import { Row, Select, TextArea } from '../../../../../../../ui';
 import { DeleteIcon } from '../../../../../../../ui/icons';
@@ -11,12 +12,18 @@ export const ParamField: FC<ParamFieldProps> = ({ remove, index, availableParams
   const {
     register,
     watch,
+    setValue,
     formState: { errors }
   } = useFormContext<ProductFormData>();
 
   return (
     <Row alignItems="start">
-      <Select label="Параметр" {...register(`params.${index}.name`)}>
+      <Select
+        label="Параметр"
+        value={watch(`params.${index}.name`)}
+        required
+        onSelect={(value) => setValue(`params.${index}.name`, value as ProductParamEnum)}
+      >
         {[watch(`params.${index}.name`), ...availableParams].map((key) => (
           <option key={key} value={key}>
             {PARAM_NAMES[key]}

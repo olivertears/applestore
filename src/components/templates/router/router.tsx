@@ -37,10 +37,12 @@ export const Router: FC = observer(() => {
             <Route path={RouteNames.FAVORITES} element={<Favorites />} />
             <Route path={RouteNames.ORDERS} element={<Orders />} />
 
-            <Route element={<ProtectedRoute guard={roleGuard('MANAGER')} />}>
-              <Route path={RouteNames.CATALOG} element={<Catalog />} />
-            </Route>
+            {/*<Route element={<ProtectedRoute guard={roleGuard('MANAGER')} />}>*/}
+            {/*  <Route path={RouteNames.CATALOG} element={<Catalog />} />*/}
+            {/*</Route>*/}
           </Route>
+
+          <Route path={RouteNames.CATALOG} element={<Catalog />} />
 
           <Route path={RouteNames.MENU} element={<Menu />} />
           <Route path={RouteNames.STORE} element={<Store />}>

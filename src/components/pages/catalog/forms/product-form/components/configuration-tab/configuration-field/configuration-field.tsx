@@ -9,13 +9,14 @@ import { AddIcon } from '../../../../../../../ui/icons';
 import { ConfigurationValue, ProductFormData } from '../../../product-form.types';
 import { ConfigurationFieldProps } from './configuration-field.types';
 import { ConfigurationValueField } from './configuration-value-field';
+import { ProductConfigurationEnum } from '../../../../../../../../interfaces';
 
 export const ConfigurationField: FC<ConfigurationFieldProps> = ({
   remove,
   index,
   availableConfigurations
 }) => {
-  const { control, watch, register } = useFormContext<ProductFormData>();
+  const { control, watch, setValue } = useFormContext<ProductFormData>();
 
   const [configurationValues, appendConfigurationValue, removeConfigurationValue] = useFieldArr(
     control,
@@ -24,7 +25,14 @@ export const ConfigurationField: FC<ConfigurationFieldProps> = ({
 
   return (
     <Row>
-      <Select label="Конфигурация" {...register(`configurations.${index}.name`)}>
+      <Select
+        label="Конфигурация"
+        required
+        value={watch(`configurations.${index}.name`)}
+        onSelect={(value) =>
+          setValue(`configurations.${index}.name`, value as ProductConfigurationEnum)
+        }
+      >
         {[watch(`configurations.${index}.name`), ...availableConfigurations].map((key) => (
           <option key={key} value={key}>
             {CONFIGURATION_NAMES[key]}

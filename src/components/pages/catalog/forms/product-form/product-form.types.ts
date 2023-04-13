@@ -6,21 +6,22 @@ import {
   ProductParamEnum,
   ProductTypeEnum
 } from '../../../../../interfaces';
+import { ProductFormTabEnum } from './product-form.constants';
 
 export interface ProductFormProps {
   product?: IProduct;
 }
 
 export interface ProductFormTab {
-  tab: string;
+  tab: ProductFormTabEnum;
   content: ReactNode;
 }
 
 export interface ProductFormData {
-  id?: string;
   name: string;
   type: ProductTypeEnum;
   price?: number;
+  video?: string;
   params?: Param[];
   configurations?: Configuration[];
   colors: Color[];
