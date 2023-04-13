@@ -15,14 +15,14 @@ export const UnitSlider: FC = () => {
       <CatalogSlider marginBottom="50px">
         {STORE_UNIT_CARDS.map(({ name, link, img }) => (
           <Card key={name} onClick={() => navigate(link)}>
-            <S.Unit img={img}>
+            <S.UnitCard img={img}>
               <Text type="header" textAlign="center">
                 {name}
               </Text>
-            </S.Unit>
+            </S.UnitCard>
           </Card>
         ))}
-      </CatalogSlider>{' '}
+      </CatalogSlider>
     </>
   );
 };

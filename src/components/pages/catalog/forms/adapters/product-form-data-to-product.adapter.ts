@@ -1,7 +1,9 @@
 import { Configuration, IProduct, ProductParamEnum } from '../../../../../interfaces';
 import { ProductFormData } from '../product-form/product-form.types';
 
-export const productFormDataToProductAdapter = (productFormData: ProductFormData): IProduct => {
+export const productFormDataToProductAdapter = (
+  productFormData: ProductFormData
+): Omit<IProduct, 'id'> => {
   const { params, configurations, colors, ...rest } = productFormData;
 
   const productParams: { [key in ProductParamEnum]?: string } =

@@ -12,13 +12,24 @@ import { Footer } from './components/footer';
 export const Navbar: FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
   const [isStoreDropdownOpen, setIsStoreDropdownOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return (
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  const fetchUser = () => {
+    localStorage.getItem('token')
+      ? userService.getUser().finally(() => setIsLoading(false))
+      : setIsLoading(false);
+  };
+
+  return isLoading ? null : (
     <S.Wrap>
       <S.Navbar>
         <AppleIcon onClick={() => navigate(RouteNames.MENU)} />

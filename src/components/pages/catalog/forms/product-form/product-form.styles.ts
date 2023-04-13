@@ -11,4 +11,5 @@ export const Tab = styled.div<{ selected?: boolean }>`
   font-weight: bold;
   color: ${({ selected }) => (selected ? '#1d1d1f' : '#434344')};
   text-decoration: ${({ selected }) => selected && 'underline'};
+  cursor: ${({ onClick }) => onClick && 'pointer'};
 `;

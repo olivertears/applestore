@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Unit = styled.div<{ img: string }>`
+export const UnitCard = styled.div<{ img: string }>`
   background: ${({ img }) => `url(${img}) no-repeat`};
   background-size: contain;
   width: 200px;

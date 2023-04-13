@@ -4,7 +4,7 @@ import { Configuration, Param, ProductFormData } from '../product-form/product-f
 const PARAM_VALUES = Object.values(ProductParamEnum);
 
 export const productToProductFormDataAdapter = (product: IProduct): ProductFormData => {
-  const { id, name, type, price, configurations, colors, ...rest } = product;
+  const { id, name, type, price, video, configurations, colors, ...rest } = product;
 
   const params: Param[] = Object.entries(rest).reduce(
     (res, [key, value]) =>
@@ -26,10 +26,10 @@ export const productToProductFormDataAdapter = (product: IProduct): ProductFormD
     }, [] as Configuration[]) || [];
 
   return {
-    id,
     name,
     type,
     price,
+    video,
     colors,
     params,
     configurations: productFormConfigurations

@@ -11,6 +11,7 @@ import { InformationTab } from './components/information-tab';
 import { ConfigurationTab } from './components/configuration-tab';
 import { ColorTab } from './components/color-tab';
 import { MOCKED_PRODUCT } from '../../../../../services/product/product.mocked';
+import { PhotoTab } from './components/photo-tab';
 
 export const ProductForm: FC<ProductFormProps> = ({ product }) => {
   const methods = useForm<ProductFormData>({
@@ -45,6 +46,10 @@ export const ProductForm: FC<ProductFormProps> = ({ product }) => {
     {
       tab: ProductFormTabEnum.COLORS,
       content: <ColorTab onPrevButtonClick={moveToConfiguration} />
+    },
+    {
+      tab: ProductFormTabEnum.PHOTOS,
+      content: <PhotoTab colors={product?.colors} />
     }
   ];
 
@@ -53,7 +58,15 @@ export const ProductForm: FC<ProductFormProps> = ({ product }) => {
       <Form onSubmit={handleSubmit(onSubmit)} maxWidth="545px" minWidth="545px">
         <S.ProductFormTabs>
           {PRODUCT_FORM_TABS.map(({ tab }) => (
-            <S.Tab key={tab} selected={currentTab === tab}>
+            <S.Tab
+              key={tab}
+              selected={currentTab === tab}
+              onClick={
+                [ProductFormTabEnum.PHOTOS, ProductFormTabEnum.INFORMATION].includes(tab)
+                  ? () => setCurrentTab(tab)
+                  : undefined
+              }
+            >
               {tab}
             </S.Tab>
           ))}

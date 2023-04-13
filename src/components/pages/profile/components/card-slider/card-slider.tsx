@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+
 import { cardService } from '../../../../../services/card';
 import { Column, Row, Text } from '../../../../ui';
 import { AddIcon, ArrowIcon } from '../../../../ui/icons';
@@ -22,6 +23,10 @@ export const CardSlider: FC = observer(() => {
   const moveToNext = () => setIndex(index + 1);
   const onCardClick = (id: number, cardId?: number) =>
     index === id ? showModal(cardId) : index > id ? moveToPrev() : moveToNext();
+
+  useEffect(() => {
+    index && index === cardService.cards$.length && moveToPrev();
+  }, [cardService.cards$.length]);
 
   return (
     <Column>

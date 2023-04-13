@@ -27,6 +27,7 @@ export const Input = styled.input<{ isError: boolean }>`
   border-radius: 5px;
   outline: ${({ isError }) => `1px solid ${isError ? 'darkred' : '#dadada'}`};
   height: 39.2px;
+  cursor: ${({ readOnly }) => readOnly && 'default'};
 
   :hover,
   :focus {
