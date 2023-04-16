@@ -1,16 +1,16 @@
 import { FC } from 'react';
-import { Card, CatalogSlider, Text } from '../../../../ui';
+import { Card, CatalogSlider, Column, Text } from '../../../../ui';
 import * as S from './product-slider.styles';
 import { ProductSliderProps } from './product-slider.types';
 import { AddIcon } from '../../../../ui/icons';
 
 export const ProductSlider: FC<ProductSliderProps> = ({ type, products, showModal }) => {
   return (
-    <>
+    <Column>
       <Text type="title" padding="0 20px">
         {type}
       </Text>
-      <CatalogSlider marginBottom="50px">
+      <CatalogSlider>
         {products.map(({ name, id }) => (
           <Card key={name} onClick={() => showModal(id)}>
             <S.ProductCard>
@@ -26,6 +26,6 @@ export const ProductSlider: FC<ProductSliderProps> = ({ type, products, showModa
           </S.ProductCard>
         </Card>
       </CatalogSlider>
-    </>
+    </Column>
   );
 };

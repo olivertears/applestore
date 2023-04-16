@@ -18,6 +18,7 @@ export interface Configuration {
 export interface Color {
   name: string;
   value: string;
+  photos: string[];
 }
 
 export enum ProductTypeEnum {

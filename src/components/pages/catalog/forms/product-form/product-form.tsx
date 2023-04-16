@@ -49,7 +49,7 @@ export const ProductForm: FC<ProductFormProps> = ({ product }) => {
     },
     {
       tab: ProductFormTabEnum.PHOTOS,
-      content: <PhotoTab colors={product?.colors} />
+      content: <PhotoTab product={product} />
     }
   ];
 

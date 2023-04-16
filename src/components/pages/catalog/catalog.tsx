@@ -25,7 +25,7 @@ export const Catalog: FC = observer(() => {
   );
 
   return (
-    <PageWrap>
+    <PageWrap gap="50px">
       {Object.entries(PRODUCTS_BY_TYPE).map(([type, products]) => (
         <ProductSlider key={type} type={type} products={products} showModal={showModal} />
       ))}

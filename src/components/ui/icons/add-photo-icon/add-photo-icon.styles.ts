@@ -6,8 +6,8 @@ export const Svg = styled.svg`
   stroke-width: 0;
   stroke-linecap: round;
   stroke-linejoin: round;
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   cursor: pointer;
   margin: auto;
 `;
