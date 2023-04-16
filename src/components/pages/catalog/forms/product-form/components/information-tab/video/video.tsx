@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FC, useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash.debounce';
 import { useFormContext } from 'react-hook-form';
-import { Iframe, Select, Text } from '../../../../../../../ui';
+import { Iframe, Select, Skeleton, Text } from '../../../../../../../ui';
 import { ProductFormData } from '../../../product-form.types';
 import { youtubeApi } from '../../../../../../../../api/youtube';
 
@@ -58,11 +58,13 @@ export const Video: FC = () => {
         ))}
       </Select>
       {watch('video') && (
-        <Iframe
-          width="480px"
-          height="270px"
-          src={`https://www.youtube.com/embed/${watch('video')}?controls=0`}
-        />
+        <Skeleton height="270px">
+          <Iframe
+            width="480px"
+            height="270px"
+            src={`https://www.youtube.com/embed/${watch('video')}?controls=0`}
+          />
+        </Skeleton>
       )}
     </>
   );

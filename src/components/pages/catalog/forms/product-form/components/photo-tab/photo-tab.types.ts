@@ -1,5 +1,5 @@
-import { Color } from '../../../../../../../interfaces';
+import { IProduct } from '../../../../../../../interfaces';
 
 export interface PhotoTabProps {
-  colors?: Color[];
+  product?: IProduct;
 }

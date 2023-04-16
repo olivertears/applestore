@@ -17,7 +17,7 @@ import { Orders } from '../../pages/orders';
 import { UnitType } from '../../pages/unit-type';
 import { Catalog } from '../../pages/catalog';
 import { ProtectedRoute } from './protected-route';
-import { authGuard, roleGuard } from './guards';
+import { authGuard, roleGuard } from './utils';
 
 export const Router: FC = observer(() => {
   return (

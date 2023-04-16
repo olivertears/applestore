@@ -14,7 +14,7 @@ export const MOCKED_PRODUCT: IProduct = {
     { name: ProductConfigurationEnum.MEMORY, value: '256GB', extraPrice: 200 }
   ],
   colors: [
-    { name: 'Red', value: '#ff0000' },
-    { name: 'Blue', value: '#0000ff' }
+    { name: 'Red', value: '#ff0000', photos: [] },
+    { name: 'Blue', value: '#0000ff', photos: [] }
   ]
 };

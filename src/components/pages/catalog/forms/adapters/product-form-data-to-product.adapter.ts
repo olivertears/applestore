@@ -13,5 +13,5 @@ export const productFormDataToProductAdapter = (
     configurations?.map(({ name, values }) => values.map((value) => ({ name, ...value }))).flat() ||
     [];
 
-  return { ...rest, ...productParams, configurations: productConfiguration, colors: colors };
+  return { ...rest, ...productParams, configurations: productConfiguration, colors };
 };
