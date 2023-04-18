@@ -1,3 +1,4 @@
+export { calcMonthPayment } from './calc-month-payment';
 export { Catch } from './catch';
 export { createApi } from './create-api';
 export { emailRegex } from './email-regex';
