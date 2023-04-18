@@ -5,4 +5,5 @@ export const Fieldset = styled.fieldset<{ column?: boolean }>`
   flex-direction: ${({ column }) => column && 'column'};
   gap: 15px;
   width: 100%;
+  padding: 0;
 `;
