@@ -5,6 +5,7 @@ import { HeartIcon } from '../../../../../ui/icons';
 import { AddToCartFooterProps } from './add-to-cart-footer.types';
 import { useFormContext } from 'react-hook-form';
 import { StoreProductFormData } from '../../../store-product.types';
+import { calcMonthPayment } from '../../../../../../utils';
 
 export const AddToCartFooter: FC<AddToCartFooterProps> = ({ configurations, price }) => {
   const [selected, setSelected] = useState(false);
@@ -24,7 +25,7 @@ export const AddToCartFooter: FC<AddToCartFooterProps> = ({ configurations, pric
             ${calcFinalPrice().toFixed(2)} or
           </Text>
           <Text type="header" textAlign="right">
-            ${(Math.ceil(calcFinalPrice() / 12) - 0.01).toFixed(2)}/mo. for 12 mo.
+            ${calcMonthPayment(calcFinalPrice())}/mo. for 12 mo.
           </Text>
         </Column>
         <Row alignItems="center">
