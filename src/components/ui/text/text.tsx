@@ -7,37 +7,44 @@ export const Text: FC<PropsWithChildren<TextProps>> = ({
   margin,
   padding,
   textAlign,
+  width,
   children
 }) => {
   const renderText = () => {
     switch (type) {
       case 'title':
         return (
-          <S.Title margin={margin} padding={padding} textAlign={textAlign}>
+          <S.Title margin={margin} padding={padding} textAlign={textAlign} width={width}>
             {children}
           </S.Title>
         );
+      case 'subtitle':
+        return (
+          <S.Subtitle margin={margin} padding={padding} textAlign={textAlign} width={width}>
+            {children}
+          </S.Subtitle>
+        );
       case 'header':
         return (
-          <S.Header margin={margin} padding={padding} textAlign={textAlign}>
+          <S.Header margin={margin} padding={padding} textAlign={textAlign} width={width}>
             {children}
           </S.Header>
         );
       case 'param':
         return (
-          <S.Param margin={margin} padding={padding} textAlign={textAlign}>
+          <S.Param margin={margin} padding={padding} textAlign={textAlign} width={width}>
             {children}
           </S.Param>
         );
       case 'info':
         return (
-          <S.Info margin={margin} padding={padding} textAlign={textAlign}>
+          <S.Info margin={margin} padding={padding} textAlign={textAlign} width={width}>
             {children}
           </S.Info>
         );
       default:
         return (
-          <S.Text margin={margin} padding={padding} textAlign={textAlign}>
+          <S.Text margin={margin} padding={padding} textAlign={textAlign} width={width}>
             {children}
           </S.Text>
         );

@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const Button = styled.button<{ width?: string }>`
   background: #0071e3;
   font-size: 16px;
   padding: 8px 16px;
   border-radius: 5px;
   color: #fff;
-  width: 300px;
+  width: ${({ width }) => (width ? width : '300px')};
   max-width: 100%;
   min-width: 150px;
   position: relative;
   min-height: 36px;
+  max-height: 39.2px;
 
   :hover {
     cursor: pointer;

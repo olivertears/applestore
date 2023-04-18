@@ -6,7 +6,6 @@ export type { IError } from './IError';
 export type { IFavorite } from './IFavorite';
 export type { IOrder } from './IOrder';
 export type { IOrderItem } from './IOrderItem';
-export type { IPhoto } from './IPhoto';
 export {
   type IProduct,
   type Configuration,
@@ -15,6 +14,5 @@ export {
   ProductParamEnum,
   ProductConfigurationEnum
 } from './IProduct';
-export type { ITransaction } from './ITransaction';
 export type { IUser } from './IUser';
 export type { IWorker } from './IWorker';

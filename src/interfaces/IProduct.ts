@@ -1,8 +1,9 @@
 export type IProduct = { [key in ProductParamEnum]?: string } & {
-  id?: string;
+  id: number;
   name: string;
   type: ProductTypeEnum;
   price?: number;
+  video?: string;
   averageRate?: number;
   configurations?: Configuration[];
   colors: Color[];
@@ -17,6 +18,7 @@ export interface Configuration {
 export interface Color {
   name: string;
   value: string;
+  photos: string[];
 }
 
 export enum ProductTypeEnum {

@@ -1,4 +1,5 @@
 export { AddIcon } from './add-icon';
+export { AddPhotoIcon } from './add-photo-icon';
 export { AppleIcon } from './apple-icon';
 export { AppleStoreIcon } from './apple-store-icon';
 export { ArrowIcon } from './arrow-icon';
@@ -8,5 +9,8 @@ export { CardIcon } from './card-icon';
 export { CheckboxIcon } from './checkbox-icon';
 export { CloseIcon } from './close-icon';
 export { DeleteIcon } from './delete-icon';
+export { HeartIcon } from './heart-icon';
+export { SearchIcon } from './search-icon';
+export { SelectArrowIcon } from './select-arrow-icon';
 export { SmileIcon } from './smile-icon';
 export { TradeIcon } from './trade-icon';
