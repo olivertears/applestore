@@ -18,6 +18,8 @@ export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, type, n
         toUrlCase(type + '/' + name + '/' + color.name),
         { type: event.target.files[0].type }
       );
+
+      // id + color + file
       photoService.addPhoto(photo).finally(() => setIsLoading(false));
     }
   };
@@ -30,7 +32,7 @@ export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, type, n
   };
 
   return (
-    <Column gap="5px">
+    <Column gap="5px" width="605px">
       <Text type="param" padding="0 0 0 30px">
         {color.name}
       </Text>

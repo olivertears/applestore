@@ -14,10 +14,11 @@ import { Profile } from '../../pages/profile';
 import { Favorites } from '../../pages/favorites';
 import { Cart } from '../../pages/cart';
 import { Orders } from '../../pages/orders';
-import { UnitType } from '../../pages/unit-type';
+import { StoreUnit } from '../../pages/store-unit';
 import { Catalog } from '../../pages/catalog';
 import { ProtectedRoute } from './protected-route';
 import { authGuard, roleGuard } from './utils';
+import { StoreProduct } from '../../pages/store-product';
 
 export const Router: FC = observer(() => {
   return (
@@ -45,11 +46,9 @@ export const Router: FC = observer(() => {
           <Route path={RouteNames.CATALOG} element={<Catalog />} />
 
           <Route path={RouteNames.MENU} element={<Menu />} />
-          <Route path={RouteNames.STORE} element={<Store />}>
-            <Route path={RouteNames.STORE_UNIT} element={<UnitType />}>
-              <Route path={RouteNames.STORE_UNIT_PRODUCT} element={<Store />} />
-            </Route>
-          </Route>
+          <Route path={RouteNames.STORE} element={<Store />} />
+          <Route path={RouteNames.STORE_UNIT} element={<StoreUnit />} />
+          <Route path={RouteNames.STORE_UNIT_PRODUCT} element={<StoreProduct />} />
           <Route path={RouteNames.NOT_FOUND} element={<NotFound />} />
 
           <Route path="*" element={<Navigate to={RouteNames.NOT_FOUND} replace />} />

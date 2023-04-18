@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 interface RowProps {
   alignItems?: 'center' | 'start' | 'left';
-  justifyContent?: 'center' | 'start' | 'left';
+  justifyContent?: 'center' | 'start' | 'left' | 'space-between';
   gap?: string;
   width?: string;
 }
