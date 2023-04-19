@@ -1,40 +1,34 @@
-import { FC, useState } from 'react';
-import { Link } from '../../../../ui';
+import { FC } from 'react';
 import * as S from './store-dropdown.styles';
 import { StoreDropdownProps } from './store-dropdown.types';
-import { STORE_DROPDOWN_LINKS } from './store-dropdown.constants';
+import { ProductTypeEnum } from '../../../../../interfaces';
+import { RouteNames } from '../../../router';
+import { StoreSearch } from './store-search';
+import { Column, Divider } from '../../../../ui';
 
 export const StoreDropdown: FC<StoreDropdownProps> = ({
   isStoreDropdownOpen,
   setIsStoreDropdownOpen
 }) => {
-  const [sectionName, setSectionName] = useState('');
-  const SELECTED_SECTION = STORE_DROPDOWN_LINKS.find((section) => section.name === sectionName);
-
   return (
     <S.StoreDropdown
       isOpen={isStoreDropdownOpen}
       onMouseOver={() => setIsStoreDropdownOpen(true)}
-      onMouseLeave={() => {
-        setIsStoreDropdownOpen(false);
-        setSectionName('');
-      }}
+      onMouseLeave={() => setIsStoreDropdownOpen(false)}
     >
-      <S.SectionColumn>
-        {STORE_DROPDOWN_LINKS.map(({ name, link }) => (
-          <S.StyledLink key={name} to={link} onMouseOver={() => setSectionName(name)}>
-            {name}
+      <Column width="100px" gap="5px">
+        {Object.keys(ProductTypeEnum).map((key) => (
+          <S.StyledLink
+            key={key}
+            to={RouteNames.STORE_UNIT.replace(':type', key.toLowerCase())}
+            onClick={() => setIsStoreDropdownOpen(false)}
+          >
+            {key}
           </S.StyledLink>
         ))}
-      </S.SectionColumn>
-      <S.ListColumn>
-        {SELECTED_SECTION?.children.map(({ name, link }) => (
-          <Link key={name} to={link}>
-            {name}
-          </Link>
-        ))}
-      </S.ListColumn>
-      <S.SectionColumn></S.SectionColumn>
+      </Column>
+      <Divider vertical margin="0 50px" />
+      <StoreSearch />
     </S.StoreDropdown>
   );
 };
