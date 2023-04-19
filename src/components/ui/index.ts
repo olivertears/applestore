@@ -6,6 +6,7 @@ export { Input } from './input';
 export { Loader } from './loader';
 export { OptionRadio } from './option-radio';
 export { PhotoSlider } from './photo-slider';
+export { Search } from './search';
 export { Select } from './select';
 export { Text } from './text';
 export { TextArea } from './text-area';

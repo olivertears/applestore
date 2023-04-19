@@ -6,5 +6,5 @@ export interface IProductService {
   deleteProduct: (id: number) => void;
   updateProduct: (updateProductData: IProduct) => void;
   getProducts: (type?: ProductTypeEnum) => void;
-  getProductsByName: (name: string) => void;
+  getProductsByName: (name: string) => Promise<IProduct[]>;
 }
