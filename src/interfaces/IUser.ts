@@ -5,5 +5,5 @@ export interface IUser {
   email: string;
   role: string;
   phoneNumber: string;
-  avatar?: string;
+  avatar: string;
 }

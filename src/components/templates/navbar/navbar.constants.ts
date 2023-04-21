@@ -5,7 +5,8 @@ export const NAVBAR_USER_LINKS: Link[] = [
   { name: 'Профиль', link: RouteNames.PROFILE },
   { name: 'Сохраненные', link: RouteNames.FAVORITES },
   { name: 'Корзина', link: RouteNames.CART },
-  { name: 'Заказы', link: RouteNames.ORDERS }
+  { name: 'Заказы', link: RouteNames.ORDERS },
+  { name: 'Каталог', link: RouteNames.CATALOG }
 ];
 
 export const NAVBAR_COMMON_LINKS: Link[] = [

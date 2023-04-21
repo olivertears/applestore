@@ -1,5 +1,5 @@
 export type IProduct = { [key in ProductParamEnum]?: string } & {
-  id: number;
+  id: string;
   name: string;
   type: ProductTypeEnum;
   price?: number;

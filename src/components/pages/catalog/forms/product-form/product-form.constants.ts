@@ -1,4 +1,4 @@
-import { Color, ProductTypeEnum } from '../../../../../interfaces';
+import { Color } from '../../../../../interfaces';
 import { ProductFormData } from './product-form.types';
 
 export enum ProductFormTabEnum {
@@ -10,9 +10,8 @@ export enum ProductFormTabEnum {
 
 export const NEW_COLOR: Color = { value: '#fff', name: '', photos: [] };
 
-export const NEW_FORM_DATA: ProductFormData = {
+export const NEW_FORM_DATA: Omit<ProductFormData, 'type'> = {
   name: '',
-  type: ProductTypeEnum.Mac,
   params: [],
   configurations: [],
   colors: [NEW_COLOR]

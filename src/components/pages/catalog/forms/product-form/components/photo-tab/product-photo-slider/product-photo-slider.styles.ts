@@ -10,7 +10,8 @@ export const ProductPhotoCard = styled.div<{ photo?: string }>`
   min-height: 100px;
   border-radius: 10px;
   outline: 1px solid #dadada;
-  background: ${({ photo }) => photo && `url('data:image/jpeg;base64,${photo}')`} no-repeat center;
+  background: ${({ photo }) => photo && `url('http://localhost:8081/products/photo/${photo}')`}
+    no-repeat center;
   background-size: cover;
   overflow: hidden;
   display: flex;
