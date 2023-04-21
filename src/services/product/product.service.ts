@@ -2,10 +2,9 @@ import { action, makeObservable, observable } from 'mobx';
 import { productApi } from '../../api/product';
 import { IProduct, ProductTypeEnum } from '../../interfaces';
 import { IProductService } from './product.types';
-import { MOCKED_PRODUCT } from './product.mocked';
 
 class ProductService implements IProductService {
-  products$: IProduct[] = [MOCKED_PRODUCT];
+  products$: IProduct[] = [];
 
   constructor() {
     makeObservable(this, {
@@ -23,7 +22,7 @@ class ProductService implements IProductService {
     this.setProducts([...this.products$, data]);
   }
 
-  async deleteProduct(id: number) {
+  async deleteProduct(id: string) {
     await productApi.deleteProduct(id);
     this.setProducts(this.products$.filter((item) => item.id !== id));
   }

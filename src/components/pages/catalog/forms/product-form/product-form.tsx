@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Divider, Form } from '../../../../ui';
+import { Divider, Form, Loader } from '../../../../ui';
 
 import * as S from './product-form.styles';
 import { productFormDataToProductAdapter, productToProductFormDataAdapter } from '../adapters';
@@ -10,17 +10,27 @@ import { ProductFormData, ProductFormProps, ProductFormTab } from './product-for
 import { InformationTab } from './components/information-tab';
 import { ConfigurationTab } from './components/configuration-tab';
 import { ColorTab } from './components/color-tab';
-import { MOCKED_PRODUCT } from '../../../../../services/product/product.mocked';
 import { PhotoTab } from './components/photo-tab';
+import { productService } from '../../../../../services/product';
 
-export const ProductForm: FC<ProductFormProps> = ({ product }) => {
+export const ProductForm: FC<ProductFormProps> = ({ product, hideModal, type }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const methods = useForm<ProductFormData>({
-    defaultValues: product ? productToProductFormDataAdapter(MOCKED_PRODUCT) : NEW_FORM_DATA
+    defaultValues: product ? productToProductFormDataAdapter(product) : { ...NEW_FORM_DATA, type }
   });
   const { handleSubmit } = methods;
 
   const onSubmit = (data: ProductFormData) => {
-    console.log(productFormDataToProductAdapter(data));
+    setIsLoading(true);
+    product
+      ? productService
+          .updateProduct({ ...productFormDataToProductAdapter(data), id: product.id })
+          .then(hideModal)
+          .finally(() => setIsLoading(false))
+      : productService
+          .addProduct(productFormDataToProductAdapter(data))
+          .then(hideModal)
+          .finally(() => setIsLoading(false));
   };
 
   const [currentTab, setCurrentTab] = useState(ProductFormTabEnum.INFORMATION);
@@ -56,6 +66,7 @@ export const ProductForm: FC<ProductFormProps> = ({ product }) => {
   return (
     <FormProvider {...methods}>
       <Form onSubmit={handleSubmit(onSubmit)} maxWidth="545px" minWidth="545px">
+        {isLoading && <Loader />}
         <S.ProductFormTabs>
           {PRODUCT_FORM_TABS.map(({ tab }) => (
             <S.Tab

@@ -4,31 +4,22 @@ import { Card, CatalogSlider, Column, Loader, Skeleton, Text } from '../../../..
 import * as S from './product-photo-slider.styles';
 import { AddPhotoIcon, CloseIcon } from '../../../../../../../ui/icons';
 import { photoService } from '../../../../../../../../services/photo';
-import { toUrlCase } from '../../../../../../../../utils';
 
-export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, type, name }) => {
+export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, productId }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const addPhoto: ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
       setIsLoading(true);
-      const arrayBuffer = await event.target.files[0].arrayBuffer();
-      const photo = new File(
-        [new Uint8Array(arrayBuffer)],
-        toUrlCase(type + '/' + name + '/' + color.name),
-        { type: event.target.files[0].type }
-      );
-
-      // id + color + file
-      photoService.addPhoto(photo).finally(() => setIsLoading(false));
+      photoService
+        .addPhoto(event.target.files[0], productId, color.name)
+        .finally(() => setIsLoading(false));
     }
   };
 
   const deletePhoto = (photo: string) => {
     setIsLoading(true);
-    photoService
-      .deletePhoto(toUrlCase(type + '/' + name + '/' + color.name) + '/' + photo)
-      .finally(() => setIsLoading(false));
+    photoService.deletePhoto(photo, productId).finally(() => setIsLoading(false));
   };
 
   return (
@@ -41,8 +32,9 @@ export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, type, n
           {color.photos.map((photo) => (
             <Card key={photo} padding="0" borderRadius="10px">
               <Skeleton>
-                <S.ProductPhotoCard photo={photo} />
-                <CloseIcon onClick={() => deletePhoto(photo)} />
+                <S.ProductPhotoCard photo={photo}>
+                  <CloseIcon width="15px" onClick={() => deletePhoto(photo)} />
+                </S.ProductPhotoCard>
               </Skeleton>
             </Card>
           ))}

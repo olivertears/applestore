@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div<{ avatar: string }>`
+export const Wrap = styled.div<{ avatar?: string }>`
   position: relative;
   min-width: 300px;
   min-height: 300px;
   border-radius: 10px;
   outline: 1px solid #dadada;
-  background: ${({ avatar }) => !!avatar && `url('data:image/jpeg;base64,${avatar}')`} no-repeat
-    center;
+  background: ${({ avatar }) => !!avatar && `url('http://localhost:8081/users/photo/${avatar}')`}
+    no-repeat center;
   background-size: cover;
   overflow: hidden;
 

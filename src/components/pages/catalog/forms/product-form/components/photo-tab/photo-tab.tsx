@@ -15,12 +15,7 @@ export const PhotoTab: FC<PhotoTabProps> = ({ product }) => {
   return (
     <>
       {product.colors.map((color) => (
-        <ProductPhotoSlider
-          key={color.name}
-          color={color}
-          type={product?.type}
-          name={product?.name}
-        />
+        <ProductPhotoSlider key={color.name} color={color} productId={product?.id} />
       ))}
     </>
   );

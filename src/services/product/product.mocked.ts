@@ -1,7 +1,7 @@
 import { IProduct, ProductConfigurationEnum, ProductTypeEnum } from '../../interfaces';
 
 export const MOCKED_PRODUCT: IProduct = {
-  id: 1,
+  id: '1',
   name: 'iPhone 12',
   type: ProductTypeEnum.iPhone,
   price: 599,

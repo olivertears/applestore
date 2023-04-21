@@ -1,4 +1,4 @@
 export interface IPhotoService {
-  addPhoto: (photo: File) => void;
-  deletePhoto: (photo: string) => void;
+  addPhoto: (file: File, productId: string, productColor: string) => void;
+  deletePhoto: (photoPath: string, productId: string) => void;
 }

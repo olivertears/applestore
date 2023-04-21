@@ -10,6 +10,8 @@ import { ProductFormTabEnum } from './product-form.constants';
 
 export interface ProductFormProps {
   product?: IProduct;
+  hideModal: () => void;
+  type?: ProductTypeEnum;
 }
 
 export interface ProductFormTab {

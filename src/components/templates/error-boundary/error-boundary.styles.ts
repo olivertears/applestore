@@ -14,5 +14,5 @@ export const ErrorContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  z-index: 2;
+  z-index: 3;
 `;

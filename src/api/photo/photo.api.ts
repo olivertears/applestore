@@ -1,20 +1,18 @@
 import { AxiosResponse } from 'axios';
-import { Catch, createApi } from '../../utils';
-import { IPhotoApi } from './photo.types';
-
-const api = () => createApi(true, 'multipart/form-data');
+import { privateApi, uploadPhotoApi } from '../index';
+import { DeletePhotoData, IPhotoApi } from './photo.types';
 
 class PhotoApi implements IPhotoApi {
-  endpoint = 'products/photos' as const;
+  endpoint = 'products/photo' as const;
 
-  @Catch
-  addPhoto(photo: File): Promise<AxiosResponse<string>> {
-    return api().post(this.endpoint, photo);
+  addPhoto(addPhotoData: FormData): Promise<AxiosResponse<string>> {
+    return uploadPhotoApi.post(this.endpoint, addPhotoData);
   }
 
-  @Catch
-  deletePhoto(photo: string): Promise<AxiosResponse> {
-    return api().delete(this.endpoint + '/' + photo);
+  deletePhoto(deletePhotoData: DeletePhotoData): Promise<AxiosResponse> {
+    return privateApi.delete(this.endpoint, {
+      data: deletePhotoData
+    });
   }
 }
 

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC, useEffect, useState } from 'react';
+import { ChangeEventHandler, FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Loader, Skeleton } from '../../../../ui';
 import { CloseIcon } from '../../../../ui/icons';
@@ -8,9 +8,6 @@ import { userService } from '../../../../../services/user';
 
 export const Avatar: FC = observer(() => {
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    avatarService.getAvatar().finally(() => setIsLoading(false));
-  }, []);
 
   const onAvatarChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
@@ -26,7 +23,7 @@ export const Avatar: FC = observer(() => {
 
   return (
     <Skeleton>
-      <S.Wrap avatar={avatarService.avatar$}>
+      <S.Wrap avatar={userService.user$?.avatar}>
         {isLoading && <Loader />}
         <S.Label htmlFor="avatar" />
         <S.Input type="file" id="avatar" onChange={onAvatarChange} />
