@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Card, CatalogSlider, Color, Text } from '../../../../ui';
+import { Card, CatalogSlider, Color, Text } from '@shared/ui';
 import * as S from './advantage-slider.styles';
 import { STORE_ADVANTAGE_CARDS } from './advantage-slider.constants';
 

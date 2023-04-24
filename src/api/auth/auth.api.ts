@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { publicApi } from '../index';
+import { publicApi } from '@shared/constants/api';
 import { IAuthApi, AuthenticateData, RegisterData, AuthResponse } from './auth.types';
 
 class AuthApi implements IAuthApi {

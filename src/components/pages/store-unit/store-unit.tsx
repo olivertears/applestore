@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { PageWrap, Text } from '../../ui';
+import { PageWrap, Text } from '@shared/ui';
 import { ProductSlider } from './components/product-slider';
 import { ProductTypeEnum } from '../../../interfaces';
 import { useLocation } from 'react-router-dom';

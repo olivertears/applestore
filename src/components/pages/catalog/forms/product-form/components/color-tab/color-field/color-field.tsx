@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { ColorInput, Input, Row } from '../../../../../../../ui';
-import { DeleteIcon } from '../../../../../../../ui/icons';
+import { ColorInput, Input, Row } from '@shared/ui';
+import { DeleteIcon } from '@shared/icons';
 import { ProductFormData } from '../../../product-form.types';
 import { ColorFieldProps } from './color-field.types';
 

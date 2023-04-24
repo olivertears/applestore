@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Button, Row } from '../../../../../../ui';
-import { AddIcon } from '../../../../../../ui/icons';
-import { useFieldArr } from '../../../../../../../hooks';
+import { Button, Row } from '@shared/ui';
+import { AddIcon } from '@shared/icons';
+import { useFieldArr } from '../../../../../../../6 - shared/hooks';
 
 import { ProductFormData } from '../../product-form.types';
 import { NEW_COLOR } from '../../product-form.constants';

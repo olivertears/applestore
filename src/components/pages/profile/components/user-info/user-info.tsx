@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Button, Color, Column, Text } from '../../../../ui';
-import { Modal } from '../../../../templates/modal';
-import { useModal } from '../../../../../hooks';
+import { Button, Color, Column, Text } from '@shared/ui';
+import { Modal } from '../../../../../6 - shared/ui/modal';
+import { useModal } from '../../../../../6 - shared/hooks';
 import { UserForm } from '../../forms/user-form';
 import { userService } from '../../../../../services/user';
 

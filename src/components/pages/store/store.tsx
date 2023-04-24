@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { PageWrap } from '../../ui';
+import { PageWrap } from '@shared/ui';
 import { UnitSlider } from './components/unit-slider';
 import { AdvantageSlider } from './components/advantage-slider';
 

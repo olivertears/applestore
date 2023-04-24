@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { getFromLocalStorage } from '../../utils';
+import { getFromLocalStorage } from '../../6 - shared/utils';
 import { authApi, AuthenticateData, RegisterData } from '../../api/auth';
 import { IAuthService } from './auth.types';
 import { userService } from '../user';

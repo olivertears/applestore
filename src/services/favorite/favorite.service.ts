@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { favoriteApi } from '../../api/favorite';
+import { favoriteApi } from '@entities/favorite/api';
 import { IFavorite } from '../../interfaces';
 import { IFavoriteService } from './favorite.types';
 

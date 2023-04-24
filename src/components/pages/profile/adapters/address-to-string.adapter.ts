@@ -1,5 +1,5 @@
 import { IAddress } from '../../../../interfaces';
-import { removeExtraSpaces } from '../../../../utils';
+import { removeExtraSpaces } from '../../../../6 - shared/utils';
 
 export const addressToStringAdapter = (address?: Omit<IAddress, 'id' | 'status'>): string =>
   removeExtraSpaces(

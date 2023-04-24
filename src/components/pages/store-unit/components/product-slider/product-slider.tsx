@@ -2,8 +2,8 @@ import { FC, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
-import { calcMonthPayment, toUrlCase } from '../../../../../utils';
-import { Card, CatalogSlider, Color, Skeleton, Text } from '../../../../ui';
+import { calcMonthPayment, toUrlCase } from '../../../../../6 - shared/utils';
+import { Card, CatalogSlider, Color, Skeleton, Text } from '@shared/ui';
 import * as S from './product-slider.styles';
 import { productService } from '../../../../../services/product';
 

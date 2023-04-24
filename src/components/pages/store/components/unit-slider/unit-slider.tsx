@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CatalogSlider, Color, Text } from '../../../../ui';
+import { Card, CatalogSlider, Color, Text } from '@shared/ui';
 import * as S from './unit-slider.styles';
 import { STORE_UNIT_CARDS } from './unit-slider.constants';
 

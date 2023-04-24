@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { cartApi } from '../../api/cart';
+import { cartApi } from '@entities/cart/api';
 import { ICart } from '../../interfaces';
 import { ICartService } from './cart.types';
 

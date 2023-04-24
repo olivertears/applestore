@@ -2,10 +2,10 @@ import { FC, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { cardService } from '../../../../../services/card';
-import { Column, Row, Text } from '../../../../ui';
-import { AddIcon, ArrowIcon } from '../../../../ui/icons';
-import { useModal } from '../../../../../hooks';
-import { Modal } from '../../../../templates/modal';
+import { Column, Row, Text } from '@shared/ui';
+import { AddIcon, ArrowIcon } from '@shared/icons';
+import { useModal } from '../../../../../6 - shared/hooks';
+import { Modal } from '../../../../../6 - shared/ui/modal';
 import { CardForm } from '../../forms/card-form';
 import { cardToCardFormDataAdapter } from '../../adapters';
 import * as S from './card-slider.styles';

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Column, Form, PhotoSlider, Row, Text } from '../../../ui';
+import { Column, Form, PhotoSlider, Row, Text } from '@shared/ui';
 import { StoreProductFormProps } from './store-product-form.types';
 import { ColorSelector } from './components/color-selector';
 import { ConfigurationSelector } from './components/configuration-selector';

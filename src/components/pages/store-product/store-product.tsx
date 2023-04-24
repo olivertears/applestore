@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { PageWrap } from '../../ui';
+import { PageWrap } from '@shared/ui';
 import { StoreProductForm } from './store-product-form';
 import { IProduct } from '../../../interfaces';
 

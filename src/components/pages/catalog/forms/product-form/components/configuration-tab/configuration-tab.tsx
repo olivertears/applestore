@@ -1,10 +1,10 @@
 import { FC, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Button, Row } from '../../../../../../ui';
-import { AddIcon } from '../../../../../../ui/icons';
-import { useFieldArr } from '../../../../../../../hooks';
-import { CONFIGURATION_NAMES } from '../../../../../../../constants';
+import { Button, Row } from '@shared/ui';
+import { AddIcon } from '@shared/icons';
+import { useFieldArr } from '../../../../../../../6 - shared/hooks';
+import { CONFIGURATION_NAMES } from '../../../../../../../6 - shared/constants';
 import { ProductConfigurationEnum } from '../../../../../../../interfaces';
 
 import { Configuration, ConfigurationValue, ProductFormData } from '../../product-form.types';

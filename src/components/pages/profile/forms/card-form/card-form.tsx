@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Loader, Row, Text } from '../../../../ui';
-import { CheckboxIcon, DeleteIcon } from '../../../../ui/icons';
+import { Button, Form, Input, Loader, Row, Text } from '@shared/ui';
+import { CheckboxIcon, DeleteIcon } from '@shared/icons';
 import { cardFormDataToCardAdapter, cardToCardFormDataAdapter } from '../../adapters';
 import { cardService } from '../../../../../services/card';
 import { CardFormData, CardFormProps } from './card-form.types';

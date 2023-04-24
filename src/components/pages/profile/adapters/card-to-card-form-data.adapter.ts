@@ -1,5 +1,5 @@
 import { ICard } from '../../../../interfaces';
-import { removeSpaces } from '../../../../utils';
+import { removeSpaces } from '../../../../6 - shared/utils';
 import { CardFormData } from '../forms/card-form/card-form.types';
 
 export const cardToCardFormDataAdapter = (card?: ICard): CardFormData => ({

@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
 import { IUser } from '../../interfaces';
-import { ChangePasswordData, UpdateUserData, userApi } from '../../api/user';
+import { ChangePasswordData, UpdateUserData, userApi } from '@entities/user/api';
 import { IUserService } from './user.types';
 import { authService } from '../auth';
 

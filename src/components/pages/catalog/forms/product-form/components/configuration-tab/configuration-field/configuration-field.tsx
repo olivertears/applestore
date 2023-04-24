@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { useFieldArr } from '../../../../../../../../hooks';
-import { CONFIGURATION_NAMES } from '../../../../../../../../constants';
-import { Column, Row, Select } from '../../../../../../../ui';
-import { AddIcon } from '../../../../../../../ui/icons';
+import { useFieldArr } from '../../../../../../../../6 - shared/hooks';
+import { CONFIGURATION_NAMES } from '../../../../../../../../6 - shared/constants';
+import { Column, Row, Select } from '@shared/ui';
+import { AddIcon } from '@shared/icons';
 
 import { ConfigurationValue, ProductFormData } from '../../../product-form.types';
 import { ConfigurationFieldProps } from './configuration-field.types';

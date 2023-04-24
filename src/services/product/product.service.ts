@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { productApi } from '../../api/product';
+import { productApi } from '@entities/product/api';
 import { IProduct, ProductTypeEnum } from '../../interfaces';
 import { IProductService } from './product.types';
 

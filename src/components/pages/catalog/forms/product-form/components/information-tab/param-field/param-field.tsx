@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { ProductParamEnum } from '../../../../../../../../interfaces';
-import { PARAM_NAMES } from '../../../../../../../../constants';
-import { Row, Select, TextArea } from '../../../../../../../ui';
-import { DeleteIcon } from '../../../../../../../ui/icons';
+import { PARAM_NAMES } from '../../../../../../../../6 - shared/constants';
+import { Row, Select, TextArea } from '@shared/ui';
+import { DeleteIcon } from '@shared/icons';
 import { ProductFormData } from '../../../product-form.types';
 import { ParamFieldProps } from './param-field.types';
 

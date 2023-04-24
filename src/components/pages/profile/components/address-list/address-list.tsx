@@ -1,10 +1,10 @@
 import { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { addressService } from '../../../../../services/address';
-import { Column, Text } from '../../../../ui';
-import { AddIcon } from '../../../../ui/icons';
-import { useModal } from '../../../../../hooks';
-import { Modal } from '../../../../templates/modal';
+import { Column, Text } from '@shared/ui';
+import { AddIcon } from '@shared/icons';
+import { useModal } from '../../../../../6 - shared/hooks';
+import { Modal } from '../../../../../6 - shared/ui/modal';
 import { AddressForm } from '../../forms/address-form';
 import { AddressItem } from '../address-item';
 

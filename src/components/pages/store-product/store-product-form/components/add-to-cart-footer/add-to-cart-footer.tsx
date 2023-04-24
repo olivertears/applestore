@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 import * as S from './add-to-cart-footer.styles';
-import { Button, Column, Row, Text } from '../../../../../ui';
-import { HeartIcon } from '../../../../../ui/icons';
+import { Button, Column, Row, Text } from '@shared/ui';
+import { HeartIcon } from '@shared/icons';
 import { AddToCartFooterProps } from './add-to-cart-footer.types';
 import { useFormContext } from 'react-hook-form';
 import { StoreProductFormData } from '../../../store-product.types';
-import { calcMonthPayment } from '../../../../../../utils';
+import { calcMonthPayment } from '../../../../../../6 - shared/utils';
 
 export const AddToCartFooter: FC<AddToCartFooterProps> = ({ configurations, price }) => {
   const [selected, setSelected] = useState(false);

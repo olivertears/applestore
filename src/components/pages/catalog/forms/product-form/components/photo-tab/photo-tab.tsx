@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { PhotoTabProps } from './photo-tab.types';
-import { Text } from '../../../../../../ui';
+import { Text } from '@shared/ui';
 import { ProductPhotoSlider } from './product-photo-slider';
 
 export const PhotoTab: FC<PhotoTabProps> = ({ product }) => {

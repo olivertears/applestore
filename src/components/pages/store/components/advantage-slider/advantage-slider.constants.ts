@@ -1,4 +1,10 @@
-import { AppleStoreIcon, CardIcon, CarIcon, SmileIcon, TradeIcon } from '../../../../ui/icons';
+import {
+  AppleStoreIcon,
+  CardIcon,
+  CarIcon,
+  SmileIcon,
+  TradeIcon
+} from '@shared/icons';
 import { StoreAdvantage } from './advantage-slider.types';
 
 export const STORE_ADVANTAGE_CARDS: StoreAdvantage[] = [

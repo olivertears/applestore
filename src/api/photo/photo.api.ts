@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { privateApi, uploadPhotoApi } from '../index';
+import { privateApi, uploadPhotoApi } from '@shared/constants/api';
 import { DeletePhotoData, IPhotoApi } from './photo.types';
 
 class PhotoApi implements IPhotoApi {

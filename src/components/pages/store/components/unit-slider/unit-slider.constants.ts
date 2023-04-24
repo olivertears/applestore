@@ -1,4 +1,4 @@
-import { RouteNames } from '../../../../templates/router/router.types';
+import { RouteNames } from '@app/router/router.types';
 import { StoreUnit } from './unit-slider.types';
 
 export const STORE_UNIT_CARDS: StoreUnit[] = [

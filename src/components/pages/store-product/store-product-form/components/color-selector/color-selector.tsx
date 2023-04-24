@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ColorSelectorProps } from './color-selector.types';
-import { Color, ColorRadio, Column, Fieldset, Text } from '../../../../../ui';
+import { Color, ColorRadio, Column, Fieldset, Text } from '@shared/ui';
 import { useFormContext } from 'react-hook-form';
 import { StoreProductFormData } from '../../../store-product.types';
 

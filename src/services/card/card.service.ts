@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { cardApi } from '../../api/card';
+import { cardApi } from '@entities/card/api';
 import { ICard } from '../../interfaces';
 import { ICardService } from './card.types';
 

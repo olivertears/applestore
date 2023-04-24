@@ -1,5 +1,5 @@
 import { IUser } from '../../interfaces';
-import { ChangePasswordData, UpdateUserData } from '../../api/user';
+import { ChangePasswordData, UpdateUserData } from '@entities/user/api';
 
 export interface IUserService {
   user$: IUser | null;

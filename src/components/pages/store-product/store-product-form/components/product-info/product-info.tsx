@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Color, Column, Divider, Text } from '../../../../../ui';
+import { Color, Column, Divider, Text } from '@shared/ui';
 import { ProductInfoProps } from './product-info.types';
-import { PARAM_NAMES } from '../../../../../../constants';
+import { PARAM_NAMES } from '../../../../../../6 - shared/constants';
 
 export const ProductInfo: FC<ProductInfoProps> = ({ params, name }) => {
   return (

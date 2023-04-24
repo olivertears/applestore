@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
-import { PageWrap } from '../../ui';
-import { useModal } from '../../../hooks';
-import { Modal } from '../../templates/modal';
+import { PageWrap } from '@shared/ui';
+import { useModal } from '../../../6 - shared/hooks';
+import { Modal } from '../../../6 - shared/ui/modal';
 import { ProductForm } from './forms/product-form';
 import { ProductSlider } from './components/product-slider';
 import { observer } from 'mobx-react-lite';

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Divider, PageWrap, Row, Text } from '../../ui';
+import { Divider, PageWrap, Row, Text } from '@shared/ui';
 import { UserInfo } from './components/user-info';
 import { AddressList } from './components/address-list';
 import { CardSlider } from './components/card-slider';

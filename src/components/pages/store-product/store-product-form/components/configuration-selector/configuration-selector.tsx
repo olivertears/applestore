@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { ConfigurationSelectorProps } from './configuration-selector.types';
-import { Column, Fieldset, OptionRadio, Row, Text } from '../../../../../ui';
+import { Column, Fieldset, OptionRadio, Row, Text } from '@shared/ui';
 import { StoreProductFormData } from '../../../store-product.types';
-import { CONFIGURATION_NAMES } from '../../../../../../constants';
+import { CONFIGURATION_NAMES } from '../../../../../../6 - shared/constants';
 
 export const ConfigurationSelector: FC<ConfigurationSelectorProps> = ({ configuration }) => {
   const { register, watch } = useFormContext<StoreProductFormData>();

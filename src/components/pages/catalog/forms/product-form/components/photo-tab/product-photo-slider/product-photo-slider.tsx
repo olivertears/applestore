@@ -1,8 +1,15 @@
 import { ChangeEventHandler, FC, useState } from 'react';
 import { ProductPhotoSliderProps } from './product-photo-slider.types';
-import { Card, CatalogSlider, Column, Loader, Skeleton, Text } from '../../../../../../../ui';
+import {
+  Card,
+  CatalogSlider,
+  Column,
+  Loader,
+  Skeleton,
+  Text
+} from '@shared/ui';
 import * as S from './product-photo-slider.styles';
-import { AddPhotoIcon, CloseIcon } from '../../../../../../../ui/icons';
+import { AddPhotoIcon, CloseIcon } from '@shared/icons';
 import { photoService } from '../../../../../../../../services/photo';
 
 export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, productId }) => {

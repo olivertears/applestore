@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CardChipIcon } from '../../../../ui/icons';
+import { CardChipIcon } from '@shared/icons';
 import {
   cardMonthPattern,
   cardNumberPattern,

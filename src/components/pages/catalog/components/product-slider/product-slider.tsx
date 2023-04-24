@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Card, CatalogSlider, Text } from '../../../../ui';
+import { Card, CatalogSlider, Text } from '@shared/ui';
 import * as S from './product-slider.styles';
 import { ProductSliderProps } from './product-slider.types';
-import { AddIcon, CloseIcon } from '../../../../ui/icons';
+import { AddIcon, CloseIcon } from '@shared/icons';
 import { productService } from '../../../../../services/product';
 
 export const ProductSlider: FC<ProductSliderProps> = ({ type, products, showModal, setType }) => {

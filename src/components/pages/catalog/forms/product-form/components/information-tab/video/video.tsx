@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FC, useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash.debounce';
 import { useFormContext } from 'react-hook-form';
-import { Iframe, Select, Skeleton, Text } from '../../../../../../../ui';
+import { Iframe, Select, Skeleton, Text } from '@shared/ui';
 import { ProductFormData } from '../../../product-form.types';
 import { youtubeApi } from '../../../../../../../../api/youtube';
 

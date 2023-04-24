@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button, Column, Form, Input, Loader, Text } from '../../../../ui';
-import { ChangePasswordData } from '../../../../../api/user';
+import { Button, Column, Form, Input, Loader, Text } from '@shared/ui';
+import { ChangePasswordData } from '@entities/user/api';
 import { userService } from '../../../../../services/user';
-import { Modal } from '../../../../templates/modal';
-import { useModal } from '../../../../../hooks';
+import { Modal } from '../../../../../6 - shared/ui/modal';
+import { useModal } from '../../../../../6 - shared/hooks';
 
 export const ChangePasswordForm: FC = () => {
   const { isModalOpen, showModal, hideModal } = useModal();

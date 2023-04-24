@@ -1,11 +1,11 @@
 import { FC, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { useFieldArr } from '../../../../../../../hooks';
-import { Button, Input, Select, Text } from '../../../../../../ui';
-import { AddIcon } from '../../../../../../ui/icons';
+import { useFieldArr } from '../../../../../../../6 - shared/hooks';
+import { Button, Input, Select, Text } from '@shared/ui';
+import { AddIcon } from '@shared/icons';
 import { ProductParamEnum, ProductTypeEnum } from '../../../../../../../interfaces';
-import { PARAM_NAMES } from '../../../../../../../constants';
+import { PARAM_NAMES } from '../../../../../../../6 - shared/constants';
 
 import { Param, ProductFormData } from '../../product-form.types';
 import { InformationTabProps } from './Information-tab.types';

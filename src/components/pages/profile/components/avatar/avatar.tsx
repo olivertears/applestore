@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Loader, Skeleton } from '../../../../ui';
-import { CloseIcon } from '../../../../ui/icons';
+import { Loader, Skeleton } from '@shared/ui';
+import { CloseIcon } from '@shared/icons';
 import { avatarService } from '../../../../../services/avatar';
 import * as S from './avatar.styles';
 import { userService } from '../../../../../services/user';

@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { addressApi } from '../../api/address';
+import { addressApi } from '@entities/address/api';
 import { IAddress } from '../../interfaces';
 import { IAddressService } from './address.types';
 

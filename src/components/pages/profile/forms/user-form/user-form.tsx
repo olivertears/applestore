@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Input, Loader, Text } from '../../../../ui';
-import { UpdateUserData } from '../../../../../api/user';
+import { Button, Form, Input, Loader, Text } from '@shared/ui';
+import { UpdateUserData } from '@entities/user/api';
 import { userService } from '../../../../../services/user';
 import { UserFormProps } from './user-form.types';
 
