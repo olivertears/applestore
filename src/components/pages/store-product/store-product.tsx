@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { PageWrap } from '../../ui';
 import { StoreProductForm } from './store-product-form';
-import { MOCKED_PRODUCT } from '../../../services/product/product.mocked';
+import { IProduct } from '../../../interfaces';
 
 export const StoreProduct: FC = () => {
   return (
     <PageWrap>
-      <StoreProductForm product={MOCKED_PRODUCT} />
+      <StoreProductForm product={{} as IProduct} />
     </PageWrap>
   );
 };
