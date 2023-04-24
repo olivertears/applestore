@@ -1,14 +1,21 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { calcMonthPayment, toUrlCase } from '../../../../../utils';
 import { Card, CatalogSlider, Color, Skeleton, Text } from '../../../../ui';
 import * as S from './product-slider.styles';
-import { MOCKED_PRODUCT } from '../../../../../services/product/product.mocked';
+import { productService } from '../../../../../services/product';
 
-export const ProductSlider: FC = () => {
+export const ProductSlider: FC = observer(() => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  console.log(pathname);
+
+  useEffect(() => {
+    productService.getProducts();
+  }, []);
 
   return (
     <>
@@ -16,7 +23,7 @@ export const ProductSlider: FC = () => {
         All models. <Color>Take your pick.</Color>
       </Text>
       <CatalogSlider>
-        {[MOCKED_PRODUCT].map(({ name, colors, price }) => (
+        {productService.products$.map(({ name, colors, price }) => (
           <Card key={name} onClick={() => navigate(pathname + '/' + toUrlCase(name))}>
             <S.ProductCard>
               <S.HeaderWrap>
@@ -26,8 +33,8 @@ export const ProductSlider: FC = () => {
                 <S.Image img={colors[0].photos[0]} />
               </Skeleton>
               <S.ColorWrap>
-                {colors.map(({ value }) => (
-                  <S.Color key={value} color={value} />
+                {colors.map(({ name, value }) => (
+                  <S.Color key={name} color={value} />
                 ))}
               </S.ColorWrap>
               <S.PriceInfo>From ${price?.toFixed(2)} or</S.PriceInfo>
@@ -38,4 +45,4 @@ export const ProductSlider: FC = () => {
       </CatalogSlider>
     </>
   );
-};
+});
