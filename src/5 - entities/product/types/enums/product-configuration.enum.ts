@@ -1,5 +1,5 @@
 export enum ProductConfigurationEnum {
-  STORAGE = 'storage',
-  MEMORY = 'memory',
-  PROCESSOR = 'processor'
+  STORAGE = 'STORAGE',
+  MEMORY = 'MEMORY',
+  PROCESSOR = 'PROCESSOR'
 }

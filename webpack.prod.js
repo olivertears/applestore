@@ -7,7 +7,11 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
-    minimize: false
+    minimize: true
+  },
+  performance: {
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000
   },
   plugins: [
     new HTMLWebpackPlugin({
