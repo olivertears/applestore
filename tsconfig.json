@@ -32,15 +32,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "paths": {
-      "@api/*": ["api/*"],
-      "@components/*": ["components/*"],
-      "@constants/*": ["constants/*"],
-      "@hooks/*": ["hooks/*"],
-      "@interfaces/*": ["interfaces/*"],
-      "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
-    },
-    "typeRoots": ["./@types", "./node_modules/@types"]
+      "@app/*": ["0 - app/*"],
+      "@processes/*": ["1 - processes/*"],
+      "@pages/*": ["2 - pages/*"],
+      "@widgets/*": ["3 - widgets/*"],
+      "@features/*": ["4 - features/*"],
+      "@entities/*": ["5 - entities/*"],
+      "@shared/*": ["6 - shared/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"]
