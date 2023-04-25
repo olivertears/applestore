@@ -39,8 +39,7 @@
       "@features/*": ["4 - features/*"],
       "@entities/*": ["5 - entities/*"],
       "@shared/*": ["6 - shared/*"]
-    },
-    "typeRoots": ["./@types", "./node_modules/@types"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"]

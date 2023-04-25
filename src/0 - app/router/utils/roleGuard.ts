@@ -1,4 +1,4 @@
-import { userService } from '../../../services/user';
+import { userService } from '@entities/user/service';
 import { RouteNames } from '../router.types';
 
 export const roleGuard = (role: string) => () =>

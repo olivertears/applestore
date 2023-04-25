@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IProduct, ProductTypeEnum } from '../../../interfaces';
+import { IProduct, ProductTypeEnum } from '../types';
 
 export interface IProductApi {
   endpoint: 'products';

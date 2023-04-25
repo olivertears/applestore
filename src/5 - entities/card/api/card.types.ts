@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { ICard } from '../../../interfaces';
+import { ICard } from '../types';
 
 export interface ICardApi {
   endpoint: 'cards';

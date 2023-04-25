@@ -5,7 +5,7 @@ import { AppleIcon } from '@shared/icons';
 import * as S from './not-found.styles';
 import { useNavigate } from 'react-router-dom';
 
-export const NotFound: FC = () => {
+const NotFound: FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -21,3 +21,5 @@ export const NotFound: FC = () => {
     </PageWrap>
   );
 };
+
+export default NotFound;

@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { privateApi } from '@shared/constants/api';
-import { IFavorite } from '../../../interfaces';
+import { IFavorite } from '../types';
 import { IFavoriteApi } from './favorite.types';
 
 class FavoriteApi implements IFavoriteApi {

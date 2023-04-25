@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IFavorite } from '../../../interfaces';
+import { IFavorite } from '../types';
 
 export interface IFavoriteApi {
   endpoint: 'favorites';

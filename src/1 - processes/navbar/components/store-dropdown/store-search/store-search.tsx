@@ -1,10 +1,11 @@
 import { ChangeEventHandler, FC, useCallback, useState } from 'react';
 import debounce from 'lodash.debounce';
+
 import { RouteNames } from '@app/router';
-import { toUrlCase } from '../../../../../6 - shared/utils';
-import { ProductTypeEnum } from '../../../../../interfaces';
+import { productService } from '@entities/product/service';
+import { ProductTypeEnum } from '@entities/product/types';
+import { toUrlCase } from '@shared/utils';
 import { Column, Link, Search } from '@shared/ui';
-import { productService } from '../../../../../services/product';
 
 export const StoreSearch: FC = () => {
   const [products, setProducts] = useState<{ type: ProductTypeEnum; name: string }[]>([]);

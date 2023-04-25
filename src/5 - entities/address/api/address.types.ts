@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IAddress } from '../../../interfaces';
+import { IAddress } from '../types';
 
 export interface IAddressApi {
   endpoint: 'addresses';

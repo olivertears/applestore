@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { emailRegex } from '../../../6 - shared/utils';
-import { Button, Form, Input, Loader, Text } from '@shared/ui';
+
 import { RouteNames } from '@app/router';
-import { AuthenticateData } from '../../../api/auth';
-import { authService } from '../../../services/auth';
+import { AuthenticateData } from '@features/auth/types';
+import { emailRegex } from '@shared/utils';
+import { Button, Form, Input, Loader, Text } from '@shared/ui';
+import { authService } from '@features/auth/service';
 
 export const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);

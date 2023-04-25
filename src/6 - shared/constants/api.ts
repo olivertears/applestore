@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { getFromLocalStorage } from '../utils';
-import { errorService } from '@entities/error/service';
-import { IError } from '../../interfaces';
+import { errorService } from '@processes/error-boundary/service';
+import { IError } from '@processes/error-boundary/types';
 
 const createApi = (): AxiosInstance => axios.create({ baseURL: 'http://localhost:8081/' });
 

@@ -1,1 +1,3 @@
-export { Favorites } from './favorites';
+import { lazy } from 'react';
+
+export const Favorites = lazy(() => import('./favorites'));

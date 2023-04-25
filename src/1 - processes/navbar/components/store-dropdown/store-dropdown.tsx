@@ -1,10 +1,10 @@
 import { FC } from 'react';
+import { RouteNames } from '@app/router';
+import { ProductTypeEnum } from '@entities/product/types';
+import { Column, Divider } from '@shared/ui';
 import * as S from './store-dropdown.styles';
 import { StoreDropdownProps } from './store-dropdown.types';
-import { ProductTypeEnum } from '../../../../interfaces';
-import { RouteNames } from '@app/router';
 import { StoreSearch } from './store-search';
-import { Column, Divider } from '@shared/ui';
 
 export const StoreDropdown: FC<StoreDropdownProps> = ({
   isStoreDropdownOpen,

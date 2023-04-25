@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { privateApi } from '@shared/constants/api';
-import { IAddress } from '../../../interfaces';
+import { IAddress } from '../types';
 import { IAddressApi } from './address.types';
 
 class AddressApi implements IAddressApi {

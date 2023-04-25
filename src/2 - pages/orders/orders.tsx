@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
-export const Orders: FC = () => {
+const Orders: FC = () => {
   return <div>Orders</div>;
 };
+
+export default Orders;

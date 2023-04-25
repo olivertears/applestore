@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { privateApi } from '@shared/constants/api';
-import { IUser } from '../../../interfaces';
-import { ChangePasswordData, IUserApi, UpdateUserData } from './user.types';
+import { ChangePasswordData, IUser, UpdateUserData } from '../types';
+import { IUserApi } from './user.types';
 
 class UserApi implements IUserApi {
   endpoint = 'users' as const;

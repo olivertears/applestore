@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { privateApi, publicApi } from '@shared/constants/api';
-import { IProduct, ProductTypeEnum } from '../../../interfaces';
+import { IProduct, ProductTypeEnum } from '../types';
 import { IProductApi } from './product.types';
 
 class ProductApi implements IProductApi {

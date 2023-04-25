@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { ICart } from '../../../interfaces';
+import { ICart } from '../types';
 
 export interface ICartApi {
   endpoint: 'carts';

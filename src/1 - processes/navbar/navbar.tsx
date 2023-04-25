@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { userService } from '../../services/user';
+import { userService } from '@entities/user/service';
 import { NAVBAR_USER_LINKS, NAVBAR_COMMON_LINKS } from './navbar.constants';
 import { RouteNames } from '@app/router';
 import { AppleIcon } from '@shared/icons';

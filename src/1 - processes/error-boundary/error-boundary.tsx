@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
-import * as S from './error-boundary.styles';
-import { ErrorItem } from '@entities/error/components/error-item';
-import { errorService } from '@entities/error/service';
 import { observer } from 'mobx-react-lite';
+import { errorService } from './service';
+import { ErrorItem } from './components/error-item';
+import * as S from './error-boundary.styles';
 
 export const ErrorBoundary: FC<PropsWithChildren> = observer(({ children }) => {
   return (

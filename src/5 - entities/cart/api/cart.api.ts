@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { privateApi } from '@shared/constants/api';
-import { ICart } from '../../../interfaces';
+import { ICart } from '../types';
 import { ICartApi } from './cart.types';
 
 class CartApi implements ICartApi {

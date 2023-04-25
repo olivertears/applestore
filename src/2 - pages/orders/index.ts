@@ -1,1 +1,3 @@
-export { Orders } from './orders';
+import { lazy } from 'react';
+
+export const Orders = lazy(() => import('./orders'));
