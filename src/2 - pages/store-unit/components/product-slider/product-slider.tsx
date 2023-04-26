@@ -1,21 +1,15 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
 import { productService } from '@entities/product/service';
 import { calcMonthPayment, toUrlCase } from '@shared/utils';
-import { Card, CatalogSlider, Color, Skeleton, Text } from '@shared/ui';
+import { Card, CatalogSlider, Color, Text } from '@shared/ui';
 import * as S from './product-slider.styles';
 
 export const ProductSlider: FC = observer(() => {
-  const { pathname } = useLocation();
   const navigate = useNavigate();
-
-  console.log(pathname);
-
-  useEffect(() => {
-    productService.getProducts();
-  }, []);
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -23,15 +17,15 @@ export const ProductSlider: FC = observer(() => {
         All models. <Color>Take your pick.</Color>
       </Text>
       <CatalogSlider>
-        {productService.products$.map(({ name, colors, price }) => (
-          <Card key={name} onClick={() => navigate(pathname + '/' + toUrlCase(name))}>
+        {productService.products$.map(({ name, id, preview, colors, price }) => (
+          <Card key={name} onClick={() => navigate(pathname + '/' + toUrlCase(name))} padding="0">
             <S.ProductCard>
               <S.HeaderWrap>
-                <Text type="header">{name}</Text>
+                <Text type="header" padding="0 30px">
+                  {name}
+                </Text>
               </S.HeaderWrap>
-              <Skeleton>
-                <S.Image img={colors[0].photos[0]} />
-              </Skeleton>
+              <S.Image preview={id + '/' + preview} />
               <S.ColorWrap>
                 {colors.map(({ name, value }) => (
                   <S.Color key={name} color={value} />

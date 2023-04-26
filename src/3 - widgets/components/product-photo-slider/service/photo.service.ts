@@ -1,4 +1,4 @@
-import { photoApi } from '@features/product-photo-slider/api';
+import { photoApi } from '@widgets/components/product-photo-slider/api';
 import { IPhotoService } from './photo.types';
 import { productService } from '@entities/product/service';
 

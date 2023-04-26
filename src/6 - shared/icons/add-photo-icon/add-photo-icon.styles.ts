@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const Svg = styled.svg`
+export const Svg = styled.svg<{ width?: string }>`
   fill: none;
   stroke: #1d1d1f;
   stroke-width: 0;
   stroke-linecap: round;
   stroke-linejoin: round;
-  height: 50px;
-  width: 50px;
+  height: ${({ width }) => (width ? width : '50px')};
+  width: ${({ width }) => (width ? width : '50px')};
   cursor: pointer;
   margin: auto;
 `;

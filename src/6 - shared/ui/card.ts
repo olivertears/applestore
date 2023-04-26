@@ -8,6 +8,7 @@ export const Card = styled.div<{ onClick?: () => void; padding?: string; borderR
   box-shadow: 0 0 5px 2px #dadada;
   transition: 300ms all;
   cursor: ${({ onClick }) => (!!onClick ? 'pointer' : 'default')};
+  background-color: #f5f5f7;
 
   :hover {
     box-shadow: 0 0 5px 3px #dadada;

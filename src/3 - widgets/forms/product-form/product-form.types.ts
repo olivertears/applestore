@@ -24,6 +24,7 @@ export interface ProductFormData {
   type: ProductTypeEnum;
   price?: number;
   video?: string;
+  preview?: string;
   params?: Param[];
   configurations?: Configuration[];
   colors: Color[];
