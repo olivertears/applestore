@@ -18,8 +18,7 @@ export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, product
   };
 
   const deletePhoto = (photo: string) => {
-    setIsLoading(true);
-    photoService.deletePhoto(photo, productId).finally(() => setIsLoading(false));
+    photoService.deletePhoto(photo, productId);
   };
 
   return (

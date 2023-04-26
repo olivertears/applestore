@@ -12,9 +12,9 @@ export const ProductSlider: FC<ProductSliderProps> = ({ type, products, showModa
         {type}
       </Text>
       <CatalogSlider marginBottom="50px">
-        {products.map(({ name, id }) => (
+        {products.map(({ name, id, preview }) => (
           <Card key={name} onClick={() => showModal(id)} padding="0">
-            <S.ProductCard>
+            <S.ProductCard preview={id + '/' + preview}>
               <Text type="header" textAlign="center">
                 {name}
               </Text>

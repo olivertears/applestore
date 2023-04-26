@@ -21,7 +21,11 @@ export const ColorField: FC<ColorFieldProps> = ({ remove, index }) => {
         value={watch(`colors.${index}.name`)}
         error={errors.colors?.[index]?.name?.message}
         {...register(`colors.${index}.name`, {
-          required: 'Это поле обязательно'
+          required: 'Это поле обязательно',
+          validate: (value, { colors }) =>
+            colors.filter(({ name }) => name === value).length !== 1
+              ? 'Названия цветов не должны повторяться'
+              : true
         })}
       />
       {watch('colors').length !== 1 && (

@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { PhotoTabProps } from './photo-tab.types';
+import { Preview } from '@widgets/components/preview';
+import { ProductPhotoSlider } from '@widgets/components/product-photo-slider';
 import { Text } from '@shared/ui';
-import { ProductPhotoSlider } from '../../../../../4 - features/product-photo-slider';
+import { PhotoTabProps } from './photo-tab.types';
 
 export const PhotoTab: FC<PhotoTabProps> = ({ product }) => {
   if (!product) {
@@ -14,6 +15,10 @@ export const PhotoTab: FC<PhotoTabProps> = ({ product }) => {
 
   return (
     <>
+      <Text type="param" textAlign="center">
+        Preview
+      </Text>
+      <Preview productId={product.id} preview={product.preview || ''} />
       {product.colors.map((color) => (
         <ProductPhotoSlider key={color.name} color={color} productId={product?.id} />
       ))}

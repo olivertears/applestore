@@ -1,32 +1,34 @@
 import styled from 'styled-components';
 
 export const ProductCard = styled.div`
-  width: 300px;
-  height: 440px;
+  padding: 30px 0;
+  width: 360px;
+  height: 460px;
   position: relative;
   display: flex;
   flex-direction: column;
 `;
 
 export const HeaderWrap = styled.div`
-  height: 80px;
   margin-top: 20px;
+  height: 30px;
 `;
 
-export const Image = styled.div<{ img?: string }>`
-  height: 240px;
-  width: 300px;
-  background: ${({ img }) => `url(${img}) no-repeat`} center;
-  background-size: contain;
+export const Image = styled.div<{ preview?: string }>`
+  height: 275px;
+  width: 360px;
+  background: ${({ preview }) =>
+    preview &&
+    `url('http://localhost:8081/products/photo/preview/${preview}') no-repeat center #f5f5f7`};
+  background-size: cover;
   border-radius: 10px;
-  margin: 10px 0;
 `;
 
 export const ColorWrap = styled.div`
   display: flex;
   justify-content: center;
   gap: 5px;
-  margin: 10px 0;
+  margin-bottom: 10px;
 `;
 
 export const Color = styled.div`
@@ -39,7 +41,8 @@ export const Color = styled.div`
 `;
 
 export const PriceInfo = styled.div`
+  padding: 0 30px;
   font-size: 14px;
+  height: 20px;
   color: #1d1d1f;
-  margin: 1px 0;
 `;
