@@ -10,7 +10,8 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   plugins: ['prettier', 'import', '@typescript-eslint'],
   rules: {
-    'prettier/prettier': ['warn'],
+    "react/react-in-jsx-scope": "off",
+    'prettier/prettier': 'warn',
     'no-console': 'warn',
     '@typescript-eslint/no-empty-function': 'warn',
     '@typescript-eslint/ban-ts-comment': 'warn'

@@ -1,13 +1,17 @@
 import { FC } from 'react';
 
+import { ErrorBoundary } from '@processes/error-boundary';
 import { Router } from './router';
-import { ErrorBoundary } from '../1 - processes/error-boundary';
+import { AppStyles } from './app.styles';
 
 const App: FC = () => {
   return (
-    <ErrorBoundary>
-      <Router />
-    </ErrorBoundary>
+    <>
+      <AppStyles />
+      <ErrorBoundary>
+        <Router />
+      </ErrorBoundary>
+    </>
   );
 };
 

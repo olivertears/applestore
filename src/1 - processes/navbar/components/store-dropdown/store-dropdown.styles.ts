@@ -11,7 +11,7 @@ export const StoreDropdown = styled.div<{ isOpen: boolean }>`
   transition: 0.3s ease-in-out all;
   justify-content: center;
   display: flex;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const StyledLink = styled(Link)`
