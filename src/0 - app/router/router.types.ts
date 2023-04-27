@@ -3,7 +3,7 @@ export enum RouteNames {
   MENU = '/',
   STORE = '/store',
   STORE_UNIT = '/store/:type',
-  STORE_UNIT_PRODUCT = '/store/:type/:product',
+  STORE_UNIT_PRODUCT = '/store/:type/:name',
 
   SIGN_IN = '/sign_in',
   SIGN_UP = '/sign_up',

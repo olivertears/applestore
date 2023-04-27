@@ -1,9 +1,10 @@
 import { ChangeEventHandler, FC, useCallback, useEffect, useState } from 'react';
-import debounce from 'lodash.debounce';
 import { useFormContext } from 'react-hook-form';
-import { Iframe, Select, Skeleton, Text } from '@shared/ui';
-import { ProductFormData } from '@widgets/forms/product-form/product-form.types';
+import debounce from 'lodash.debounce';
+
 import { youtubeApi } from '@features/youtube/api';
+import { Iframe, Select, Skeleton, Text } from '@shared/ui';
+import { ProductFormData } from '../../../product-form.types';
 
 export const Video: FC = () => {
   const { setValue, watch } = useFormContext<ProductFormData>();
