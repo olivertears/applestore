@@ -1,3 +1,1 @@
-import { lazy } from 'react';
-
-export const StoreUnit = lazy(() => import('./store-unit'));
+export { default } from './store-unit';

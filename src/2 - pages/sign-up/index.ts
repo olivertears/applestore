@@ -1,3 +1,1 @@
-import { lazy } from 'react';
-
-export const SignUp = lazy(() => import('./sign-up'));
+export { default } from './sign-up';

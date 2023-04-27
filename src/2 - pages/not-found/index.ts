@@ -1,3 +1,1 @@
-import { lazy } from 'react';
-
-export const NotFound = lazy(() => import('./not-found'));
+export { default } from './not-found';
