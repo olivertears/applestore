@@ -7,7 +7,6 @@ export type IProduct = { [key in ProductParamEnum]?: string } & {
   price?: number;
   video?: string;
   preview?: string;
-  averageRate?: number;
   configurations?: Configuration[];
   colors: Color[];
 };

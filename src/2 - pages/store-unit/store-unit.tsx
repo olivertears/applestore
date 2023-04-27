@@ -1,20 +1,20 @@
 import { FC, useEffect, useState } from 'react';
-import { Loader, PageWrap, Text } from '@shared/ui';
-import { ProductSlider } from './components/product-slider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { RouteNames } from '@app/router';
 import { productService } from '@entities/product/service';
 import { ProductTypeEnum } from '@entities/product/types';
-import { RouteNames } from '@app/router';
+import { Loader, PageWrap, Text } from '@shared/ui';
+import { ProductSlider } from './components/product-slider';
 
 const StoreUnit: FC = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const { type } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const type = pathname.split('/').pop() || '';
 
   useEffect(() => {
     productService.setProducts([]);
-    if (Object.keys(ProductTypeEnum).includes(type)) {
+    if (Object.keys(ProductTypeEnum).includes(type || '')) {
       productService.getProducts(type as ProductTypeEnum).finally(() => setIsLoading(false));
     } else {
       navigate(RouteNames.NOT_FOUND);

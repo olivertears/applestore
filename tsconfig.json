@@ -1,36 +1,23 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es5",
-      "scripthost",
-      "es2015",
-      "es2015.promise",
-      "es2016.array.include",
-      "es2018"
-    ],
-    "allowJs": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
     "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true,
+    "types": ["vite/client"],
     "baseUrl": "src",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "declarationDir": "dist",
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "paths": {
       "@app/*": ["0 - app/*"],
       "@processes/*": ["1 - processes/*"],
@@ -41,6 +28,6 @@
       "@shared/*": ["6 - shared/*"]
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src", ".eslintrc.cjs"],
+  "references": [{"path": "./tsconfig.node.json"}]
 }
