@@ -31,13 +31,6 @@ class FavoriteService implements IFavoriteService {
     const { data } = await favoriteApi.getFavorites();
     this.setFavorites(data);
   }
-
-  async updateFavorite(updateFavoriteData: IFavorite) {
-    const { data } = await favoriteApi.updateFavorite(updateFavoriteData);
-    this.setFavorites(
-      this.favorites$.map((item) => (item.id === updateFavoriteData.id ? data : item))
-    );
-  }
 }
 
 export const favoriteService = new FavoriteService();

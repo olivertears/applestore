@@ -1,9 +1,8 @@
-import { ICart } from '../types';
+import { ICartProduct } from '../types';
 
 export interface ICartService {
-  cart$: ICart[];
-  addToCart: (productId: string) => void;
+  cart$: ICartProduct[];
+  addToCart: (cart: Omit<ICartProduct, 'id'>) => void;
   deleteFromCart: (id: string) => void;
-  getCart: () => void;
-  updateCart: (updateCartItemData: ICart) => void;
+  getCartProducts: () => void;
 }

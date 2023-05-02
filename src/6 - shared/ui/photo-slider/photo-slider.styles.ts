@@ -29,7 +29,8 @@ export const Image = styled.div<{ src?: string }>`
   min-width: 600px;
   width: min(60vw, 900px);
   height: 500px;
-  background: ${({ src }) => src && `url("http://localhost:8081/aws/${src}")`} no-repeat center;
+  background: ${({ src }) => src && `url("http://localhost:8081/products/photo/${src}")`} no-repeat
+    center;
   background-size: contain;
 `;
 

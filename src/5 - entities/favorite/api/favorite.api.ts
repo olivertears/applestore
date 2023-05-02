@@ -17,10 +17,6 @@ class FavoriteApi implements IFavoriteApi {
   getFavorites(): Promise<AxiosResponse<IFavorite[]>> {
     return privateApi.get(this.endpoint);
   }
-
-  updateFavorite(updateFavoriteData: IFavorite): Promise<AxiosResponse<IFavorite>> {
-    return privateApi.post(this.endpoint, updateFavoriteData);
-  }
 }
 
 export const favoriteApi = new FavoriteApi();

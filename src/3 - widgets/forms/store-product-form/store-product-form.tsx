@@ -1,24 +1,38 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Column, Form, PhotoSlider, Row, Text } from '@shared/ui';
-import { StoreProductFormData, StoreProductFormProps } from './store-product-form.types';
+import { Column, Form, Modal, PhotoSlider, Row, Text } from '@shared/ui';
+import { StoreProductFormProps } from './store-product-form.types';
 import { ColorSelector } from './components/color-selector';
 import { ConfigurationSelector } from './components/configuration-selector';
 import { ProductInfo } from './components/product-info';
 import { AddToCartFooter } from './components/add-to-cart-footer';
 import { productToStoreProductFormDataAdapter } from './adapters/product-to-store-product-form-data.adapter';
 import { productToProductFormDataAdapter } from '../product-form/adapters';
+import { useModal } from '@shared/hooks';
+import { userService } from '@entities/user/service';
+import { cartService } from '@entities/cart/service';
+import { ICartProduct } from '@entities/cart/types';
+import { ProductConfigurationEnum } from '@entities/product/types';
 
 export const StoreProductForm: FC<StoreProductFormProps> = ({ product }) => {
-  const methods = useForm<StoreProductFormData>({
+  const { isModalOpen, showModal, hideModal } = useModal();
+  const methods = useForm<Omit<ICartProduct, 'id'>>({
     defaultValues: productToStoreProductFormDataAdapter(product)
   });
 
   const { handleSubmit, watch } = methods;
 
-  const onSubmit = (data: StoreProductFormData) => {
-    console.log(data);
+  const onSubmit = (data: Omit<ICartProduct, 'id'>) => {
+    !userService.user$
+      ? showModal()
+      : cartService.addToCart({
+          ...data,
+          configurations: Object.entries(data?.configurations).map(([name, value]) => ({
+            name: name as ProductConfigurationEnum,
+            value
+          }))
+        });
   };
 
   return (
@@ -52,6 +66,17 @@ export const StoreProductForm: FC<StoreProductFormProps> = ({ product }) => {
         </Column>
         <AddToCartFooter configurations={product.configurations} price={product.price} />
       </Form>
+
+      <Modal isModalOpen={isModalOpen} hideModal={hideModal}>
+        <Column>
+          <Text type="header" textAlign="center">
+            Ошибка
+          </Text>
+          <Text type="param" textAlign="center">
+            Войдите в аккаунт, чтобы добавлять товары в корзину
+          </Text>
+        </Column>
+      </Modal>
     </FormProvider>
   );
 };

@@ -5,5 +5,4 @@ export interface IFavoriteService {
   addFavorite: (productId: string) => void;
   deleteFavorite: (id: string) => void;
   getFavorites: () => void;
-  updateFavorite: (updateFavoriteData: IFavorite) => void;
 }

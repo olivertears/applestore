@@ -1,1 +1,1 @@
-export { type IOrder } from './IOrder';
+export { type IOrder, type IOrderProduct, OrderStatusEnum, OrderPaymentOptionEnum } from './IOrder';

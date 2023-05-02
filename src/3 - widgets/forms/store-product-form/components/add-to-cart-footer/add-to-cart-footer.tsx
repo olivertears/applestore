@@ -1,22 +1,38 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import * as S from './add-to-cart-footer.styles';
 import { useFormContext } from 'react-hook-form';
 
 import { calcMonthPayment } from '@shared/utils';
 import { HeartIcon } from '@shared/icons';
-import { Button, Column, Row, Text } from '@shared/ui';
-import { StoreProductFormData } from '../../store-product-form.types';
+import { Button, Column, Modal, Row, Text } from '@shared/ui';
 import { AddToCartFooterProps } from './add-to-cart-footer.types';
+import { favoriteService } from '@entities/favorite/service';
+import { userService } from '@entities/user/service';
+import { useModal } from '@shared/hooks';
+import { ICartProduct } from '@entities/cart/types';
 
-export const AddToCartFooter: FC<AddToCartFooterProps> = ({ configurations, price }) => {
-  const [selected, setSelected] = useState(false);
-  const { getValues } = useFormContext<StoreProductFormData>();
+export const AddToCartFooter: FC<AddToCartFooterProps> = ({ configurations, price, productId }) => {
+  const { isModalOpen, showModal, hideModal } = useModal();
+  const { getValues, setValue } = useFormContext<Omit<ICartProduct, 'id'>>();
 
-  const calcFinalPrice = () =>
+  const calcFinalPrice = (): number =>
     configurations?.reduce(
-      (res, { name, value, extraPrice }) => (getValues()[name] === value ? res + extraPrice : res),
+      (res, { name, value, extraPrice }) =>
+        getValues().configurations?.[name] === value ? res + extraPrice : res,
       price || 0
     ) || 0;
+
+  setValue('price', calcFinalPrice());
+
+  const handleFavorite = () => {
+    if (!userService.user$) {
+      showModal();
+    } else {
+      !!favoriteService.favorites$.find((fav) => fav.productId === productId)
+        ? favoriteService.deleteFavorite(productId)
+        : favoriteService.addFavorite(productId);
+    }
+  };
 
   return (
     <S.Wrap>
@@ -33,9 +49,23 @@ export const AddToCartFooter: FC<AddToCartFooterProps> = ({ configurations, pric
           <Button width="auto" type="submit">
             ADD TO BAG
           </Button>
-          <HeartIcon onClick={() => setSelected(!selected)} selected={selected} />
+          <HeartIcon
+            onClick={handleFavorite}
+            selected={!!favoriteService.favorites$.find((fav) => fav.productId === productId)}
+          />
         </Row>
       </S.Content>
+
+      <Modal isModalOpen={isModalOpen} hideModal={hideModal}>
+        <Column>
+          <Text type="header" textAlign="center">
+            Ошибка
+          </Text>
+          <Text type="param" textAlign="center">
+            Войдите в аккаунт, чтобы сохранять товары в избранные
+          </Text>
+        </Column>
+      </Modal>
     </S.Wrap>
   );
 };

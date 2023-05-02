@@ -39,8 +39,8 @@ class ProductService implements IProductService {
     this.setProducts(data);
   }
 
-  async getProductsByName(name: string): Promise<IProduct[]> {
-    const { data } = await productApi.getProductsByName(name);
+  async getProductByName(name: string): Promise<IProduct> {
+    const { data } = await productApi.getProductByName(name);
     return data;
   }
 }
