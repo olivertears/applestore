@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { StoreProductForm } from '@widgets/forms/store-product-form';
 import { IProduct } from '@entities/product/types';

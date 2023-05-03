@@ -22,7 +22,7 @@ class FavoriteService implements IFavoriteService {
     this.setFavorites([...this.favorites$, data]);
   }
 
-  async deleteFavorite(id: string) {
+  async deleteFavorite(id: number) {
     await favoriteApi.deleteFavorite(id);
     this.setFavorites(this.favorites$.filter((item) => item.id !== id));
   }

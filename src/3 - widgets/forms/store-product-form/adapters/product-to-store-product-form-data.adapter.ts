@@ -1,9 +1,7 @@
 import { IProduct } from '@entities/product/types';
-import { ICartProduct } from '@entities/cart/types';
+import { StoreProductFormData } from '@widgets/forms/store-product-form/store-product-form.types';
 
-export const productToStoreProductFormDataAdapter = (
-  product: IProduct
-): Omit<ICartProduct, 'id'> => {
+export const productToStoreProductFormDataAdapter = (product: IProduct): StoreProductFormData => {
   const { name, price, preview, id, colors, configurations } = product;
 
   const productFormConfigurations = configurations?.reduce((res, { value, name }) => {

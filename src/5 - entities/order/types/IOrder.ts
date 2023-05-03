@@ -10,6 +10,10 @@ export interface IOrder {
   finalPrice: number;
   products: IOrderProduct[];
 }
+export interface IOrderProduct {
+  product: ICartProduct;
+  amount: number;
+}
 
 export enum OrderPaymentOptionEnum {
   CARD = 'CARD',
@@ -21,9 +25,4 @@ export enum OrderStatusEnum {
   PROCESSING = 'PROCESSING',
   DELIVERY = 'DELIVERY',
   COMPLETED = 'COMPLETED'
-}
-
-export interface IOrderProduct {
-  product: ICartProduct;
-  amount: number;
 }

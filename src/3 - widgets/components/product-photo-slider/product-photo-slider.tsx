@@ -31,7 +31,7 @@ export const ProductPhotoSlider: FC<ProductPhotoSliderProps> = ({ color, product
           {color.photos.map((photo) => (
             <Card key={photo} padding="0" borderRadius="10px">
               <Skeleton>
-                <S.ProductPhotoCard photo={productId + '/' + photo}>
+                <S.ProductPhotoCard photo={photo}>
                   <CloseIcon width="15px" onClick={() => deletePhoto(photo)} />
                 </S.ProductPhotoCard>
               </Skeleton>

@@ -13,7 +13,7 @@ export const StoreSearch: FC = () => {
 
   const debounceSearch = useCallback(
     debounce((search: string) => {
-      productService.getProductsByName(search).then((items) => setProducts(items));
+      productService.getProductByName(search).then((items) => setProducts([items]));
     }, 800),
     []
   );

@@ -4,10 +4,10 @@ import { useFormContext } from 'react-hook-form';
 import { CONFIGURATION_NAMES } from '@entities/product/constants';
 import { Column, Fieldset, OptionRadio, Row, Text } from '@shared/ui';
 import { ConfigurationSelectorProps } from './configuration-selector.types';
-import { ICartProduct } from '@entities/cart/types';
+import { StoreProductFormData } from '@widgets/forms/store-product-form/store-product-form.types';
 
 export const ConfigurationSelector: FC<ConfigurationSelectorProps> = ({ configuration }) => {
-  const { register, watch } = useFormContext<Omit<ICartProduct, 'id'>>();
+  const { register, watch } = useFormContext<StoreProductFormData>();
 
   const calcPrice = (value: string, extraPrice: number) => {
     const price =

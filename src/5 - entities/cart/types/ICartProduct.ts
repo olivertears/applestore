@@ -4,7 +4,7 @@ export interface ICartProduct {
   id: string;
   name: string;
   preview: string;
-  price: number;
+  price?: number;
   color: string;
   configurations?: ICartConfiguration[];
 }
