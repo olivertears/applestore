@@ -2,9 +2,9 @@ import { FC } from 'react';
 import * as S from './checkbox-icon.styles';
 import { CheckboxIconProps } from './checkbox-icon.types';
 
-export const CheckboxIcon: FC<CheckboxIconProps> = ({ onClick, checked }) => {
+export const CheckboxIcon: FC<CheckboxIconProps> = ({ onClick, checked, width }) => {
   return (
-    <S.Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onClick={onClick}>
+    <S.Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onClick={onClick} width={width}>
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g fill="#434344" fillRule="nonzero">
           {checked ? (

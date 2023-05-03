@@ -4,6 +4,7 @@ import { AuthenticateData, RegisterData } from '@features/auth/types';
 import { userService } from '@entities/user/service';
 import { getFromLocalStorage } from '@shared/utils';
 import { IAuthService } from './auth.types';
+import { IUser } from '@entities/user/types';
 
 class AuthService implements IAuthService {
   token$ = getFromLocalStorage('token') || '';
@@ -20,10 +21,11 @@ class AuthService implements IAuthService {
     localStorage.setItem('token', JSON.stringify(token));
   }
 
-  async authenticate(authenticateData: AuthenticateData) {
+  async authenticate(authenticateData: AuthenticateData): Promise<IUser> {
     const { data } = await authApi.authenticate(authenticateData);
     this.setToken(data.token);
     userService.setUser(data.userResponse);
+    return data.userResponse;
   }
 
   async register(registerData: RegisterData) {

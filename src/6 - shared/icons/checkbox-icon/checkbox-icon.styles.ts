@@ -6,7 +6,7 @@ export const Svg = styled.svg`
   stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  height: 36px;
+  height: ${({ width }) => (width ? width : '36px')};
   cursor: ${({ onClick }) => onClick && 'pointer'};
   margin: 0 auto;
 `;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Svg = styled.svg<{ width?: string }>`
+export const Svg = styled.svg<{ width?: string; position?: string }>`
   fill: none;
   stroke: #1d1d1f;
   stroke-width: 2;
@@ -8,7 +8,7 @@ export const Svg = styled.svg<{ width?: string }>`
   stroke-linejoin: round;
   width: ${({ width }) => width || '20px'};
   cursor: pointer;
-  position: absolute;
+  position: ${({ position }) => (position ? position : 'absolute')};
   top: 5px;
   right: 5px;
 `;

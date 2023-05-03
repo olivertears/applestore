@@ -20,7 +20,7 @@ export const StoreDropdown: FC<StoreDropdownProps> = ({
         {Object.keys(ProductTypeEnum).map((key) => (
           <S.StyledLink
             key={key}
-            to={RouteNames.STORE_UNIT.replace(':type', key.toLowerCase())}
+            to={RouteNames.STORE_UNIT.replace(':type', key)}
             onClick={() => setIsStoreDropdownOpen(false)}
           >
             {key}

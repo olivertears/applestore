@@ -7,6 +7,7 @@ import { AuthenticateData } from '@features/auth/types';
 import { emailRegex } from '@shared/utils';
 import { Button, Form, Input, Loader, Text } from '@shared/ui';
 import { authService } from '@features/auth/service';
+import { UserRoleEnum } from '@entities/user/types';
 
 export const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +25,16 @@ export const SignInForm: FC = () => {
     setIsLoading(true);
     authService
       .authenticate(data)
-      .then(() => navigate(RouteNames.PROFILE))
+      .then(({ role }) => {
+        switch (role) {
+          case UserRoleEnum.USER:
+            return navigate(RouteNames.PROFILE);
+          case UserRoleEnum.MANAGER:
+            return navigate(RouteNames.ORDERS);
+          case UserRoleEnum.ADMIN:
+            return navigate(RouteNames.APPLICATIONS);
+        }
+      })
       .catch((error) => {
         resetField('email');
         resetField('password');
