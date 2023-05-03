@@ -1,13 +1,15 @@
 import { FC } from 'react';
 import { OrderItemProps } from './order-item.types';
 import * as S from './order-item.styles';
-import { Card, Column, Text, Color } from '@shared/ui';
+import { Card, Column, Text } from '@shared/ui';
 import { OrderStatusEnum } from '@entities/order/types';
 import { CONFIGURATION_NAMES } from '@entities/product/constants';
+import { CheckboxIcon, CloseIcon } from '@shared/icons';
+import { orderService } from '@entities/order/service';
+import { userService } from '@entities/user/service';
+import { UserRoleEnum } from '@entities/user/types';
 
 export const OrderItem: FC<OrderItemProps> = ({ order }) => {
-  console.log(order);
-
   return (
     <Card padding="0" color="#fff">
       <S.OrderItem>
@@ -56,6 +58,30 @@ export const OrderItem: FC<OrderItemProps> = ({ order }) => {
             ${order.finalPrice?.toFixed(2)}
           </Text>
         </Column>
+        <S.IconWrap>
+          {userService.user$?.role === UserRoleEnum.MANAGER &&
+            order.status !== OrderStatusEnum.CANCELLED &&
+            order.status !== OrderStatusEnum.COMPLETED && (
+              <CheckboxIcon
+                width="20px"
+                checked
+                onClick={() =>
+                  orderService.updateOrderStatus(
+                    order.id,
+                    Object.values(OrderStatusEnum)[
+                      Object.values(OrderStatusEnum).findIndex((status) => status === order.id) + 1
+                    ] as OrderStatusEnum
+                  )
+                }
+              />
+            )}
+          {order.status === OrderStatusEnum.PROCESSING && (
+            <CloseIcon
+              position="block"
+              onClick={() => orderService.updateOrderStatus(order.id, OrderStatusEnum.CANCELLED)}
+            />
+          )}
+        </S.IconWrap>
       </S.OrderItem>
     </Card>
   );

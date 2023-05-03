@@ -1,7 +1,7 @@
 import { ICartProduct } from '@entities/cart/types';
 
 export interface IOrder {
-  id: number;
+  id: string;
   address: string;
   paymentOption: OrderPaymentOptionEnum;
   date: string;
