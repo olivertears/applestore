@@ -1,6 +1,7 @@
-import { Configuration } from '@entities/product/types';
+import { IProductConfiguration } from '@entities/product/types';
 
 export interface AddToCartFooterProps {
-  configurations?: Configuration[];
+  configurations?: IProductConfiguration[];
   price?: number;
+  productId: string;
 }

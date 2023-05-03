@@ -7,5 +7,5 @@ export interface IProductApi {
   deleteProduct: (id: string) => Promise<AxiosResponse>;
   updateProduct: (updateProductData: IProduct) => Promise<AxiosResponse<IProduct>>;
   getProducts: (type?: ProductTypeEnum) => Promise<AxiosResponse<IProduct[]>>;
-  getProductsByName: (name: string) => Promise<AxiosResponse<IProduct[]>>;
+  getProductByName: (name: string) => Promise<AxiosResponse<IProduct>>;
 }

@@ -1,12 +1,16 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { ArrowIcon } from '../../icons';
 import * as S from './photo-slider.styles';
 import { PhotoSliderProps } from './photo-slider.types';
 import { Iframe } from '../iframe';
-import { Skeleton } from '../skeleton';
+import { Skeleton } from '@shared/ui';
 
 export const PhotoSlider: FC<PhotoSliderProps> = ({ images, video }) => {
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setIndex(0);
+  }, [images]);
 
   return (
     <S.Wrap>

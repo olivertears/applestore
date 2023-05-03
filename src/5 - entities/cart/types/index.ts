@@ -1,1 +1,1 @@
-export { type ICart } from './ICart';
+export type { ICartProduct, ICartConfiguration } from './ICartProduct';

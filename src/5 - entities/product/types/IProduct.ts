@@ -7,11 +7,11 @@ export type IProduct = { [key in ProductParamEnum]?: string } & {
   price?: number;
   video?: string;
   preview?: string;
-  configurations?: Configuration[];
+  configurations?: IProductConfiguration[];
   colors: Color[];
 };
 
-export interface Configuration {
+export interface IProductConfiguration {
   name: ProductConfigurationEnum;
   value: string;
   extraPrice: number;

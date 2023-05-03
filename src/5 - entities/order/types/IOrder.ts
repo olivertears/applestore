@@ -1,20 +1,28 @@
+import { ICartProduct } from '@entities/cart/types';
+
 export interface IOrder {
-  id: string;
-  userId: string;
-  addressId: string;
-  paymentOption: OrderPaymentOption;
+  id: number;
+  address: string;
+  paymentOption: OrderPaymentOptionEnum;
   date: string;
-  status: OrderStatus;
+  dateDone?: string;
+  status: OrderStatusEnum;
   finalPrice: number;
+  products: IOrderProduct[];
+}
+export interface IOrderProduct {
+  product: ICartProduct;
+  amount: number;
 }
 
-export type OrderPaymentOption = 'CASH' | 'CARD';
+export enum OrderPaymentOptionEnum {
+  CARD = 'CARD',
+  CASH = 'CASH'
+}
 
-export type OrderStatus = 'PROCESSING' | 'DELIVERY' | 'COMPLETED';
-
-export interface IOrderItem {
-  id: string;
-  orderId: string;
-  productId: string;
-  amount: number;
+export enum OrderStatusEnum {
+  CANCELLED = 'CANCELLED',
+  PROCESSING = 'PROCESSING',
+  DELIVERY = 'DELIVERY',
+  COMPLETED = 'COMPLETED'
 }

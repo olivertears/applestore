@@ -22,8 +22,8 @@ class ProductApi implements IProductApi {
     return publicApi.get(type ? this.endpoint + '/type/' + type : this.endpoint);
   }
 
-  getProductsByName(name: string): Promise<AxiosResponse<IProduct[]>> {
-    return publicApi.get(this.endpoint + '/getByName/' + name);
+  getProductByName(name: string): Promise<AxiosResponse<IProduct>> {
+    return publicApi.get(this.endpoint + '/' + name);
   }
 }
 

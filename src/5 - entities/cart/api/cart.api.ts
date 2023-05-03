@@ -1,25 +1,21 @@
 import { AxiosResponse } from 'axios';
 import { privateApi } from '@shared/constants/api';
-import { ICart } from '../types';
+import { ICartProduct } from '../types';
 import { ICartApi } from './cart.types';
 
 class CartApi implements ICartApi {
   endpoint = 'carts' as const;
 
-  addToCart(productId: string): Promise<AxiosResponse<ICart>> {
-    return privateApi.post(this.endpoint, productId);
+  addToCart(cart: Omit<ICartProduct, 'id'>): Promise<AxiosResponse<ICartProduct>> {
+    return privateApi.post(this.endpoint, cart);
   }
 
   deleteFromCart(id: string): Promise<AxiosResponse> {
     return privateApi.delete(this.endpoint + '/' + id);
   }
 
-  getCart(): Promise<AxiosResponse<ICart[]>> {
+  getCartProducts(): Promise<AxiosResponse<ICartProduct[]>> {
     return privateApi.get(this.endpoint);
-  }
-
-  updateCart(updateCartItemData: ICart): Promise<AxiosResponse<ICart>> {
-    return privateApi.post(this.endpoint, updateCartItemData);
   }
 }
 

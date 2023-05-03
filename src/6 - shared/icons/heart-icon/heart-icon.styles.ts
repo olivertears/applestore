@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Svg = styled.svg<{ selected?: boolean }>`
-  fill: #1d1d1f;
-  stroke: #1d1d1f;
+  fill: #0071e3;
+  stroke: #0071e3;
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;

@@ -18,6 +18,7 @@ export { Color } from './color';
 export { Column } from './column';
 export { Divider } from './divider';
 export { Form } from './form';
+export { Grid } from './grid';
 export { Iframe } from './iframe';
 export { Link } from './link';
 export { PageWrap } from './page-wrap';

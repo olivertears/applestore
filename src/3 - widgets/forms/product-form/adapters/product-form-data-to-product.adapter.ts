@@ -1,4 +1,4 @@
-import { Configuration, IProduct, ProductParamEnum } from '@entities/product/types';
+import { IProductConfiguration, IProduct, ProductParamEnum } from '@entities/product/types';
 import { ProductFormData } from '../product-form.types';
 
 export const productFormDataToProductAdapter = (
@@ -9,7 +9,7 @@ export const productFormDataToProductAdapter = (
   const productParams: { [key in ProductParamEnum]?: string } =
     params?.reduce((res, { name, value }) => ({ ...res, [name]: value }), {}) || {};
 
-  const productConfiguration: Configuration[] =
+  const productConfiguration: IProductConfiguration[] =
     configurations?.map(({ name, values }) => values.map((value) => ({ name, ...value }))).flat() ||
     [];
 

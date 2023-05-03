@@ -1,10 +1,10 @@
 import { action, makeObservable, observable } from 'mobx';
 import { cartApi } from '@entities/cart/api';
-import { ICart } from '../types';
+import { ICartProduct } from '../types';
 import { ICartService } from './cart.types';
 
 class CartService implements ICartService {
-  cart$: ICart[] = [];
+  cart$: ICartProduct[] = [];
 
   constructor() {
     makeObservable(this, {
@@ -13,12 +13,12 @@ class CartService implements ICartService {
     });
   }
 
-  setCart(cart: ICart[]) {
+  setCart(cart: ICartProduct[]) {
     this.cart$ = cart;
   }
 
-  async addToCart(productId: string) {
-    const { data } = await cartApi.addToCart(productId);
+  async addToCart(cart: Omit<ICartProduct, 'id'>) {
+    const { data } = await cartApi.addToCart(cart);
     this.setCart([...this.cart$, data]);
   }
 
@@ -27,14 +27,9 @@ class CartService implements ICartService {
     this.setCart(this.cart$.filter((item) => item.id !== id));
   }
 
-  async getCart() {
-    const { data } = await cartApi.getCart();
+  async getCartProducts() {
+    const { data } = await cartApi.getCartProducts();
     this.setCart(data);
-  }
-
-  async updateCart(updateCartItemData: ICart) {
-    const { data } = await cartApi.updateCart(updateCartItemData);
-    this.setCart(this.cart$.map((item) => (item.id === updateCartItemData.id ? data : item)));
   }
 }
 

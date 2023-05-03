@@ -22,7 +22,7 @@ class FavoriteService implements IFavoriteService {
     this.setFavorites([...this.favorites$, data]);
   }
 
-  async deleteFavorite(id: string) {
+  async deleteFavorite(id: number) {
     await favoriteApi.deleteFavorite(id);
     this.setFavorites(this.favorites$.filter((item) => item.id !== id));
   }
@@ -30,13 +30,6 @@ class FavoriteService implements IFavoriteService {
   async getFavorites() {
     const { data } = await favoriteApi.getFavorites();
     this.setFavorites(data);
-  }
-
-  async updateFavorite(updateFavoriteData: IFavorite) {
-    const { data } = await favoriteApi.updateFavorite(updateFavoriteData);
-    this.setFavorites(
-      this.favorites$.map((item) => (item.id === updateFavoriteData.id ? data : item))
-    );
   }
 }
 

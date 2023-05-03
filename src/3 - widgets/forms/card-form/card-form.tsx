@@ -43,7 +43,10 @@ export const CardForm: FC<CardFormProps> = ({ card, hideModal }) => {
 
   const onActiveStatusChange = (id: number) => {
     setIsLoading(true);
-    cardService.setActive(id).finally(() => setIsLoading(false));
+    cardService
+      .setActive(id)
+      .then(hideModal)
+      .finally(() => setIsLoading(false));
   };
 
   return (

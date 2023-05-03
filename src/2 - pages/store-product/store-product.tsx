@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 
 import { StoreProductForm } from '@widgets/forms/store-product-form';
 import { IProduct } from '@entities/product/types';
-import { PageWrap } from '@shared/ui';
+import { Loader, PageWrap } from '@shared/ui';
 import { fromUrlCase } from '@shared/utils';
 import { productService } from '@entities/product/service';
 
 const StoreProduct: FC = () => {
-  const { type, name } = useParams();
+  const { name } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState<IProduct | null>(null);
 
@@ -16,13 +16,18 @@ const StoreProduct: FC = () => {
     if (name) {
       setIsLoading(true);
       productService
-        .getProductsByName(fromUrlCase(name))
-        .then((res) => console.log(res))
+        .getProductByName(fromUrlCase(name))
+        .then((res) => setProduct(res))
         .finally(() => setIsLoading(false));
     }
   }, []);
 
-  return <PageWrap>{product && <StoreProductForm product={product} />}</PageWrap>;
+  return (
+    <PageWrap>
+      {isLoading && <Loader />}
+      {product && <StoreProductForm product={product} />}
+    </PageWrap>
+  );
 };
 
 export default StoreProduct;

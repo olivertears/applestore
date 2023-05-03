@@ -4,6 +4,10 @@ export interface StoreProductFormProps {
   product: IProduct;
 }
 
-export type StoreProductFormData = { [key in ProductConfigurationEnum]?: string } & {
+export interface StoreProductFormData {
+  name: string;
+  preview: string;
+  price?: number;
   color: string;
-};
+  configurations?: { [key in ProductConfigurationEnum]?: string };
+}
